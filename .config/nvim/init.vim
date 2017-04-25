@@ -184,6 +184,16 @@ function! Run()
    echo "Not support filetype ".&filetype
   endif
 endfunction
+
+"ibus engineをkkcとxkb:jp::jpnをトグルさせる関数
+function ToggleIbusEngine()
+  if split(system('ibus engine'))[0]=="kkc"
+    call system('ibus engine "xkb:jp::jpn"')
+  else
+    call system('ibus engine "kkc"')
+  endif
+endfunction
+
 "縦にタブ分割をしてVimShellを起動
 function! VS()
   vs
@@ -194,12 +204,18 @@ function! SP()
   sp
   VimShell
 endfunction
+"TlistとSrcExplのコマンドをまとめた関数
+function! CT()
+  Tlist
+  SrcExpl
+endfunction
 "}}}
 
 "コマンド宣言"{{{
 command Run call Run()
 command VS call VS()
 command SP call SP()
+command CT call CT()
 "}}}
 
 "プラグインに関する設定"{{{
@@ -211,12 +227,12 @@ colorscheme jellybeans
 "
 " VimShellのプロンプトの設定
 function! PWD()
-	if $PWD == $HOME
-		let l:cudir='~'
-	else
-		let l:cudir=split(system("basename $PWD"))[0]
-	endif
-	return l:cudir
+  if $PWD == $HOME
+    let l:cudir='~'
+  else
+    let l:cudir=split(system("basename $PWD"))[0]
+  endif
+  return l:cudir
 endfunction
 let g:vimshell_prompt_expr='"[".split(system("echo $USER"))[0]."@".split(system("hostname"))[0]." ".PWD(). "]$ "'
 " let g:vimshell_prompt_expr='getcwd().">"'
@@ -225,13 +241,18 @@ let g:vimshell_prompt_pattern='\[.*\]$ '
 let tlist_php_settings='php;c:class;d:constant;f:function'
 "}}}
 
+
+
 "キー設定"{{{
 noremap <C-k> <ESC><ESC>:call Run()<CR>
 noremap! <C-k> <ESC><ESC>:call Run()<CR>
-noremap <silent> <C-j> <ESC><ESC>:call system('ibus engine "kkc"')<CR>
-noremap! <silent> <C-j> <ESC><ESC>:call system('ibus engine "kkc"')<CR>
+noremap <silent> <C-c> <ESC><ESC>:call system('ibus engine "xkb:jp:jpn"')<CR>
+noremap! <silent> <C-c> <ESC><ESC>:call system('ibus engine "xkb:jp:jpn"')<CR>
 noremap <C-s> <ESC><ESC>:call Format()<CR>
 noremap! <C-s> <ESC><ESC>:call Format()<CR>
+noremap <C-l> :call ToggleIbusEngine()<CR>
+cnoremap <C-l> :call ToggleIbusEngine()<CR>
+inoremap <C-l> <C-o>:call ToggleIbusEngine()<CR>
 inoremap <expr> = smartchr#loop(' = ',' == ', '=', ' := ')
 inoremap <expr> , smartchr#loop(', ',',')
 "}}}
