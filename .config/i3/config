@@ -155,3 +155,5 @@ bar {
         status_command i3status
         font pango:monospace 15
 }
+
+exec --no-startup-id nm-applet

@@ -66,7 +66,7 @@ repo = 'kana/vim-operator-user'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'vim-scripts/smartchr'
+repo = 'smartchr'
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
@@ -84,7 +84,7 @@ repo = 'tyru/caw.vim'
 repo = 'mhinz/vim-startify'
 
 [[plugins]]
-repo = 'vim-scripts/taglist.vim'
+repo = 'taglist.vim'
 
 [[plugins]]
 repo = 'fatih/vim-go'
@@ -94,3 +94,8 @@ repo = 'sudar/vim-arduino-syntax'
 
 [[plugins]]
 repo = 'Shougo/deoplete-zsh'
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+[[plugins]]
+repo = 'mattn/vim-mastodon'

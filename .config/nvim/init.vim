@@ -1,18 +1,18 @@
-"vimの設定"{{{
+" vimの設定"{{{
 set fenc=utf-8
-"vi互換の動作を無効にするコマンド
+" vi互換の動作を無効にするコマンド
 set nocompatible
-"インデント
+" インデント
 filetype indent on
-"これやらないとcaw.vimが動かない
+" これやらないとcaw.vimが動かない
 filetype plugin on
-"バックスペースは行末は消去不可
+" バックスペースは行末は消去不可
 set bs=indent,eol,start
-"履歴情報を保存するviminfoを作成
+" 履歴情報を保存するviminfoを作成
 set viminfo='20,\"50
-"コマンドの履歴数を50に設定
+" コマンドの履歴数を50に設定
 set history=50
-"保存されていないファイルがあるときは終了前に保存確認
+" 保存されていないファイルがあるときは終了前に保存確認
 set confirm
 "保存されていないファイルがある時でも別ファイルを開けるようにする
 set hidden
@@ -70,21 +70,21 @@ if has("autocmd")
   augroup END
 endif
 
-" "cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
-" if has("cscope") && filereadable("/usr/bin/cscope")
-"    set csprg=/usr/bin/cscope
-"    set csto=0
-"    set cst
-"    set nocsverb
-"    " add any database in current directory
-"    if filereadable("cscope.out")
-"       cs add $pwd/cscope.out
-"    " else add database pointed to by environment
-"    elseif $cscope_db != ""
-"       cs add $cscope_db
-"    endif
-"    set csverb
-" endif
+"cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
+if has("cscope") && filereadable("/usr/bin/cscope")
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   " add any database in current directory
+   if filereadable("cscope.out")
+      cs add $pwd/cscope.out
+   " else add database pointed to by environment
+   elseif $cscope_db != ""
+      cs add $cscope_db
+   endif
+   set csverb
+endif
 "}}}
 
 " プラグインマネージャ"{{{
@@ -153,7 +153,7 @@ endfunction
 function! Run()
   w
   if &filetype=="cpp"
-    let l:mes  = system("clang++ -std=c++14 ".expand("%:p"))
+    let l:mes  = system("clang++ -std=c++14 ".expand("%:p")." $(pkg-config --cflags eigen3)")
     if l:mes==""
       !./a.out
     else
@@ -185,12 +185,18 @@ function! Run()
   endif
 endfunction
 
-"ibus engineをkkcとxkb:jp::jpnをトグルさせる関数
-function ToggleIbusEngine()
-  if split(system('ibus engine'))[0]=="kkc"
-    call system('ibus engine "xkb:jp::jpn"')
+"IMEを切り換える関数
+function ToggleIbusEngine(mode)
+  if a:mode=='x'
+      call system('ibus engine "xkb:jp::jpn"')
+  elseif a:mode=='k'
+      call system('ibus engine "kkc"')
   else
-    call system('ibus engine "kkc"')
+    if split(system('ibus engine'))[0]=="kkc"
+      call system('ibus engine "xkb:jp::jpn"')
+    else
+      call system('ibus engine "kkc"')
+    endif
   endif
 endfunction
 
@@ -239,20 +245,41 @@ let g:vimshell_prompt_expr='"[".split(system("echo $USER"))[0]."@".split(system(
 let g:vimshell_prompt_pattern='\[.*\]$ '
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
+
+let token="token"
+let g:mastodon_host='yukari.cloud'
+" let g:mastodon_access_token='mastodon_token'
+
+if filereadable(expand('token.vim'))
+  source token.vim
+endif
 "}}}
 
-
-
 "キー設定"{{{
+"自作関数のマッピングとか
+noremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
+cnoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
+inoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
+
 noremap <C-k> <ESC><ESC>:call Run()<CR>
 noremap! <C-k> <ESC><ESC>:call Run()<CR>
-noremap <silent> <C-c> <ESC><ESC>:call system('ibus engine "xkb:jp:jpn"')<CR>
-noremap! <silent> <C-c> <ESC><ESC>:call system('ibus engine "xkb:jp:jpn"')<CR>
+
+noremap <silent> <C-l> :call ToggleIbusEngine('t')<CR>
+cnoremap <silent> <C-l> :call ToggleIbusEngine('t')<CR>
+inoremap <silent> <C-l> <C-o>:call ToggleIbusEngine('t')<CR>
+
 noremap <C-s> <ESC><ESC>:call Format()<CR>
 noremap! <C-s> <ESC><ESC>:call Format()<CR>
-noremap <C-l> :call ToggleIbusEngine()<CR>
-cnoremap <C-l> :call ToggleIbusEngine()<CR>
-inoremap <C-l> <C-o>:call ToggleIbusEngine()<CR>
+
+" 
+noremap <A-h> <C-w>h
+noremap <A-j> <C-w>j
+noremap <A-k> <C-w>k
+noremap <A-l> <C-w>l
+noremap <A-;> <C-w>+
+noremap <A--> <C-w>-
+noremap <A-,> <C-w><
+noremap <A-.> <C-w>>
 inoremap <expr> = smartchr#loop(' = ',' == ', '=', ' := ')
 inoremap <expr> , smartchr#loop(', ',',')
 "}}}

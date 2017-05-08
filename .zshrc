@@ -63,9 +63,10 @@ zle -N peco-select-history
 bindkey '^r' peco-select-history
 
 alias ls="ls --color=auto -F"
-alias chromium="chromium > /dev/null 2>&1"
-alias mikutter="mikutter > /dev/null 2>&1"
-alias libreoffice="libreoffice > /dev/null 2>&1"
+alias chromium="chromium > /dev/null 2>&1&"
+alias mikutter="mikutter > /dev/null 2>&1&"
+alias libreoffice="libreoffice > /dev/null 2>&1&"
+alias grsim="~/grsim > /dev/null 2>&1&"
 function arduino (){platformio $@ && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "void setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
 # if [ $(ps h -o cmd -p `ps h -o ppid -p $$`) = "xfce4-terminal" ] ; then
