@@ -152,34 +152,37 @@ endfunction
 "いま開いているファイルがcppだった場合コンパイルして実行
 function! Run()
   w
-  if &filetype=="cpp"
+  let l:ft=&filetype
+  if l:ft=="cpp"
     let l:mes  = system("clang++ -std=c++14 ".expand("%:p")." $(pkg-config --cflags eigen3)")
     if l:mes==""
       !./a.out
     else
       echo l:mes
     endif
-  elseif &filetype=="c"
+  elseif l:ft=="c"
     let l:mes  = system("gcc ".expand("%:p"))
     if l:mes==""
       !./a.out
     else
       echo l:mes
     endif
-  " elseif &filetype=="java"
+  " elseif l:ft=="java"
   "   let l:mes = system("javac ".expand("%:p"))
   "   if l:mes == ""
   "     java tmp.out
   "   else
   "     echo l:mes
   "   endif
-  elseif &filetype=="python"
+  elseif l:ft=="python"
     let l:mes = system("python3 ".expand("%:p"))
     echo l:mes
-  elseif &filetype=="go"
+  elseif l:ft=="go"
     GoRun
-  elseif &filetype=="arduino"
+  elseif l:ft=="arduino"
     !sudo platformio run --target=upload
+  elseif l:ft=="markdown"
+    MdPreview
   else
    echo "Not support filetype ".&filetype
   endif
@@ -228,9 +231,6 @@ command CT call CT()
 set t_Co=256
 syntax on
 colorscheme jellybeans
-" let g:vimshell_prompt_expr='"[".expand("$USER")." ".expand("%:h")."]$ "'
-" let g:vimshell_prompt_pattern='[+^\*\+]$ '
-"
 " VimShellのプロンプトの設定
 function! PWD()
   if $PWD == $HOME
@@ -241,7 +241,6 @@ function! PWD()
   return l:cudir
 endfunction
 let g:vimshell_prompt_expr='"[".split(system("echo $USER"))[0]."@".split(system("hostname"))[0]." ".PWD(). "]$ "'
-" let g:vimshell_prompt_expr='getcwd().">"'
 let g:vimshell_prompt_pattern='\[.*\]$ '
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
@@ -250,9 +249,13 @@ let token="token"
 let g:mastodon_host='yukari.cloud'
 " let g:mastodon_access_token='mastodon_token'
 
+au BufRead,BufNewFile *.md set filetype=markdown
+" let g:previm_open_cmd='chromium'
+
 if filereadable(expand('token.vim'))
   source token.vim
 endif
+
 "}}}
 
 "キー設定"{{{

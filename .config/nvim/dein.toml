@@ -97,5 +97,15 @@ repo = 'Shougo/deoplete-zsh'
 
 [[plugins]]
 repo = 'mattn/webapi-vim'
+
 [[plugins]]
 repo = 'mattn/vim-mastodon'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'kurocode25/mdforvim'
