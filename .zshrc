@@ -1,3 +1,4 @@
+# 幸せになれるもの
 /usr/bin/vmware-user-suid-wrapper
 sh /home/ia/.fehbg
 
@@ -27,6 +28,7 @@ export AI=/home/ia/ai-server
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
+# zsh設定
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000
 export SAVEHIST=100000
@@ -62,11 +64,15 @@ function peco-select-history(){
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+# エイリアス
 alias ls="ls --color=auto -F"
+alias la="ls --color=auto -Fa"
+alias ll="ls --color=auto -Fl"
+alias lla="ls --color=auto -Fla"
 alias chromium="chromium > /dev/null 2>&1&"
 alias mikutter="mikutter > /dev/null 2>&1&"
 alias libreoffice="libreoffice > /dev/null 2>&1&"
-alias grsim="~/grsim > /dev/null 2>&1&"
+alias grsim="~/nyan/grSim/bin/grsim > /dev/null 2>&1&"
 function arduino (){platformio $@ && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "void setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
 # if [ $(ps h -o cmd -p `ps h -o ppid -p $$`) = "xfce4-terminal" ] ; then
