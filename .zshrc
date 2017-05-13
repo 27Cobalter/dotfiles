@@ -47,7 +47,8 @@ setopt auto_pushd
 setopt correct
 setopt list_packed
 promptinit
-prompt redhat
+# prompt redhat
+PROMPT="$fg[white][$reset_color$USER$fg[white]@$fg[magenta]$HOST $reset_color%1~$fg[white]]$reset_color$ "
 
 # pecoの設定
 function peco-select-history(){
