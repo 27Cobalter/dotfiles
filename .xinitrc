@@ -1,13 +1,14 @@
 #!/bin/sh
-export TERMINAL=xfce4-terminal
+# export TERMINAL=xfce4-terminal
+export TERMINAL=gnome-terminal
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 ibus-daemon -drx
-sudo umount /home/ia/Share
-mount /home/ia/Share
-sh /home/ia/.fehbg &
-compton -b
+#sudo umount /home/ia/Share
+#mount /home/ia/Share
+#sh /home/ia/.fehbg &
+#compton -b
 #exec startxfce4
 exec i3
 

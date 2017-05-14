@@ -21,7 +21,7 @@ set showcmd
 "行を表示
 set number
 "カーソルラインを表示
-set cursorline
+" set cursorline
 "括弧をハイライト
 set showmatch
 "折り畳み
@@ -134,15 +134,15 @@ endif
 function! Format()
   w
   if &filetype=="cpp"
-    call system('clang-format -i '.expand("%:p"))
+    call system('clang-format -style=~/.clang-formant -i '.expand("%:p"))
     e!
   elseif &filetype=="c"
-    call system('clang-format -i '.expand("%:p"))
+    call system('clang-format -style=~/.clang-formant -i '.expand("%:p"))
     e!
   elseif &filetype=="go"
     GoFmt
   elseif &filetype=="arduino"
-    call system('clang-format -i '.expand("%:p"))
+    call system('clang-format -style=~/.clang-formant -i '.expand("%:p"))
     e!
   else
     echo 'Not support filetype '.&filetype
