@@ -24,15 +24,15 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 
 # PATHの設定
-export AI=/home/ia/ai-server
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
+# export AI=/home/ia/ai-server
+# export GOPATH=~/go
+# export PATH=$PATH:$GOPATH/bin
 export PATH="$HOME/nyan/neovim/bin:$PATH"
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=1000
-export SAVEHIST=100000
+export HISTSIZE=500
+export SAVEHIST=1000
 setopt auto_list
 setopt auto_menu
 setopt inc_append_history
@@ -51,36 +51,35 @@ promptinit
 prompt redhat
 
 # pecoの設定
-function peco-select-history(){
-  local tac
-  if which tac > /dev/null; then
-    tac="tac"
-  else
-    tac="tail -r"
-  fi
-  BUFFER=$(\history -n 1 | eval $tac | awk '!a[$0]++' | peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+# function peco-select-history(){
+#   local tac
+#   if which tac > /dev/null; then
+#     tac="tac"
+#   else
+#     tac="tail -r"
+#   fi
+#   BUFFER=$(\history -n 1 | eval $tac | awk '!a[$0]++' | peco --query "$LBUFFER")
+#   CURSOR=$#BUFFER
+#   zle clear-screen
+# }
+# zle -N peco-select-history
+# bindkey '^r' peco-select-history
 
 # エイリアス
 alias ls="ls --color=auto -F"
 alias la="ls --color=auto -Fa"
 alias ll="ls --color=auto -Fl"
 alias lla="ls --color=auto -Fla"
-alias gnome-terminal="gnome-terminal --hide-menubar"
 alias clang++="clang++ -lwiringPi -std=c++14"
+alias g++="g++ -std=c++14 -lpthread -lwiringPi"
 alias emacs="nvim"
 alias nano="nvim"
 alias gedit="nvim"
 alias chromium="chromium > /dev/null 2>&1&"
-alias mikutter="mikutter > /dev/null 2>&1&"
-alias libreoffice="libreoffice > /dev/null 2>&1&"
-alias grsim="~/nyan/grSim/bin/grsim > /dev/null 2>&1&"
-export PATH="$HOME/nyan/nvim/bin:$PATH"
-function arduino (){platformio $@ && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "void setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
+# alias mikutter="mikutter > /dev/null 2>&1&"
+# alias libreoffice="libreoffice > /dev/null 2>&1&"
+# alias grsim="~/nyan/grSim/bin/grsim > /dev/null 2>&1&"
+# function arduino (){platformio $@ && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "void setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
 # if [ $(ps h -o cmd -p `ps h -o ppid -p $$`) = "xfce4-terminal" ] ; then
 #   exec fish

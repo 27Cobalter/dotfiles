@@ -70,21 +70,21 @@ if has("autocmd")
   augroup END
 endif
 
-"cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
-if has("cscope") && filereadable("/usr/bin/cscope")
-   set csprg=/usr/bin/cscope
-   set csto=0
-   set cst
-   set nocsverb
-   " add any database in current directory
-   if filereadable("cscope.out")
-      cs add $pwd/cscope.out
-   " else add database pointed to by environment
-   elseif $cscope_db != ""
-      cs add $cscope_db
-   endif
-   set csverb
-endif
+" "cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
+" if has("cscope") && filereadable("/usr/bin/cscope")
+"    set csprg=/usr/bin/cscope
+"    set csto=0
+"    set cst
+"    set nocsverb
+"    " add any database in current directory
+"    if filereadable("cscope.out")
+"       cs add $pwd/cscope.out
+"    " else add database pointed to by environment
+"    elseif $cscope_db != ""
+"       cs add $cscope_db
+"    endif
+"    set csverb
+" endif
 "}}}
 
 " プラグインマネージャ"{{{
@@ -154,7 +154,7 @@ function! Run()
   w
   let l:ft=&filetype
   if l:ft=="cpp"
-    let l:mes  = system("clang++ -std=c++14 ".expand("%:p")." $(pkg-config --cflags eigen3)")
+    let l:mes  = system("clang++ -std=c++14 ".expand("%:p"))
     if l:mes==""
       !./a.out
     else
@@ -245,16 +245,16 @@ let g:vimshell_prompt_pattern='\[.*\]$ '
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
 
-let token="token"
-let g:mastodon_host='yukari.cloud'
+" let token="token"
+" let g:mastodon_host='yukari.cloud'
 " let g:mastodon_access_token='mastodon_token'
 
 au BufRead,BufNewFile *.md set filetype=markdown
 " let g:previm_open_cmd='chromium'
 
-if filereadable(expand('token.vim'))
-  source token.vim
-endif
+" if filereadable(expand('token.vim'))
+"   source token.vim
+" endif
 
 "}}}
 
