@@ -30,7 +30,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=1000
+export HISTSIZE=10000
 export SAVEHIST=100000
 setopt auto_list
 setopt auto_menu
@@ -40,15 +40,14 @@ setopt share_history
 setopt EXTENDED_HISTORY
 setopt hist_ignore_dups
 setopt hist_ignore_all_dups
-autoload -Uz compinit compinit -u
-autoload promptinit
+autoload -Uz compinit compinit -u promptinit
 compinit
 setopt auto_pushd
 setopt correct
 setopt list_packed
 promptinit
 # prompt redhat
-PROMPT="$fg[white][$reset_color$USER$fg[white]@$fg[magenta]$HOST $reset_color%1~$fg[white]]$reset_color$ "
+prompt="%F{white}[%f$USER%F{white}@%f%F{magenta}$HOST%f %1~%F{white}]%f$ "
 
 # pecoの設定
 function peco-select-history(){
