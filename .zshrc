@@ -3,7 +3,7 @@
 sh /home/ia/.fehbg
 
 # zplugの設定
-source ~/.zplug/init.zsh
+source /home/ia/.zplug/init.zsh
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 if ! zplug check --verbose; then
@@ -47,7 +47,7 @@ setopt correct
 setopt list_packed
 promptinit
 # prompt redhat
-prompt="%F{white}[%f$USER%F{white}@%f%F{magenta}$HOST%f %1~%F{white}]%f$ "
+prompt="%F{white}[%f$USER%F{red}@%f%F{magenta}$HOST%f %1~%F{white}]%f%# "
 
 # pecoの設定
 function peco-select-history(){

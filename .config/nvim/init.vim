@@ -243,12 +243,12 @@ noremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 cnoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 inoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 
-noremap <C-k> <ESC><ESC>:call Run()<CR>
-noremap! <C-k> <ESC><ESC>:call Run()<CR>
+noremap <silent> <C-k> :call ToggleIbusEngine('t')<CR>
+cnoremap <silent> <C-k> :call ToggleIbusEngine('t')<CR>
+inoremap <silent> <C-k> <C-o>:call ToggleIbusEngine('t')<CR>
 
-noremap <silent> <C-l> :call ToggleIbusEngine('t')<CR>
-cnoremap <silent> <C-l> :call ToggleIbusEngine('t')<CR>
-inoremap <silent> <C-l> <C-o>:call ToggleIbusEngine('t')<CR>
+noremap <C-l> <ESC><ESC>:call Run()<CR>
+noremap! <C-l> <ESC><ESC>:call Run()<CR>
 
 noremap <C-s> <ESC><ESC>:call Format()<CR>
 noremap! <C-s> <ESC><ESC>:call Format()<CR>
