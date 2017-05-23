@@ -163,7 +163,7 @@ function! Run()
   elseif l:ft=="markdown"
     MdPreview
   else
-   echo "Not support filetype ".&filetype
+    QuickRun
   endif
 endfunction
 

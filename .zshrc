@@ -19,6 +19,7 @@ ZSH_HIGHLIGHT_STYLES[alias]=fg=none,bold
 ZSH_HIGHLIGHT_STYLES[builtin]=fg=none,bold
 ZSH_HIGHLIGHT_STYLES[command]=fg=none,bold
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,bold
+ZSH_HIGHLIGHT_STYLES[globbing]=fg=red,underline
 ZSH_HIGHLIGHT_STYLES[function]=fg=none,bold
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
@@ -69,10 +70,14 @@ alias ls="ls --color=auto -F"
 alias la="ls --color=auto -Fa"
 alias ll="ls --color=auto -Fl"
 alias lla="ls --color=auto -Fla"
+alias grep="grep --color"
 alias chromium="chromium > /dev/null 2>&1&"
 alias mikutter="mikutter > /dev/null 2>&1&"
 alias libreoffice="libreoffice > /dev/null 2>&1&"
 alias grsim="~/nyan/grSim/bin/grsim > /dev/null 2>&1&"
+if which trash-put &>/dev/null; then
+  alias rm=trash-put
+fi
 function arduino (){platformio $@ && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "void setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
 # if [ $(ps h -o cmd -p `ps h -o ppid -p $$`) = "xfce4-terminal" ] ; then
