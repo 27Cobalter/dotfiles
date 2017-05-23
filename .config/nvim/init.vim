@@ -119,19 +119,17 @@ endif
 " いま開いているファイルを指定フォーマットになおす
 function! Format()
   w
-  if &filetype=="cpp"
+  let l:ft=&filetype
+  if l:ft=="cpp"||l:ft =="c"||l:ft=="java"||l:ft=="arduino"
     call system('clang-format -i '.expand("%:p"))
     e!
-  elseif &filetype=="c"
-    call system('clang-format -i '.expand("%:p"))
-    e!
-  elseif &filetype=="go"
+  elseif l:ft=="go"
     GoFmt
-  elseif &filetype=="arduino"
+  elseif l:ft=="arduino"
     call system('clang-format -i '.expand("%:p"))
     e!
   else
-    echo 'Not support filetype '.&filetype
+    echo 'Not support filetype '.l:ft
   endif
 
 endfunction
