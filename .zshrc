@@ -78,7 +78,7 @@ alias grsim="~/nyan/grSim/bin/grsim > /dev/null 2>&1&"
 if which trash-put &>/dev/null; then
   alias rm=trash-put
 fi
-function arduino (){platformio $@ && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "void setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
+function arduino (){platformio $@ && ln -s /home/ia/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
 # if [ $(ps h -o cmd -p `ps h -o ppid -p $$`) = "xfce4-terminal" ] ; then
 #   exec fish

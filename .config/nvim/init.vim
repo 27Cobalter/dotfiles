@@ -116,6 +116,7 @@ endif
 " }}}
 
 " 自作関数宣言{{{
+set runtimepath+=~/.config/nvim/plugins
 " いま開いているファイルを指定フォーマットになおす
 function! Format()
   w
