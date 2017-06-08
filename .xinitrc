@@ -1,16 +1,4 @@
 #!/bin/sh
-export TERMINAL=xfce4-terminal
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-ibus-daemon -drx
-sudo umount /home/ia/Share
-mount /home/ia/Share
-sh /home/ia/.fehbg &
-compton -b
-#exec startxfce4
-exec i3
-
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -43,8 +31,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-twm &
-xclock -geometry 50x50-1+1 &
-xterm -geometry 80x50+494+51 &
-xterm -geometry 80x20+494-0 &
-exec xterm -geometry 80x66+0+0 -name login
+[ -f /etc/xprofile ] && source /etc/xprofile
+[ -f ~/.xprofile ] && source ~/.xprofile
+
+exec i3

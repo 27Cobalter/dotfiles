@@ -1,7 +1,4 @@
-# 幸せになれるもの
-/usr/bin/vmware-user-suid-wrapper
-sh /home/ia/.fehbg
-
+#!/bin/zsh
 # zplugの設定
 source /home/ia/.zplug/init.zsh
 zplug 'zsh-users/zsh-autosuggestions'
@@ -28,6 +25,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 export AI=/home/ia/ai-server
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:~/.gem/ruby/2.4.0/bin
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
@@ -37,7 +35,6 @@ setopt auto_list
 setopt auto_menu
 setopt inc_append_history
 setopt magic_equal_subst
-setopt share_history
 setopt EXTENDED_HISTORY
 setopt hist_ignore_dups
 setopt hist_ignore_all_dups
@@ -72,9 +69,8 @@ alias ll="ls --color=auto -Fl"
 alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
 alias chromium="chromium > /dev/null 2>&1&"
-alias mikutter="mikutter > /dev/null 2>&1&"
 alias libreoffice="libreoffice > /dev/null 2>&1&"
-alias grsim="~/nyan/grSim/bin/grsim > /dev/null 2>&1&"
+alias grsim="~/.nyan/grSim/bin/grsim > /dev/null 2>&1&"
 if which trash-put &>/dev/null; then
   alias rm=trash-put
 fi
