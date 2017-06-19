@@ -2,6 +2,7 @@
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
+
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # merge in defaults and keymaps
@@ -33,5 +34,6 @@ fi
 
 [ -f /etc/xprofile ] && source /etc/xprofile
 [ -f ~/.xprofile ] && source ~/.xprofile
+sh /home/ia/.nyan/sh/HHKB_end.sh
 
 exec i3

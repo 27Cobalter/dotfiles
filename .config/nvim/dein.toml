@@ -108,4 +108,4 @@ repo = 'plasticboy/vim-markdown'
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
-repo = 'kurocode25/mdforvim'
+repo = 'suan/vim-instant-markdown'
