@@ -1,5 +1,6 @@
 #!/bin/zsh
 # zplugの設定
+TERM=xterm-256color
 source /home/ia/.zplug/init.zsh
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-syntax-highlighting'
@@ -44,7 +45,6 @@ setopt auto_pushd
 setopt correct
 setopt list_packed
 promptinit
-# prompt redhat
 prompt="%F{white}[%f$USER%F{red}@%f%F{magenta}$HOST%f %1~%F{white}]%f%# "
 
 # pecoの設定
@@ -76,6 +76,5 @@ if which trash-put &>/dev/null; then
 fi
 function arduino (){platformio $@ && ln -s /home/ia/arduino/motor.h src/motor.h && ln -s /home/ia/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
-# if [ $(ps h -o cmd -p `ps h -o ppid -p $$`) = "xfce4-terminal" ] ; then
-#   exec fish
-# fi
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux

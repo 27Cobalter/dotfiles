@@ -52,6 +52,9 @@ set scrolloff=1
 " マウス無効
 set mouse-=a
 
+set clipboard&
+set clipboard^=unnamedplus
+
 " 前回の編集場所から開始できる(rootのvimrcからパクってきたからよくわからん)
 if has("autocmd")
   augroup nyan
