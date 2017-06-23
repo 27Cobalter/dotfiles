@@ -70,7 +70,6 @@ alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
 alias chromium="chromium > /dev/null 2>&1&"
 alias libreoffice="libreoffice > /dev/null 2>&1&"
-alias grsim="~/.nyan/grSim/bin/grsim > /dev/null 2>&1&"
 if which trash-put &>/dev/null; then
   alias rm=trash-put
 fi
