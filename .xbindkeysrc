@@ -59,6 +59,9 @@
   "amixer sset PCM 5%-"
     XF86AudioLowerVolume
 
+  "~/.nyan/sh/toggle_touchpad.sh"
+    alt + shift + space
+
 # specify a mouse button
 # "xterm"
 #   control + b:2

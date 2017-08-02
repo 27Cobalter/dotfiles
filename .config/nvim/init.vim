@@ -231,12 +231,15 @@ let g:mastodon_host='yukari.cloud'
 " let g:mastodon_access_token='mastodon_token'
 
 au BufRead,BufNewFile *.md set filetype=markdown
-" let g:previm_open_cmd='chromium'
 
 if filereadable(expand('token.vim'))
   source token.vim
 endif
 
+  " call denite#custom#var('mpc', 'host', 'localhost')
+  " call denite#custom#var('mpc', 'port', 6600)
+  " call denite#custom#var('mpc', 'timeout', 5.0)
+  " call denite#custom#var('mpc', 'default_view', 'artist')
 " }}}
 
 " キー設定{{{
@@ -255,11 +258,18 @@ noremap! <C-l> <ESC><ESC>:call Run()<CR>
 noremap <C-s> <ESC><ESC>:call Format()<CR>
 noremap! <C-s> <ESC><ESC>:call Format()<CR>
 
+noremap <A-o> :on<CR>
+
+noremap <A-p> gt<CR>
+noremap <A-n> gT<CR>
+noremap <A-o> :tabonly<CR>
+noremap <A-t><CR> :tabedit<CR>:Startify<CR>
+
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
 noremap <A-k> <C-w>k
 noremap <A-l> <C-w>l
-noremap <A-;> <C-w>+
+noremap <A-+> <C-w>+
 noremap <A--> <C-w>-
 noremap <A-,> <C-w><
 noremap <A-.> <C-w>>

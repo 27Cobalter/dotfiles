@@ -38,8 +38,8 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/vimshell'
 
-# [[plugins]]
-# repo = 'Shougo/unite.vim'
+[[plugins]]
+repo = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -109,3 +109,15 @@ repo = 'tyru/open-browser.vim'
 
 [[plugins]]
 repo = 'suan/vim-instant-markdown'
+
+[[plugins]]
+repo = 'mattn/unite-mpc'
+
+[[plugins]]
+repo = 'johngrib/vim-game-code-break'
+
+[[plugins]]
+repo = 'rafi/vim-denite-mpc'
+
+[[plugins]]
+repo = 'twitvim/twitvim'

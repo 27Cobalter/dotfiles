@@ -1,7 +1,7 @@
 #!/bin/zsh
 # zplugの設定
 TERM=xterm-256color
-source /home/ia/.zplug/init.zsh
+source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 if ! zplug check --verbose; then
@@ -23,10 +23,11 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 
 # PATHの設定
-export AI=/home/ia/ai-server
+export AI=~/ai-server
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.gem/ruby/2.4.0/bin
+export PATH=$PATH:/opt/cuda/bin
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history

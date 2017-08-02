@@ -34,6 +34,5 @@ fi
 
 [ -f /etc/xprofile ] && source /etc/xprofile
 [ -f ~/.xprofile ] && source ~/.xprofile
-sh /home/ia/.nyan/sh/HHKB_end.sh
 
 exec i3
