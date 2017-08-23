@@ -34,7 +34,6 @@ hook_add = '''
 '''
 on_i = 1
 
-
 [[plugins]]
 repo = 'Shougo/vimshell'
 
@@ -91,9 +90,6 @@ repo = 'fatih/vim-go'
 
 [[plugins]]
 repo = 'sudar/vim-arduino-syntax'
-
-[[plugins]]
-repo = 'Shougo/deoplete-zsh'
 
 [[plugins]]
 repo = 'mattn/webapi-vim'
