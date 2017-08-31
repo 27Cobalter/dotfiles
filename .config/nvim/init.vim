@@ -41,6 +41,7 @@ set listchars=tab:>-,eol:$,trail:-
 " tab設定
 set shiftwidth=4
 set tabstop=4
+set expandtab
 " インクリメンタルサーチ
 set incsearch
 " 行末まで検索したら先頭に戻る
