@@ -1,4 +1,5 @@
 " vimの設定"{{{
+set modifiable
 set fenc=utf-8
 " vi互換の動作を無効にするコマンド
 set nocompatible
@@ -236,6 +237,9 @@ au BufRead,BufNewFile *.md set filetype=markdown
 if filereadable(expand('token.vim'))
   source token.vim
 endif
+
+let twitvim_enable_python3 = 1
+
 
   " call denite#custom#var('mpc', 'host', 'localhost')
   " call denite#custom#var('mpc', 'port', 6600)
