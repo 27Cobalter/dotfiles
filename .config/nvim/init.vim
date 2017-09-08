@@ -249,6 +249,7 @@ let twitvim_enable_python3 = 1
 
 " キー設定{{{
 " 自作関数のマッピングとか
+cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 noremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 cnoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 inoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
