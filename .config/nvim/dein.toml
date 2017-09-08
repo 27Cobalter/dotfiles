@@ -117,3 +117,6 @@ repo = 'rafi/vim-denite-mpc'
 
 [[plugins]]
 repo = 'twitvim/twitvim'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
