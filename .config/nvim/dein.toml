@@ -62,9 +62,6 @@ repo = 'kana/vim-repeat'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-
-[[plugins]]
 repo = 'vim-scripts/smartchr'
 
 [[plugins]]
@@ -86,25 +83,13 @@ repo = 'mhinz/vim-startify'
 repo = 'vim-scripts/taglist.vim'
 
 [[plugins]]
-repo = 'fatih/vim-go'
-
-[[plugins]]
-repo = 'sudar/vim-arduino-syntax'
-
-[[plugins]]
 repo = 'mattn/webapi-vim'
 
 [[plugins]]
 repo = 'mattn/vim-mastodon'
 
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
-
-[[plugins]]
 repo = 'tyru/open-browser.vim'
-
-[[plugins]]
-repo = 'suan/vim-instant-markdown'
 
 [[plugins]]
 repo = 'mattn/unite-mpc'
