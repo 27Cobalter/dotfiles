@@ -34,12 +34,11 @@ hook_add = '''
 '''
 on_i = 1
 
-
 [[plugins]]
 repo = 'Shougo/vimshell'
 
-# [[plugins]]
-# repo = 'Shougo/unite.vim'
+[[plugins]]
+repo = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -83,29 +82,29 @@ repo = 'tyru/caw.vim'
 [[plugins]]
 repo = 'mhinz/vim-startify'
 
-# [[plugins]]
-# repo = 'vim-scripts/taglist.vim'
-
-# [[plugins]]
-# repo = 'fatih/vim-go'
-
-# [[plugins]]
-# repo = 'sudar/vim-arduino-syntax'
-
-# [[plugins]]
-# repo = 'Shougo/deoplete-zsh'
-
-# [[plugins]]
-# repo = 'mattn/webapi-vim'
-
-# [[plugins]]
-# repo = 'mattn/vim-mastodon'
+[[plugins]]
+repo = 'vim-scripts/taglist.vim'
 
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'mattn/vim-mastodon'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
-repo = 'kurocode25/mdforvim'
+repo = 'mattn/unite-mpc'
+
+[[plugins]]
+repo = 'johngrib/vim-game-code-break'
+
+[[plugins]]
+repo = 'rafi/vim-denite-mpc'
+
+[[plugins]]
+repo = 'twitvim/twitvim'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'

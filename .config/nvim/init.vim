@@ -1,4 +1,5 @@
 " vimの設定"{{{
+set modifiable
 set fenc=utf-8
 " vi互換の動作を無効にするコマンド
 set nocompatible
@@ -14,58 +15,57 @@ set viminfo='20,\"50
 set history=50
 " 保存されていないファイルがあるときは終了前に保存確認
 set confirm
-"保存されていないファイルがある時でも別ファイルを開けるようにする
+" 保存されていないファイルがある時でも別ファイルを開けるようにする
 set hidden
-"入力中のコマンドを表示
+" 入力中のコマンドを表示
 set showcmd
-"行を表示
+" 行を表示
 set number
-"カーソルラインを表示
+" カーソルラインを表示
 " set cursorline
-"括弧をハイライト
+" 括弧をハイライト
 set showmatch
-"折り畳み
+" 折り畳み
 set foldmethod=marker
-"ステータス表示とか
+" ステータス表示とか
 set laststatus=2
 set statusline=%<%f
 set statusline+=\ %m
 set statusline+=[%{&fileencoding}:%{&ff}]%y
 set statusline+=%=
 set statusline+=%c,%l\ /%L\ %p%%
-"検索結果をハイライト
+" 検索結果をハイライト
 set hlsearch
-"不可視文字の表示と設定
+" 不可視文字の表示と設定
 set list
 set listchars=tab:>-,eol:$,trail:-
-"tab設定
+" tab設定
 set shiftwidth=4
 set tabstop=4
-"インクリメンタルサーチ
+set expandtab
+" インクリメンタルサーチ
 set incsearch
-"行末まで検索したら先頭に戻る
+" 行末まで検索したら先頭に戻る
 set wrapscan
-"インデント
+" インデント
 set autoindent
-"上下1行の視界を確保
+" 上下1行の視界を確保
 set scrolloff=1
-"マウス無効
+" マウス無効
 set mouse-=a
 
-"これがあると前回の編集場所から開始できる(rootのvimrcからパクってきたからよくわからん)
+set clipboard&
+set clipboard^=unnamedplus
+
+" 前回の編集場所から開始できる(rootのvimrcからパクってきたからよくわからん)
 if has("autocmd")
-  augroup fedora
+  augroup nyan
   autocmd!
-  " In text files, always limit the width of text to 78 characters
-  " autocmd BufRead *.txt set tw=78
-  " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
   \ if line("'\"") > 0 && line ("'\"") <= line("$") |
   \   exe "normal! g'\"" |
   \ endif
-  " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
   autocmd BufNewFile,BufReadPre /media/*,/run/media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-  " start with spec file template
   autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
   augroup END
 endif
@@ -92,7 +92,6 @@ endif
 let s:dein_dir = expand('~/.cache/dein')
 " dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
 " dein.vim がなければ github から落としてくる
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo_dir)
@@ -100,56 +99,49 @@ if &runtimepath !~# '/dein.vim'
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
-
 " 設定開始
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
-
   " プラグインリストを収めた TOML ファイル
   " 予め TOML ファイルを用意しておく
   let g:rc_dir    = expand("~/.config/nvim/")
   let s:toml      = g:rc_dir . '/dein.toml'
   let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
   " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
   call dein#add("wesleyche/SrcExpl",{
               \"autoload":{"commands":["SrcExplToggle"]}})
-
   " 設定終了
   call dein#end()
   call dein#save_state()
 endif
-
 " もし、未インストールものものがあったらインストール
 if dein#check_install()
   call dein#install()
 endif
-"}}}
+" }}}
 
-"自作関数宣言"{{{
-"いま開いているファイルを指定フォーマットになおす
+" 自作関数宣言{{{
+set runtimepath+=~/.config/nvim/plugins
+" いま開いているファイルを指定フォーマットになおす
 function! Format()
   w
-  if &filetype=="cpp"
-    call system('clang-format -style=~/.clang-formant -i '.expand("%:p"))
+  let l:ft=&filetype
+  if l:ft=="cpp"||l:ft =="c"||l:ft=="java"||l:ft=="arduino"
+    call system('clang-format -i '.expand("%:p"))
     e!
-  elseif &filetype=="c"
-    call system('clang-format -style=~/.clang-formant -i '.expand("%:p"))
-    e!
-  elseif &filetype=="go"
+  elseif l:ft=="go"
     GoFmt
-  elseif &filetype=="arduino"
-    call system('clang-format -style=~/.clang-formant -i '.expand("%:p"))
+  elseif l:ft=="arduino"
+    call system('clang-format -i '.expand("%:p"))
     e!
   else
-    echo 'Not support filetype '.&filetype
+    echo 'Not support filetype '.l:ft
   endif
 
 endfunction
-"いま開いているファイルがcppだった場合コンパイルして実行
+" いま開いているファイルがcppだった場合コンパイルして実行
 function! Run()
   w
   let l:ft=&filetype
@@ -167,13 +159,6 @@ function! Run()
     else
       echo l:mes
     endif
-  " elseif l:ft=="java"
-  "   let l:mes = system("javac ".expand("%:p"))
-  "   if l:mes == ""
-  "     java tmp.out
-  "   else
-  "     echo l:mes
-  "   endif
   elseif l:ft=="python"
     let l:mes = system("python3 ".expand("%:p"))
     echo l:mes
@@ -184,11 +169,11 @@ function! Run()
   elseif l:ft=="markdown"
     MdPreview
   else
-   echo "Not support filetype ".&filetype
+    QuickRun
   endif
 endfunction
 
-"IMEを切り換える関数
+" IMEを切り換える関数
 function ToggleIbusEngine(mode)
   if a:mode=='x'
       call system('ibus engine "xkb:jp::jpn"')
@@ -203,31 +188,31 @@ function ToggleIbusEngine(mode)
   endif
 endfunction
 
-"縦にタブ分割をしてVimShellを起動
+" 縦にタブ分割をしてVimShellを起動
 function! VS()
   vs
   VimShell
 endfunction
-"横にタブ分割をしてVimShellを起動
+" 横にタブ分割をしてVimShellを起動
 function! SP()
   sp
   VimShell
 endfunction
-"TlistとSrcExplのコマンドをまとめた関数
+" TlistとSrcExplのコマンドをまとめた関数
 function! CT()
   Tlist
   SrcExpl
 endfunction
-"}}}
+" }}}
 
-"コマンド宣言"{{{
+" コマンド宣言{{{
 command Run call Run()
 command VS call VS()
 command SP call SP()
 command CT call CT()
-"}}}
+" }}}
 
-"プラグインに関する設定"{{{
+" プラグインに関する設定{{{
 set t_Co=256
 syntax on
 colorscheme jellybeans
@@ -250,39 +235,52 @@ let tlist_php_settings='php;c:class;d:constant;f:function'
 " let g:mastodon_access_token='mastodon_token'
 
 au BufRead,BufNewFile *.md set filetype=markdown
-" let g:previm_open_cmd='chromium'
 
 " if filereadable(expand('token.vim'))
 "   source token.vim
 " endif
 
-"}}}
+let twitvim_enable_python3 = 1
 
-"キー設定"{{{
-"自作関数のマッピングとか
+
+  " call denite#custom#var('mpc', 'host', 'localhost')
+  " call denite#custom#var('mpc', 'port', 6600)
+  " call denite#custom#var('mpc', 'timeout', 5.0)
+  " call denite#custom#var('mpc', 'default_view', 'artist')
+" }}}
+
+" キー設定{{{
+" 自作関数のマッピングとか
+cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 noremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 cnoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 inoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 
-noremap <C-k> <ESC><ESC>:call Run()<CR>
-noremap! <C-k> <ESC><ESC>:call Run()<CR>
+noremap <silent> <C-k> :call ToggleIbusEngine('t')<CR>
+cnoremap <silent> <C-k> :call ToggleIbusEngine('t')<CR>
+inoremap <silent> <C-k> <C-o>:call ToggleIbusEngine('t')<CR>
 
-noremap <silent> <C-l> :call ToggleIbusEngine('t')<CR>
-cnoremap <silent> <C-l> :call ToggleIbusEngine('t')<CR>
-inoremap <silent> <C-l> <C-o>:call ToggleIbusEngine('t')<CR>
+noremap <C-l> <ESC><ESC>:call Run()<CR>
+noremap! <C-l> <ESC><ESC>:call Run()<CR>
 
 noremap <C-s> <ESC><ESC>:call Format()<CR>
 noremap! <C-s> <ESC><ESC>:call Format()<CR>
 
-" 
+noremap <A-o> :on<CR>
+
+noremap <A-p> gt<CR>
+noremap <A-n> gT<CR>
+noremap <A-o> :tabonly<CR>
+noremap <A-t><CR> :tabedit<CR>:Startify<CR>
+
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
 noremap <A-k> <C-w>k
 noremap <A-l> <C-w>l
-noremap <A-;> <C-w>+
+noremap <A-+> <C-w>+
 noremap <A--> <C-w>-
 noremap <A-,> <C-w><
 noremap <A-.> <C-w>>
 inoremap <expr> = smartchr#loop(' = ',' == ', '=', ' := ')
 inoremap <expr> , smartchr#loop(', ',',')
-"}}}
+" }}}
