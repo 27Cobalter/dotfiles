@@ -29,6 +29,7 @@ export atware=~/intern2017-08/internship
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.gem/ruby/2.4.0/bin
 export PATH=$PATH:/opt/cuda/bin
+export BROWSER=/usr/bin/vivaldi-stable
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
