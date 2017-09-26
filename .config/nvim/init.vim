@@ -186,28 +186,28 @@ function ToggleIbusEngine(mode)
   endif
 endfunction
 
-" 縦にタブ分割をしてVimShellを起動
-function! VS()
-  vs
-  VimShell
-endfunction
-" 横にタブ分割をしてVimShellを起動
-function! SP()
-  sp
-  VimShell
-endfunction
 " TlistとSrcExplのコマンドをまとめた関数
 function! CT()
   Tlist
   SrcExpl
 endfunction
+" 縦にタブ分割をしてterminalを起動
+function! Vterminal()
+    vs
+    terminal
+endfunction
+" 横にタブ分割をしてterminalを起動
+function! Sterminal()
+    sp
+    terminal
+endfunction
 " }}}
 
 " コマンド宣言{{{
 command Run call Run()
-command VS call VS()
-command SP call SP()
 command CT call CT()
+command VT call Vterminal()
+command ST call Sterminal()
 " }}}
 
 " プラグインに関する設定{{{

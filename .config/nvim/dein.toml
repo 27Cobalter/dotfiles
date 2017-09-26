@@ -105,3 +105,6 @@ repo = 'twitvim/twitvim'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
