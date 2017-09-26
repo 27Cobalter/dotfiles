@@ -12,4 +12,3 @@ repo = 'plasticboy/vim-markdown'
 
 [[plugins]]
 repo = 'suan/vim-instant-markdown'
-
