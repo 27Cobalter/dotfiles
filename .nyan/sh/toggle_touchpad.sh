@@ -1,0 +1,10 @@
+#!/bin/sh
+devnum=`xinput list | grep SynPS/2 | sed "s/.*id=\([0-9]*\).*/\1/"`
+touchpad_enable=`xinput list-props $devnum | grep "Device Enabled (" | sed "s/.*):\t\(.*\).*/\1/"`
+touchpad_enable_id=`xinput list-props $devnum | grep "Device Enabled (" | sed "s/.*(\([0-9]*\)).*/\1/"`
+if [ $touchpad_enable = "1" ] ; then
+  xinput set-prop $devnum $touchpad_enable_id 0
+else
+  xinput set-prop $devnum $touchpad_enable_id 1
+fi
+echo $touchpad_enable
