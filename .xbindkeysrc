@@ -66,6 +66,9 @@
   "scrot -e 'mv $f ~/Picture'"
     Print
 
+  "~/.nyan/sh/toggle_key_layout.sh"
+    shift + space
+
 # specify a mouse button
 # "xterm"
 #   control + b:2
