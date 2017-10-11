@@ -57,6 +57,8 @@ set mouse-=a
 set clipboard&
 set clipboard^=unnamedplus
 
+set spell
+
 " 前回の編集場所から開始できる(rootのvimrcからパクってきたからよくわからん)
 if has("autocmd")
   augroup nyan
