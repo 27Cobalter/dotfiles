@@ -76,7 +76,7 @@ alias libreoffice="libreoffice > /dev/null 2>&1&"
 if which trash-put &>/dev/null; then
   alias rm=trash-put
 fi
-function arduino (){platformio $@ && ln -s /home/ia/arduino/motor.h src/motor.h && ln -s /home/ia/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
+function arduino (){platformio $@ && ln -s /home/ia/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && exec tmux

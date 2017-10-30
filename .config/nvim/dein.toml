@@ -123,3 +123,6 @@ repo = 'plasticboy/vim-markdown'
 
 [[plugins]]
 repo = 'suan/vim-instant-markdown'
+
+[[plugins]]
+repo = 'Shougo/vinarise.vim'
