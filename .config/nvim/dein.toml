@@ -38,3 +38,6 @@ repo = 'twitvim/twitvim'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
