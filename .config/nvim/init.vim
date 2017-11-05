@@ -216,6 +216,7 @@ command ST call Sterminal()
 set t_Co=256
 syntax on
 colorscheme jellybeans
+let g:EasyMotion_do_mapping = 0
 " VimShellのプロンプトの設定
 function! PWD()
   if $PWD == $HOME
@@ -276,6 +277,9 @@ noremap <A-t><CR> :tabedit<CR>:Startify<CR>
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+nmap s <Plug>(easymotion-overwin-f2)
+vmap s <Plug>(easymotion-bd-f2)
 
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
