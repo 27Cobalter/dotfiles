@@ -1,0 +1,108 @@
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_event = 'insertCharPre'
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#auto_complete_delay = 0
+  let g:deoplete#augo_complete_start_length = 1
+  let g:deoplete#enable_camel_case = 0
+  let g:deoplete#enable_ignore_case = 0
+  let g:deoplete#enable_refresh_always = 0
+  let g:deoplete#smart_case = 1
+  let g:deoplete#file#enable_buffer_path = 1
+  let g:deoplete#max_list = 10000
+  let g:deoplete#max_list=1000
+  inoremap <expr><tab> pumvisible() ? "\<C-n>":"\<tab>"
+'''
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_source = ['unite.vim']
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'rafi/vim-denite-mpc'
+on_source = ['denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/vimshell'
+rev = '3787e5'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_post_update = '''
+  let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
+'''
+on_path = '.*'
+
+[[plugins]]
+repo = 'mattn/unite-mpc'
+on_source = ['unite.vim']
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'sudar/vim-arduino-syntax'
+on_ft = 'arduino'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'suan/vim-instant-markdown'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_map = ['<Plug>(openbrowser-smart-search)']
+
+[[plugins]]
+repo = 'vim-scripts/smartchr'
+on_i = 1
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+depends = 'vim-repeat'
+on_path = '.*'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'vim-scripts/taglist.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/vinarise.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'johngrib/vim-game-code-break'
+on_path = '.*'
+

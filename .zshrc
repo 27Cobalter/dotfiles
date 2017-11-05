@@ -25,7 +25,6 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 # PATHの設定
 export AI=~/ai-server
 export GOPATH=~/go
-# export VISUAL="nvim"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.gem/ruby/2.4.0/bin
 export PATH=$PATH:/opt/cuda/bin
@@ -33,22 +32,28 @@ export BROWSER=/usr/bin/vivaldi-stable
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=10000
+export HISTSIZE=100000
 export SAVEHIST=100000
 setopt auto_list
 setopt auto_menu
 setopt inc_append_history
 setopt magic_equal_subst
 setopt EXTENDED_HISTORY
-setopt hist_ignore_dups
+# setopt hist_ignore_dups
 setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
 autoload -Uz compinit compinit -u promptinit
 compinit
 setopt auto_pushd
 setopt correct
 setopt list_packed
+setopt no_beep
 promptinit
 prompt="%F{white}[%f$USER%F{red}@%f%F{magenta}$HOST%f %1~%F{white}]%f%# "
+
+bindkey "^[[Z" reverse-menu-complete
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
 
 # pecoの設定
 function peco-select-history(){
