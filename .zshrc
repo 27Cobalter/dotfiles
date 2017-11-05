@@ -1,11 +1,19 @@
 #!/bin/zsh
 # zplugの設定
 TERM=xterm-256color
+
+if [ ! -e .zplug ]; then
+  printf 'install zplug? [y/N]: '
+  if read -q; then
+    git clone https://github.com/zplug/zplug .zplug
+  fi
+fi
+
 source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 if ! zplug check --verbose; then
-  printf 'install? [y/N]: '
+  printf 'install zplug_plugins? [y/N]: '
   if read -q; then
     echo; zplug install
   fi
