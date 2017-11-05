@@ -2,7 +2,7 @@
 # zplugの設定
 TERM=xterm-256color
 
-if [ ! -e .zplug ]; then
+if [ ! -e ~/.zplug ]; then
   printf 'install zplug? [y/N]: '
   if read -q; then
     git clone https://github.com/zplug/zplug .zplug
