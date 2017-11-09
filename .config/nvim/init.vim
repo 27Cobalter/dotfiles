@@ -218,7 +218,7 @@ command ST call Sterminal()
 set t_Co=256
 syntax on
 colorscheme jellybeans
-let g:EasyMotion_do_mapping = 0
+" let g:EasyMotion_do_mapping = 0
 " VimShellのプロンプトの設定
 function! PWD()
   if $PWD == $HOME
