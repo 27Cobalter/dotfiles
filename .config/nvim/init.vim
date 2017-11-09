@@ -54,6 +54,8 @@ set scrolloff=1
 " マウス無効
 set mouse-=a
 
+set completeopt=menuone
+
 set clipboard&
 set clipboard^=unnamedplus
 
