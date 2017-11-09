@@ -53,6 +53,7 @@ setopt hist_reduce_blanks
 autoload -Uz compinit compinit -u promptinit
 compinit
 setopt auto_pushd
+setopt auto_cd
 setopt correct
 setopt list_packed
 setopt no_beep
@@ -77,6 +78,9 @@ function peco-select-history(){
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
+
+[[ -s /home/ia/.autojump/etc/profile.d/autojump.sh ]] && source /home/ia/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
 
 # エイリアス
 alias ls="ls --color=auto -F"
