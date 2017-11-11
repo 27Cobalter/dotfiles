@@ -24,8 +24,8 @@ on_i = 1
 [[plugins]]
 repo = 'zchee/deoplete-clang'
 hook_source = '''
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+  let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 '''
 on_ft = ['c', 'cpp', 'cmake']
 depends = ['deoplete.nvim']
@@ -38,9 +38,9 @@ depends = ['deoplete.nvim']
 [[plugins]]
 repo = 'osyo-manga/vim-monster'
 hook_source = '''
-let g:monster#completion#rcodetools#backend = "async_rct_complete"
-let g:deoplete#omni_patterns = {}
-let g:deoplete#omni_patterns.ruby = ['[^. *\t]\.\w*','\h\w*::']
+  let g:monster#completion#rcodetools#backend = "async_rct_complete"
+  let g:deoplete#omni_patterns = {}
+  let g:deoplete#omni_patterns.ruby = ['[^. *\t]\.\w*','\h\w*::']
 '''
 on_ft = ['ruby']
 depends = ['deoplete.nvim']
@@ -48,21 +48,19 @@ depends = ['deoplete.nvim']
 [[plugins]]
 repo = 'poppyschmo/deoplete-latex'
 hook_source = '''
-let g:deoplete#sources#latex#include_web_math = 1
-let g:deoplate#sources#latex#include_misc = 1
+  let g:deoplete#sources#latex#include_web_math = 1
+  let g:deoplate#sources#latex#include_misc = 1
 '''
 on_ft = ['plaintex']
 depends = ['deoplete.nvim']
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-depends = ['neomru.vim']
 on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_source = ['unite.vim']
-on_path = '.*'
+on_source = ['denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -71,6 +69,7 @@ on_path = '.*'
 [[plugins]]
 repo = 'rafi/vim-denite-mpc'
 on_source = ['denite.nvim']
+depends = ['denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/vimshell'
@@ -86,6 +85,7 @@ on_path = '.*'
 [[plugins]]
 repo = 'mattn/unite-mpc'
 on_source = ['unite.vim']
+depends = ['unite.vim']
 
 [[plugins]]
 repo = 'cespare/vim-toml'
