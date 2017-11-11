@@ -67,7 +67,7 @@
     Print
 
   "~/.nyan/sh/toggle_key_layout.sh"
-    shift + space
+    alt + space
 
 # specify a mouse button
 # "xterm"
