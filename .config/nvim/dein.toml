@@ -47,3 +47,12 @@ repo = 'easymotion/vim-easymotion'
 hook_source = '''
   let g:EasyMotion_do_mapping = 0
 '''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'vim-syntastic/syntastic'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'

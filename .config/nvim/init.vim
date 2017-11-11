@@ -239,12 +239,15 @@ let g:mastodon_host='yukari.cloud'
 
 au BufRead,BufNewFile *.md set filetype=markdown
 
-if filereadable(expand('token.vim'))
-  source token.vim
+if filereadable(expand('~/.config/nvim/token.vim'))
+  source ~/.config/nvim/token.vim
 endif
 
 let twitvim_enable_python3 = 1
 
+source ~/.config/nvim/lightline.vim
+source ~/.config/nvim/syntastic.vim
+let g:syntaxCheck=0
 
   " call denite#custom#var('mpc', 'host', 'localhost')
   " call denite#custom#var('mpc', 'port', 6600)
