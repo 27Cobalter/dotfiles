@@ -87,6 +87,10 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    endif
    set csverb
 endif
+
+" Terminalのときは行番号とスペルチェックをなしにする
+autocmd TermOpen * set nonumber | set nospell
+autocmd TermClose * set number | set spell
 " }}}
 
 " プラグインマネージャ"{{{
@@ -237,7 +241,7 @@ let token="token"
 let g:mastodon_host='yukari.cloud'
 " let g:mastodon_access_token='mastodon_token'
 
-au BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 if filereadable(expand('~/.config/nvim/token.vim'))
   source ~/.config/nvim/token.vim
@@ -269,8 +273,8 @@ inoremap <silent> <C-k> <C-o>:call ToggleIbusEngine('t')<CR>
 noremap <C-l> <ESC><ESC>:call Run()<CR>
 noremap! <C-l> <ESC><ESC>:call Run()<CR>
 
-noremap <C-s> <ESC><ESC>:call Format()<CR>
-noremap! <C-s> <ESC><ESC>:call Format()<CR>
+" noremap <C-s> <ESC><ESC>:call Format()<CR>
+" noremap! <C-s> <ESC><ESC>:call Format()<CR>
 
 noremap <A-o> :on<CR>
 
