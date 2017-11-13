@@ -40,8 +40,8 @@ set hlsearch
 set list
 set listchars=tab:>-,eol:$,trail:-
 " tab設定
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
 " インクリメンタルサーチ
 set incsearch
@@ -209,6 +209,12 @@ function! Sterminal()
     sp
     terminal
 endfunction
+function! Sc()
+  let g:syntaxCheck=1
+endfunction
+function! Nsc()
+  let g:syntaxCheck=0
+endfunction
 " }}}
 
 " コマンド宣言{{{
@@ -216,6 +222,8 @@ command Run call Run()
 command CT call CT()
 command VT call Vterminal()
 command ST call Sterminal()
+command Sc call Sc()
+command Nsc call Nsc()
 " }}}
 
 " プラグインに関する設定{{{
