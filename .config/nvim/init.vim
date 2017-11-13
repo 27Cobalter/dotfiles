@@ -88,9 +88,11 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    set csverb
 endif
 
+if has('nvim')
 " Terminalのときは行番号とスペルチェックをなしにする
-autocmd TermOpen * set nonumber | set nospell
-autocmd TermClose * set number | set spell
+  autocmd TermOpen * set nonumber | set nospell
+  autocmd TermClose * set number | set spell
+endif
 " }}}
 
 " プラグインマネージャ"{{{
@@ -119,6 +121,10 @@ if dein#load_state(s:dein_dir)
   call dein#add("wesleyche/SrcExpl",{
               \"autoload":{"commands":["SrcExplToggle"]}})
   " 設定終了
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   call dein#end()
   call dein#save_state()
 endif
