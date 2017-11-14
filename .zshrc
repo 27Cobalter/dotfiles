@@ -73,17 +73,6 @@ bindkey "^[[Z" reverse-menu-complete
 bindkey "^P" history-beginning-search-backward
 bindkey "^N" history-beginning-search-forward
 
-# pecoの設定
-function peco-select-history(){
-  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
-
-[[ -s /home/ia/.autojump/etc/profile.d/autojump.sh ]] && source /home/ia/.autojump/etc/profile.d/autojump.sh
-
 # エイリアス
 alias ls="ls --color=auto -F"
 alias la="ls --color=auto -Fa"
@@ -92,11 +81,36 @@ alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
 alias chromium="chromium > /dev/null 2>&1&"
 alias libreoffice="libreoffice > /dev/null 2>&1&"
+function arduino (){platformio $@ && ln -s /home/ia/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
+
 if which trash-put &>/dev/null; then
   alias rm=trash-put
 fi
-function arduino (){platformio $@ && ln -s /home/ia/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
+if [ ! -e ~/.autojump ]; then
+  printf 'install autojump? [y/N]: '
+  if read -q; then
+    git clone https://github.com/wting/autojump.git .autojump
+    ./.autojump/install.py
+  fi
+fi
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+
+if ! which peco &>/dev/null; then
+  [[ $- != *i* ]] && return
+  [[ -z "$TMUX" ]] && exec tmux
+fi
+
+# pecoでhistory検索
+function peco-select-history(){
+  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+zle -N peco-select-history
+
+# pecoでtmuxのセッションを選択
+bindkey '^r' peco-select-history
 if [[ ! -n "$TMUX" && $- != *l* ]]; then
   ID="`tmux list-sessions`"
   if [[ -z "$ID" ]]; then
@@ -109,7 +123,5 @@ if [[ ! -n "$TMUX" && $- != *l* ]]; then
     exec tmux new-session
   elif [[ -n "$ID" ]]; then
     exec tmux attach-session -t $ID
-  else
-    :
   fi
 fi
