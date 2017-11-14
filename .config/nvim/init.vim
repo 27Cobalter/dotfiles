@@ -314,4 +314,5 @@ noremap <A-,> <C-w><
 noremap <A-.> <C-w>>
 inoremap <expr> = smartchr#loop(' = ',' == ', '=', ' := ')
 inoremap <expr> , smartchr#loop(', ',',')
+tnoremap <C-[> <C-\><C-n>
 " }}}
