@@ -47,9 +47,7 @@ setopt auto_menu
 setopt inc_append_history
 setopt magic_equal_subst
 setopt EXTENDED_HISTORY
-# setopt hist_ignore_dups
 setopt hist_ignore_all_dups
-setopt hist_reduce_blanks
 
 autoload -Uz compinit compinit-u promptinit -U colors -Uz vcs_info
 compinit
@@ -66,7 +64,7 @@ UPPERALLOW=$'\u2b11'
 zstyle ':vcs_info:*' formats '[%s][* %F{green}%b%f]'
 zstyle ':vcs_info:*' actionformats '[%s][* %F{green}%b%f(%F{red}%a%f)]'
 precmd(){ vcs_info }
-prompt="${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)
+prompt="%(?.%F{green}.%F{red})${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)%f
 %F{white}%f$USER%F{red}@%f%F{magenta}$HOST%f %~\$vcs_info_msg_0_
 %F{red}${ALLOW}%f%F{yellow}${ALLOW}%f%F{green}${ALLOW}%f "
 
