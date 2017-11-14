@@ -57,7 +57,7 @@ depends = ['deoplete.nvim']
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh']
-depends = ['deoplate.nvim']
+depends = ['deoplete.nvim']
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
