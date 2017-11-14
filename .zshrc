@@ -50,15 +50,25 @@ setopt EXTENDED_HISTORY
 # setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
-autoload -Uz compinit compinit -u promptinit
+
+autoload -Uz compinit compinit-u promptinit -U colors -Uz vcs_info
 compinit
+colors
+promptinit
 setopt auto_pushd
 setopt auto_cd
 setopt correct
 setopt list_packed
 setopt no_beep
-promptinit
-prompt="%F{white}[%f$USER%F{red}@%f%F{magenta}$HOST%f %1~%F{white}]%f%# "
+setopt prompt_subst
+ALLOW=$'\u2b80'
+UPPERALLOW=$'\u2b11'
+zstyle ':vcs_info:*' formats '[%s][* %F{green}%b%f]'
+zstyle ':vcs_info:*' actionformats '[%s][* %F{green}%b%f(%F{red}%a%f)]'
+precmd(){ vcs_info }
+prompt="${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)
+%F{white}%f$USER%F{red}@%f%F{magenta}$HOST%f %~\$vcs_info_msg_0_
+%F{red}${ALLOW}%f%F{yellow}${ALLOW}%f%F{green}${ALLOW}%f "
 
 bindkey "^[[Z" reverse-menu-complete
 bindkey "^P" history-beginning-search-backward
@@ -66,13 +76,7 @@ bindkey "^N" history-beginning-search-forward
 
 # pecoの設定
 function peco-select-history(){
-  local tac
-  if which tac > /dev/null; then
-    tac="tac"
-  else
-    tac="tail -r"
-  fi
-  BUFFER=$(\history -n 1 | eval $tac | awk '!a[$0]++' | peco --query "$LBUFFER")
+  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER")
   CURSOR=$#BUFFER
   zle clear-screen
 }
@@ -80,7 +84,6 @@ zle -N peco-select-history
 bindkey '^r' peco-select-history
 
 [[ -s /home/ia/.autojump/etc/profile.d/autojump.sh ]] && source /home/ia/.autojump/etc/profile.d/autojump.sh
-autoload -U compinit && compinit -u
 
 # エイリアス
 alias ls="ls --color=auto -F"
@@ -95,5 +98,19 @@ if which trash-put &>/dev/null; then
 fi
 function arduino (){platformio $@ && ln -s /home/ia/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+if [[ ! -n "$TMUX" && $- != *l* ]]; then
+  ID="`tmux list-sessions`"
+  if [[ -z "$ID" ]]; then
+    exec tmux new-session
+  fi
+  create_new_session="Create New Session"
+  ID="${create_new_session}:\n${ID}"
+  ID="`echo $ID | peco | cut -d: -f1`"
+  if [[ "$ID" = "${create_new_session}" ]]; then
+    exec tmux new-session
+  elif [[ -n "$ID" ]]; then
+    exec tmux attach-session -t $ID
+  else
+    :
+  fi
+fi
