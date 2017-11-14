@@ -55,6 +55,11 @@ on_ft = ['plaintex']
 depends = ['deoplete.nvim']
 
 [[plugins]]
+repo = 'zchee/deoplete-zsh'
+on_ft = ['zsh']
+depends = ['deoplate.nvim']
+
+[[plugins]]
 repo = 'Shougo/unite.vim'
 on_path = '.*'
 

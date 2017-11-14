@@ -53,6 +53,7 @@ autoload -Uz compinit compinit-u promptinit -U colors -Uz vcs_info
 compinit
 colors
 promptinit
+zmodload zsh/zpty
 setopt auto_pushd
 setopt auto_cd
 setopt correct
