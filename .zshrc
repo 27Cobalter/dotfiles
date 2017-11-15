@@ -63,12 +63,12 @@ setopt prompt_subst
 ALLOW=$'\u2b80'
 ALLOW2=$'\u2b81'
 UPPERALLOW=$'\u2b11'
-zstyle ':vcs_info:*' formats '%F{black}[%s][* %f%F{green}%b%f%F{black}]%f'
-zstyle ':vcs_info:*' actionformats '%F{black}[%s][* %f%F{green}%b%f(%F{red}%a%f)%F]%f'
+zstyle ':vcs_info:*' formats '%F{black}[%s][* %F{green}%b%F{black}]%f'
+zstyle ':vcs_info:*' actionformats '%F{black}[%s][* %F{green}%b%F{black}(%F{red}%a%F{black})%F{black}]%f'
 precmd(){ vcs_info }
-prompt="%(?.%K{green}.%K{red})%F{black}${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)%k%f
-%F{white}%K{blue}$USER%f%F{red}@%f%F{magenta}$HOST%f%k%F{blue}%K{cyan}$ALLOW%f%k%F{black}%K{cyan}%~%f%k%F{cyan}%K{white}$ALLOW%f\$vcs_info_msg_0_%k%F{white}$ALLOW%f
-%F{red}${ALLOW2}%f%F{yellow}${ALLOW2}%f%F{green}${ALLOW2}%f "
+prompt="%(?.%K{green}.%K{red})%F{black}${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)%k%F{green}$ALLOW
+%F{white}%K{blue}$USER%F{red}@%F{magenta}$HOST%F{blue}%K{cyan}$ALLOW%F{black}%K{cyan}%~%F{cyan}%K{white}$ALLOW\$vcs_info_msg_0_%F{white}%k$ALLOW
+%F{red}${ALLOW2}%F{yellow}${ALLOW2}%F{green}${ALLOW2}%f "
 
 bindkey "^[[Z" reverse-menu-complete
 bindkey "^P" history-beginning-search-backward
