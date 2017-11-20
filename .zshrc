@@ -112,7 +112,7 @@ zle -N peco-select-history
 
 # pecoでtmuxのセッションを選択
 bindkey '^r' peco-select-history
-if [[ ! -n "$TMUX" && $- != *l* ]]; then
+if [[ ! -n "$TMUX" ]]; then
   ID="`tmux list-sessions`"
   if [[ -z "$ID" ]]; then
     exec tmux new-session
