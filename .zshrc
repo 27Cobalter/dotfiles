@@ -1,11 +1,19 @@
 #!/bin/zsh
 # zplugの設定
 TERM=xterm-256color
+
+if [ ! -e ~/.zplug ]; then
+  printf 'install zplug? [y/N]: '
+  if read -q; then
+    git clone https://github.com/zplug/zplug .zplug
+  fi
+fi
+
 source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 if ! zplug check --verbose; then
-  printf 'install? [y/N]: '
+  printf 'install zplug_plugins? [y/N]: '
   if read -q; then
     echo; zplug install
   fi
@@ -23,45 +31,48 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 
 # PATHの設定
+export NVIM_PYTHON_LOG_FILE=/tmp/log
+export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export AI=~/ai-server
 export GOPATH=~/go
-export atware=~/intern2017-08/internship
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.gem/ruby/2.4.0/bin
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=10000
+export HISTSIZE=100000
 export SAVEHIST=100000
 setopt auto_list
 setopt auto_menu
 setopt inc_append_history
 setopt magic_equal_subst
 setopt EXTENDED_HISTORY
-setopt hist_ignore_dups
 setopt hist_ignore_all_dups
-autoload -Uz compinit compinit -u promptinit
+
+autoload -Uz compinit compinit-u promptinit -U colors -Uz vcs_info
 compinit
+colors
+promptinit
+zmodload zsh/zpty
 setopt auto_pushd
+setopt auto_cd
 setopt correct
 setopt list_packed
-promptinit
-prompt="%F{white}[%f$USER%F{red}@%f%F{magenta}$HOST%f %1~%F{white}]%f%# "
+setopt no_beep
+setopt prompt_subst
+ALLOW=$'\u2b80'
+ALLOW2=$'\u2b81'
+UPPERALLOW=$'\u2b11'
+zstyle ':vcs_info:*' formats '%F{black}[%s][* %F{green}%b%F{black}]%f'
+zstyle ':vcs_info:*' actionformats '%F{black}[%s][* %F{green}%b%F{black}(%F{red}%a%F{black})%F{black}]%f'
+precmd(){ vcs_info }
+prompt="%(?.%K{green}.%K{red})%F{black}${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)%k%(?.%F{green}.%F{red})$ALLOW
+%F{white}%K{blue}$USER%F{red}@%F{magenta}$HOST%F{blue}%K{cyan}$ALLOW%F{black}%K{cyan}%~%F{cyan}%K{white}$ALLOW\$vcs_info_msg_0_%F{white}%k$ALLOW
+%F{red}${ALLOW2}%F{yellow}${ALLOW2}%F{green}${ALLOW2}%f "
 
-# pecoの設定
-# function peco-select-history(){
-#   local tac
-#   if which tac > /dev/null; then
-#     tac="tac"
-#   else
-#     tac="tail -r"
-#   fi
-#   BUFFER=$(\history -n 1 | eval $tac | awk '!a[$0]++' | peco --query "$LBUFFER")
-#   CURSOR=$#BUFFER
-#   zle clear-screen
-# }
-# zle -N peco-select-history
-# bindkey '^r' peco-select-history
+bindkey "^[[Z" reverse-menu-complete
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
 
 # エイリアス
 alias ls="ls --color=auto -F"
@@ -72,5 +83,45 @@ alias clang++="clang++ -lwiringPi -std=c++14"
 alias g++="g++ -std=c++14 -lpthread -lwiringPi"
 alias grep="grep --color"
 
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+if which trash-put &>/dev/null; then
+  alias rm=trash-put
+fi
+
+if [ ! -e ~/.autojump ]; then
+  printf 'install autojump? [y/N]: '
+  if read -q; then
+    git clone https://github.com/wting/autojump.git .autojump
+    ./.autojump/install.py
+  fi
+fi
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+
+if ! which peco &>/dev/null; then
+  [[ $- != *i* ]] && return
+  [[ -z "$TMUX" ]] && exec tmux
+fi
+
+# pecoでhistory検索
+function peco-select-history(){
+  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+zle -N peco-select-history
+
+# pecoでtmuxのセッションを選択
+bindkey '^r' peco-select-history
+if [[ ! -n "$TMUX" ]]; then
+  ID="`tmux list-sessions`"
+  if [[ -z "$ID" ]]; then
+    exec tmux new-session
+  fi
+  create_new_session="Create New Session"
+  ID="${create_new_session}:\n${ID}"
+  ID="`echo $ID | peco | cut -d: -f1`"
+  if [[ "$ID" = "${create_new_session}" ]]; then
+    exec tmux new-session
+  elif [[ -n "$ID" ]]; then
+    exec tmux attach-session -t $ID
+  fi
+fi

@@ -40,8 +40,8 @@ set hlsearch
 set list
 set listchars=tab:>-,eol:$,trail:-
 " tab設定
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
 " インクリメンタルサーチ
 set incsearch
@@ -54,8 +54,12 @@ set scrolloff=1
 " マウス無効
 set mouse-=a
 
+set completeopt=menuone
+
 set clipboard&
 set clipboard^=unnamedplus
+
+set spell
 
 " 前回の編集場所から開始できる(rootのvimrcからパクってきたからよくわからん)
 if has("autocmd")
@@ -70,22 +74,26 @@ if has("autocmd")
   augroup END
 endif
 
-" "cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
-" if has("cscope") && filereadable("/usr/bin/cscope")
-"    set csprg=/usr/bin/cscope
-"    set csto=0
-"    set cst
-"    set nocsverb
-"    " add any database in current directory
-"    if filereadable("cscope.out")
-"       cs add $pwd/cscope.out
-"    " else add database pointed to by environment
-"    elseif $cscope_db != ""
-"       cs add $cscope_db
-"    endif
-"    set csverb
-" endif
-"}}}
+" cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
+if has("cscope") && filereadable("/usr/bin/cscope")
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   if filereadable("cscope.out")
+      cs add $pwd/cscope.out
+   elseif $cscope_db != ""
+      cs add $cscope_db
+   endif
+   set csverb
+endif
+
+if has('nvim')
+" Terminalのときは行番号とスペルチェックをなしにする
+  autocmd TermOpen * set nonumber | set nospell
+  autocmd TermClose * set number | set spell
+endif
+" }}}
 
 " プラグインマネージャ"{{{
 " プラグインがインストールされるディレクトリ
@@ -113,6 +121,10 @@ if dein#load_state(s:dein_dir)
   call dein#add("wesleyche/SrcExpl",{
               \"autoload":{"commands":["SrcExplToggle"]}})
   " 設定終了
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   call dein#end()
   call dein#save_state()
 endif
@@ -188,34 +200,43 @@ function ToggleIbusEngine(mode)
   endif
 endfunction
 
-" 縦にタブ分割をしてVimShellを起動
-function! VS()
-  vs
-  VimShell
-endfunction
-" 横にタブ分割をしてVimShellを起動
-function! SP()
-  sp
-  VimShell
-endfunction
 " TlistとSrcExplのコマンドをまとめた関数
 function! CT()
   Tlist
   SrcExpl
 endfunction
+" 縦にタブ分割をしてterminalを起動
+function! Vterminal()
+    vs
+    terminal
+endfunction
+" 横にタブ分割をしてterminalを起動
+function! Sterminal()
+    sp
+    terminal
+endfunction
+function! Sc()
+  let g:syntaxCheck=1
+endfunction
+function! Nsc()
+  let g:syntaxCheck=0
+endfunction
 " }}}
 
 " コマンド宣言{{{
 command Run call Run()
-command VS call VS()
-command SP call SP()
 command CT call CT()
+command VT call Vterminal()
+command ST call Sterminal()
+command Sc call Sc()
+command Nsc call Nsc()
 " }}}
 
 " プラグインに関する設定{{{
 set t_Co=256
 syntax on
 colorscheme jellybeans
+" let g:EasyMotion_do_mapping = 0
 " VimShellのプロンプトの設定
 function! PWD()
   if $PWD == $HOME
@@ -234,14 +255,17 @@ let tlist_php_settings='php;c:class;d:constant;f:function'
 " let g:mastodon_host='yukari.cloud'
 " let g:mastodon_access_token='mastodon_token'
 
-au BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
-" if filereadable(expand('token.vim'))
-"   source token.vim
-" endif
+if filereadable(expand('~/.config/nvim/token.vim'))
+  source ~/.config/nvim/token.vim
+endif
 
 let twitvim_enable_python3 = 1
 
+source ~/.config/nvim/lightline.vim
+source ~/.config/nvim/syntastic.vim
+let g:syntaxCheck=0
 
   " call denite#custom#var('mpc', 'host', 'localhost')
   " call denite#custom#var('mpc', 'port', 6600)
@@ -263,8 +287,8 @@ inoremap <silent> <C-k> <C-o>:call ToggleIbusEngine('t')<CR>
 noremap <C-l> <ESC><ESC>:call Run()<CR>
 noremap! <C-l> <ESC><ESC>:call Run()<CR>
 
-noremap <C-s> <ESC><ESC>:call Format()<CR>
-noremap! <C-s> <ESC><ESC>:call Format()<CR>
+" noremap <C-s> <ESC><ESC>:call Format()<CR>
+" noremap! <C-s> <ESC><ESC>:call Format()<CR>
 
 noremap <A-o> :on<CR>
 
@@ -272,6 +296,13 @@ noremap <A-p> gt<CR>
 noremap <A-n> gT<CR>
 noremap <A-o> :tabonly<CR>
 noremap <A-t><CR> :tabedit<CR>:Startify<CR>
+
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+nmap s <Plug>(easymotion-overwin-f2)
+vmap s <Plug>(easymotion-bd-f2)
 
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
@@ -283,4 +314,5 @@ noremap <A-,> <C-w><
 noremap <A-.> <C-w>>
 inoremap <expr> = smartchr#loop(' = ',' == ', '=', ' := ')
 inoremap <expr> , smartchr#loop(', ',',')
+tnoremap <C-[> <C-\><C-n>
 " }}}
