@@ -20,10 +20,10 @@ ALERT_LOW="${1:-10}" # color will turn red under this value (default: 10%)
 df -m -P -l "$DIR" | awk -v alert_low=$ALERT_LOW '
 /\/.*/ {
 	# full text
-  printf ("%2.1f\n",$4/1024)
+  printf ("%2.1fG\n",$4/1024)
 
 	# short text
-  printf ("%2.1f\n",$4/1024)
+  printf ("%2.1fG\n",$4/1024)
 
 	use=$5
 
