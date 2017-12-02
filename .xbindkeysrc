@@ -59,14 +59,14 @@
   "amixer sset PCM 5%-"
     XF86AudioLowerVolume
 
-  "~/.nyan/sh/toggle_touchpad.sh"
+  "~/.sh/script-toggle_touchpad"
     Hiragana_Katakana
     # alt + shift + space
 
   "scrot -e 'mv $f ~/Picture'"
     Print
 
-  "~/.nyan/sh/toggle_key_layout.sh"
+  "~/.sh/script-toggle_key_layout"
     alt + space
 
 # specify a mouse button

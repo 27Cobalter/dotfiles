@@ -4,11 +4,11 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 ibus-daemon -drx
-sh /home/ia/.fehbg &
+sh ~/.fehbg &
 compton -b
 sudo nm-applet&
 xbindkeys
 setxkbmap -option ctrl:nocaps
-/home/ia/.nyan/sh/touchpad.sh&
-sh ~/.nyan/sh/rebind_g633.sh > /dev/null
+~/.sh/script-touchpad&
+~/.sh/script-rebind_g633 > /dev/null
 [ ! -s ~/.config/mpd/pid ] && mpd
