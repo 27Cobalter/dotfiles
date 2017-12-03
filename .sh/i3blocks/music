@@ -7,6 +7,10 @@ if [ `mpc | wc -l` != '1' ] ; then
     music_count=0
   fi
   echo "music_count=$music_count" > ~/.sh/i3blocks/music.tmp
-  title=${tune:$music_count:5}
+  if [[ -z `echo $tune | LANG=C grep -n -v '^[[:cntrl:][:print:]]*$'` ]] ; then
+    title=${tune:$music_count:10}
+  else
+    title=${tune:$music_count:5}
+  fi
   echo $title
 fi

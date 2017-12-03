@@ -302,7 +302,7 @@ map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 nmap s <Plug>(easymotion-overwin-f2)
-vmap s <Plug>(easymotion-bd-f2)
+" vmap s <Plug>(easymotion-bd-f2)
 
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
