@@ -154,5 +154,5 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3blocks
-        font pango:ricty 8
+        font pango:Ricty for Powerline 8
 }
