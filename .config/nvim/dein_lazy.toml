@@ -105,10 +105,6 @@ repo = 'sudar/vim-arduino-syntax'
 on_ft = ['arduino']
 
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = ['markdown']
-
-[[plugins]]
 repo = 'suan/vim-instant-markdown'
 on_ft = ['markdown']
 
