@@ -1,17 +1,12 @@
 #!/bin/sh
-. ~/.nyan/sh/i3blocks/music.tmp
+. ~/.sh/i3blocks/music.tmp
 if [ `mpc | wc -l` != '1' ] ; then
   tune=`mpc | head -n 1 | sed "s/.* - \(.*\)/\1/"`
   music_count=`expr $music_count + 1`
   if test $music_count -ge ${#tune} ;then
     music_count=0
   fi
-  echo "music_count=$music_count" > ~/.nyan/sh/i3blocks/music.tmp
+  echo "music_count=$music_count" > ~/.sh/i3blocks/music.tmp
   title=${tune:$music_count:5}
   echo $title
-  if [ -z $title ]; then
-    echo "poepoe"
-  else
-    echo $title
-  fi
 fi

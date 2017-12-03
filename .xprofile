@@ -8,7 +8,7 @@ sh ~/.fehbg &
 compton -b
 sudo nm-applet&
 xbindkeys
-setxkbmap -option ctrl:nocaps
-~/.sh/script-touchpad&
+~/.sh/script-init_touchpad
 ~/.sh/script-rebind_g633 > /dev/null
+setxkbmap -option ctrl:nocaps
 [ ! -s ~/.config/mpd/pid ] && mpd
