@@ -18,6 +18,7 @@ pattern_all ボイチェビ           ^VOICEROID$|^CEVIO$|^VOCALOID$|^Vocaloid$|
 match_all  結月ゆかり            結月ゆかり
 pattern_all  IA                  ^IA$|^IA_-ARIA_ON_THE_PLANETES-$
 pattern_all  ONE                 ^ONE$|^OИE$|^ONE_-ARIA_ON_THE_PLANETES-$
+match_all  紲星あかり            紲星あかり
 match_all  さとうささら          さとうささら
 match_all  すずきつづみ          すずきつづみ
 match_all  弦巻マキ              弦巻マキ
@@ -29,6 +30,8 @@ match_all  琴葉葵                琴葉葵
 match_all  ゆかいあ              結月ゆかり IA
 match_all  ゆかまき              結月ゆかり 弦巻マキ
 match_all  いあおね              IA ONE
+match_all  あかいあ              紲星あかり IA
+match_all  あかゆか              紲星あかり 結月ゆかり
 
 
 # アズールレーン
