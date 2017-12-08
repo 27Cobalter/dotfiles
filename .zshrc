@@ -110,9 +110,14 @@ function peco-select-history(){
   zle clear-screen
 }
 zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+# pecoでkill
+function peco-kill(){
+  ps -aux | peco | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
+}
 
 # pecoでtmuxのセッションを選択
-bindkey '^r' peco-select-history
 if [[ ! -n "$TMUX" ]]; then
   ID="`tmux list-sessions`"
   if [[ -z "$ID" ]]; then
