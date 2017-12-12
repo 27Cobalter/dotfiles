@@ -83,7 +83,7 @@ alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
 alias chromium="chromium > /dev/null 2>&1&"
 alias libreoffice="libreoffice > /dev/null 2>&1&"
-function arduino (){platformio $@ && ln -s /home/ia/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyACM0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
+function arduino (){platformio $@ && ln -s $HOME/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyUSB0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
 if which trash-put &>/dev/null; then
   alias rm=trash-put
