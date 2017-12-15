@@ -65,7 +65,7 @@ my dotfiles
   - urlview
   - vivaldi
   - xbindkeys
-  - xf86-video-nouveau
+  - ~~xf86-video-nouveau~~ nvidia入ってればいらないっぽい
   - xfce4-terminal
   - xkb-switch
   - xorg-server, xorg-xdpyinfo, xorg-init, xorg-xinput, xorg-xrandr
