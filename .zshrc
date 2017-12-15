@@ -33,7 +33,6 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 # PATHの設定
 export AI=~/ai-server
 export BROWSER=/usr/bin/vivaldi-stable
-export VISUAL=nvim
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
