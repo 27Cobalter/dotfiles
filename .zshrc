@@ -32,11 +32,6 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 
 # PATHの設定
 export AI=~/ai-server
-export GOPATH=~/go
-export PATH=$PATH:~/.sh
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/.gem/ruby/2.4.0/bin
-export PATH=$PATH:/opt/cuda/bin
 export BROWSER=/usr/bin/vivaldi-stable
 export VISUAL=nvim
 
