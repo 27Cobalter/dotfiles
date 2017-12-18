@@ -56,3 +56,6 @@ repo = 'vim-syntastic/syntastic'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
