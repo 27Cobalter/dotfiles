@@ -158,7 +158,7 @@ function! Run()
   w
   let l:ft=&filetype
   if l:ft=="cpp"
-    let l:mes  = system("clang++ -std=c++14 ".expand("%:p")." $(pkg-config --cflags eigen3)")
+    let l:mes  = system("clang++ -std=c++17 ".expand("%:p")." $(pkg-config --cflags eigen3)")
     if l:mes==""
       !./a.out
     else
@@ -280,15 +280,11 @@ noremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 cnoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 inoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
 
-noremap <silent> <C-k> :call ToggleIbusEngine('t')<CR>
-cnoremap <silent> <C-k> :call ToggleIbusEngine('t')<CR>
-inoremap <silent> <C-k> <C-o>:call ToggleIbusEngine('t')<CR>
-
 noremap <C-l> <ESC><ESC>:call Run()<CR>
 noremap! <C-l> <ESC><ESC>:call Run()<CR>
 
-" noremap <C-s> <ESC><ESC>:call Format()<CR>
-" noremap! <C-s> <ESC><ESC>:call Format()<CR>
+noremap <C-s> <ESC><ESC>:call Format()<CR>
+noremap! <C-s> <ESC><ESC>:call Format()<CR>
 
 noremap <A-o> :on<CR>
 
