@@ -1,18 +1,4 @@
 #!/bin/sh
-# Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 TYPE="${BLOCK_INSTANCE:-mem}"
 
@@ -35,20 +21,25 @@ awk -v type=$TYPE '
 /^SwapFree:/ {
 	swap_free=$2
 }
+/^Shmem:/ {
+  shmem=$2
+}
 END {
 	if (type == "swap") {
 		free=swap_free/1024/1024
 		used=(swap_total-swap_free)/1024/1024
 		total=swap_total/1024/1024
+    tmpfs=shmem/1024/1024
 	} else {
 		free=mem_free/1024/1024
 		used=(mem_total-mem_free)/1024/1024
 		total=mem_total/1024/1024
+    tmpfs=shmem/1024/1024
 	}
-	pct=used/total*100
+  pct=(used+tmpfs)/total*100
 
 	# full text
-	printf("%.1fG/%.1fG (%.f%%)\n", used, total, pct)
+	printf("%.1f+%.1f/%.1fG (%.f%%)\n", used, tmpfs, total, pct)
 
 	# short text
 	printf("%.f%%\n", pct)
