@@ -70,6 +70,11 @@ bindkey "^[[Z" reverse-menu-complete
 bindkey "^P" history-beginning-search-backward
 bindkey "^N" history-beginning-search-forward
 
+export FZF_DEFAULT_OPTS='
+--color fg:-1,bg:-1,hl:202,fg+:214,bg+:52,hl+:231
+--color info:52,prompt:196,spinner:208,pointer:196,marker:208
+'
+
 # エイリアス
 alias ls="ls --color=auto -F"
 alias la="ls --color=auto -Fa"
@@ -104,12 +109,22 @@ function peco-select-history(){
   CURSOR=$#BUFFER
   zle clear-screen
 }
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+# fzfでhistory検索
+function fzf-select-history(){
+  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | fzf --reverse --height 50% --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+zle -N fzf-select-history
+bindkey '^r' fzf-select-history
 
 # pecoでkill
 function peco-kill(){
   ps -aux | peco | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
+}
+# fzfでkill
+function fzf-kill(){
+  ps -aux | fzf --reverse --height 50% | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
 }
 
 # pecoでtmuxのセッションを選択
