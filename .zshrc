@@ -109,6 +109,9 @@ function peco-select-history(){
   CURSOR=$#BUFFER
   zle clear-screen
 }
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
 # fzfでhistory検索
 function fzf-select-history(){
   BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | fzf --reverse --height 50% --query "$LBUFFER")
@@ -116,7 +119,8 @@ function fzf-select-history(){
   zle clear-screen
 }
 zle -N fzf-select-history
-bindkey '^r' fzf-select-history
+# ESC R
+bindkey '^[r' fzf-select-history
 
 # pecoでkill
 function peco-kill(){
