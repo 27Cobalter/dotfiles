@@ -145,9 +145,6 @@ function! Format()
     e!
   elseif l:ft=="go"
     GoFmt
-  elseif l:ft=="arduino"
-    call system('clang-format -i '.expand("%:p"))
-    e!
   else
     echo 'Not support filetype '.l:ft
   endif
