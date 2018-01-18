@@ -30,10 +30,6 @@ ZSH_HIGHLIGHT_STYLES[function]=fg=none,bold
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 
-# PATHの設定
-export AI=~/ai-server
-export BROWSER=/usr/bin/vivaldi-stable
-
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=100000
