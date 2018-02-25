@@ -63,7 +63,7 @@
     Hiragana_Katakana
     # alt + shift + space
 
-  "scrot -e 'mv $f ~/Picture'"
+  "scrot -e 'mv $f ~/Pictures'"
     Print
 
   "~/.sh/script-toggle_key_layout"
