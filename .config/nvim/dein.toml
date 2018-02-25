@@ -59,3 +59,7 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'lilydjwg/colorizer'
+
