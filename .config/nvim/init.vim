@@ -120,6 +120,7 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
   call dein#add("wesleyche/SrcExpl",{
               \"autoload":{"commands":["SrcExplToggle"]}})
+  call dein#add('Shougo/deoppet.nvim')
   " 設定終了
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -174,7 +175,8 @@ function! Run()
   elseif l:ft=="go"
     GoRun
   elseif l:ft=="arduino"
-    !sudo platformio run --target=upload
+    sp
+    terminal sudo platformio run --target=upload
   elseif l:ft=="markdown"
     MdPreview
   else

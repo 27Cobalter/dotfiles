@@ -34,8 +34,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan
 
 # zsh設定
 export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=100000
-export SAVEHIST=100000
+export HISTSIZE=100000 export SAVEHIST=100000
 setopt auto_list
 setopt auto_menu
 setopt inc_append_history
