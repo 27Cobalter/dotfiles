@@ -99,6 +99,12 @@ if ! which peco &>/dev/null; then
   [[ -z "$TMUX" ]] && exec tmux
 fi
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/cobalt/.nyan/google-cloud-sdk/path.zsh.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/cobalt/.nyan/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/completion.zsh.inc'; fi
+
 # pecoでhistory検索
 function peco-select-history(){
   BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER")
