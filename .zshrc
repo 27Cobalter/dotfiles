@@ -12,6 +12,8 @@ fi
 source ~/.zplug/init.zsh
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-syntax-highlighting'
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 if ! zplug check --verbose; then
   printf 'install zplug_plugins? [y/N]: '
   if read -q; then
@@ -41,10 +43,6 @@ setopt magic_equal_subst
 setopt EXTENDED_HISTORY
 setopt hist_ignore_all_dups
 
-autoload -Uz compinit compinit-u promptinit -U colors -Uz vcs_info
-compinit
-colors
-promptinit
 zmodload zsh/zpty
 setopt auto_pushd
 setopt auto_cd
@@ -52,15 +50,6 @@ setopt correct
 setopt list_packed
 setopt no_beep
 setopt prompt_subst
-ALLOW=$'\u2b80'
-ALLOW2=$'\u2b81'
-UPPERALLOW=$'\u2b11'
-zstyle ':vcs_info:*' formats '%F{black}[%s][* %F{green}%b%F{black}]%f'
-zstyle ':vcs_info:*' actionformats '%F{black}[%s][* %F{green}%b%F{black}(%F{red}%a%F{black})%F{black}]%f'
-precmd(){ vcs_info }
-prompt="%(?.%K{green}.%K{red})%F{black}${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)%k%(?.%F{green}.%F{red})$ALLOW
-%F{white}%K{blue}$USER%F{red}@%F{magenta}$HOST%F{blue}%K{cyan}$ALLOW%F{black}%K{cyan}%~%F{cyan}%K{white}$ALLOW\$vcs_info_msg_0_%F{white}%k$ALLOW
-%F{red}${ALLOW2}%F{yellow}${ALLOW2}%F{green}${ALLOW2}%f "
 
 bindkey "^[[Z" reverse-menu-complete
 bindkey "^P" history-beginning-search-backward
@@ -77,36 +66,19 @@ alias la="ls --color=auto -Fa"
 alias ll="ls --color=auto -Fl"
 alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
-alias chromium="chromium > /dev/null 2>&1&"
-alias libreoffice="libreoffice > /dev/null 2>&1&"
-function arduino (){platformio $@ && ln -s $HOME/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyUSB0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 
 if which trash-put &>/dev/null; then
   alias rm=trash-put
 fi
 
-if [ ! -e ~/.autojump ]; then
-  printf 'install autojump? [y/N]: '
-  if read -q; then
-    git clone https://github.com/wting/autojump.git ~/.autojump
-    ./.autojump/install.py
-  fi
-fi
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-
-if ! which peco &>/dev/null; then
-  [[ $- != *i* ]] && return
-  [[ -z "$TMUX" ]] && exec tmux
-fi
-
-# pecoでhistory検索
-function peco-select-history(){
-  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER")
+# percolでhistory検索
+function percol-select-history(){
+  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | percol --query "$LBUFFER")
   CURSOR=$#BUFFER
   zle clear-screen
 }
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+zle -N percol-select-history
+bindkey '^r' percol-select-history
 
 # fzfでhistory検索
 function fzf-select-history(){
@@ -118,16 +90,16 @@ zle -N fzf-select-history
 # ESC R
 bindkey '^[r' fzf-select-history
 
-# pecoでkill
-function peco-kill(){
-  ps -aux | peco | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
+# percolでkill
+function percol-kill(){
+  ps -aux | percol | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
 }
 # fzfでkill
 function fzf-kill(){
   ps -aux | fzf --reverse --height 50% | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
 }
 
-# pecoでtmuxのセッションを選択
+# percolでtmuxのセッションを選択
 if [[ ! -n "$TMUX" ]]; then
   ID="`tmux list-sessions`"
   if [[ -z "$ID" ]]; then
@@ -135,7 +107,7 @@ if [[ ! -n "$TMUX" ]]; then
   fi
   create_new_session="Create New Session"
   ID="${create_new_session}:\n${ID}"
-  ID="`echo $ID | peco | cut -d: -f1`"
+  ID="`echo $ID | percol | cut -d: -f1`"
   if [[ "$ID" = "${create_new_session}" ]]; then
     exec tmux new-session
   elif [[ -n "$ID" ]]; then

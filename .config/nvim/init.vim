@@ -155,7 +155,7 @@ function! Run()
   w
   let l:ft=&filetype
   if l:ft=="cpp"
-    let l:mes  = system("clang++ -std=c++17 ".expand("%:p")." $(pkg-config --cflags eigen3)")
+    let l:mes  = system("clang++ -std=c++14 ".expand("%:p"))
     if l:mes==""
       !./a.out
     else
