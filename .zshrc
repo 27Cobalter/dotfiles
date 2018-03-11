@@ -65,6 +65,7 @@ alias la="ls --color=auto -Fa"
 alias ll="ls --color=auto -Fl"
 alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
+alias cat="lolcat"
 
 if which trash-put &>/dev/null; then
   alias rm=trash-put
