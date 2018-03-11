@@ -307,7 +307,14 @@ noremap <A-+> <C-w>+
 noremap <A--> <C-w>-
 noremap <A-,> <C-w><
 noremap <A-.> <C-w>>
-inoremap <expr> = smartchr#loop(' = ',' == ', '=', ' := ')
+
+if &filetype=="cpp"||&filetype =="c"||&filetype=="java"||&filetype=="arduino"
+  inoremap <expr> = smartchr#loop(' = ',' == ', '=')
+elseif &filetype=="go"
+  inoremap <expr> = smartchr#loop(' = ',' == ', '=')
+endif
+
 inoremap <expr> , smartchr#loop(', ',',')
+
 tnoremap <C-[> <C-\><C-n>
 " }}}
