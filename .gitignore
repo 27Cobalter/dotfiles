@@ -1,3 +1,5 @@
 *.tmp
 script*.sh
 *.ia
+.config/gcloud
+.config/gtk-2.0
