@@ -308,11 +308,7 @@ noremap <A--> <C-w>-
 noremap <A-,> <C-w><
 noremap <A-.> <C-w>>
 
-if &filetype=="cpp"||&filetype =="c"||&filetype=="java"||&filetype=="arduino"
-  inoremap <expr> = smartchr#loop(' = ',' == ', '=')
-elseif &filetype=="go"
-  inoremap <expr> = smartchr#loop(' = ',' == ', '=')
-endif
+inoremap <expr> = smartchr#loop(' = ',' == ', '=')
 
 inoremap <expr> , smartchr#loop(', ',',')
 
