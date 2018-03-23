@@ -87,12 +87,6 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    endif
    set csverb
 endif
-
-if has('nvim')
-" Terminalのときは行番号とスペルチェックをなしにする
-  autocmd TermOpen * set nonumber | set nospell
-  autocmd TermClose * set number | set spell
-endif
 " }}}
 
 " プラグインマネージャ"{{{
@@ -214,6 +208,12 @@ function! Sterminal()
     sp
     terminal
 endfunction
+" タブを生成してterminal
+function! Terminal()
+  tabe
+  terminal
+endfunction
+
 function! Sc()
   let g:syntaxCheck=1
 endfunction
@@ -227,15 +227,22 @@ command Run call Run()
 command CT call CT()
 command VT call Vterminal()
 command ST call Sterminal()
+command Terminal call Terminal()
 command Sc call Sc()
 command Nsc call Nsc()
 " }}}
 
-" augrepとか{{{
+" autocmdとか{{{
 augroup IMEGroup
   autocmd!
   autocmd InsertLeave * :call ToggleIbusEngine('x')
 augroup END
+
+if has('nvim')
+" Terminalのときは行番号とスペルチェックをなしにする
+  autocmd TermOpen * set nonumber | set nospell
+  autocmd TermClose * set number | set spell
+endif
 " }}}
 
 " プラグインに関する設定{{{
@@ -315,9 +322,11 @@ noremap <A--> <C-w>-
 noremap <A-,> <C-w><
 noremap <A-.> <C-w>>
 
+noremap <silent> gb :Denite buffer<CR>
+
 inoremap <expr> = smartchr#loop(' = ',' == ', '=')
 
 inoremap <expr> , smartchr#loop(', ',',')
 
-tnoremap <C-[> <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
 " }}}
