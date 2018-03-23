@@ -231,6 +231,13 @@ command Sc call Sc()
 command Nsc call Nsc()
 " }}}
 
+" augrepとか{{{
+augroup IMEGroup
+  autocmd!
+  autocmd InsertLeave * :call ToggleIbusEngine('x')
+augroup END
+" }}}
+
 " プラグインに関する設定{{{
 set t_Co=256
 syntax on
@@ -275,9 +282,9 @@ let g:syntaxCheck=0
 " キー設定{{{
 " 自作関数のマッピングとか
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
-noremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
-cnoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
-inoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
+noremap <silent> <C-c> <C-c><C-c>:call ToggleIbusEngine('x')<CR>
+cnoremap <silent> <C-c> <C-c><C-c>:call ToggleIbusEngine('x')<CR>
+inoremap <silent> <C-c> <C-c><C-c>:call ToggleIbusEngine('x')<CR>
 
 noremap <C-l> <ESC><ESC>:call Run()<CR>
 noremap! <C-l> <ESC><ESC>:call Run()<CR>
