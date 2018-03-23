@@ -46,6 +46,7 @@ compinit
 colors
 promptinit
 zmodload zsh/zpty
+setopt dvorak
 setopt auto_pushd
 setopt auto_cd
 setopt correct
