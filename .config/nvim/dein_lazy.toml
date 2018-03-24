@@ -81,6 +81,10 @@ on_source = ['denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+hook_source = '''
+  call denite#custom#map('insert', '<C-a>', '<denite:move_caret_to_head>')
+  call denite#custom#map('insert', '<C-j>', '<denite:do_action:default>')
+'''
 on_path = '.*'
 
 [[plugins]]
