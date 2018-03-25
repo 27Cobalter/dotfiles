@@ -1,6 +1,6 @@
 #!/bin/zsh
 # zplugの設定
-TERM=xterm-256color
+TERM=tmux-256color
 
 if [ ! -e ~/.zplug ]; then
   printf 'install zplug? [y/N]: '
