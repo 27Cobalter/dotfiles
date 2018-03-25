@@ -173,24 +173,8 @@ endif
 set t_Co=256
 syntax on
 colorscheme jellybeans
-" let g:EasyMotion_do_mapping = 0
-" VimShellのプロンプトの設定
-function! PWD()
-  if $PWD == $HOME
-    let l:cudir='~'
-  else
-    let l:cudir=split(system("basename $PWD"))[0]
-  endif
-  return l:cudir
-endfunction
-let g:vimshell_prompt_expr='"[".split(system("echo $USER"))[0]."@".split(system("hostname"))[0]." ".PWD(). "]$ "'
-let g:vimshell_prompt_pattern='\[.*\]$ '
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
-
-let token="token"
-let g:mastodon_host='yukari.cloud'
-" let g:mastodon_access_token='mastodon_token'
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
@@ -200,14 +184,8 @@ endif
 
 let twitvim_enable_python3 = 1
 
-source ~/.config/nvim/lightline.vim
-source ~/.config/nvim/syntastic.vim
 let g:syntaxCheck=0
 
-  " call denite#custom#var('mpc', 'host', 'localhost')
-  " call denite#custom#var('mpc', 'port', 6600)
-  " call denite#custom#var('mpc', 'timeout', 5.0)
-  " call denite#custom#var('mpc', 'default_view', 'artist')
 " }}}
 
 " キー設定{{{
