@@ -41,10 +41,7 @@ setopt magic_equal_subst
 setopt EXTENDED_HISTORY
 setopt hist_ignore_all_dups
 
-autoload -Uz compinit compinit-u promptinit -U colors -Uz vcs_info
-compinit
-colors
-promptinit
+autoload promptinit -U colors -Uz vcs_info
 zmodload zsh/zpty
 setopt dvorak
 setopt auto_pushd
@@ -149,4 +146,8 @@ if [[ ! -n "$TMUX" ]]; then
   elif [[ -n "$ID" ]]; then
     exec tmux attach-session -t $ID
   fi
+fi
+
+if ( which zprof > /dev/null 2>&1 ) ; then
+  zprof
 fi
