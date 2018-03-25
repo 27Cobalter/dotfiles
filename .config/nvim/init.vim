@@ -130,54 +130,6 @@ endif
 " }}}
 
 " 自作関数宣言{{{
-set runtimepath+=~/.config/nvim/plugins
-" いま開いているファイルを指定フォーマットになおす
-function! Format()
-  w
-  let l:ft=&filetype
-  if l:ft=="cpp"||l:ft =="c"||l:ft=="java"||l:ft=="arduino"
-    call system('clang-format -i '.expand("%:p"))
-    e!
-  elseif l:ft=="go"
-    GoFmt
-  else
-    echo 'Not support filetype '.l:ft
-  endif
-
-endfunction
-" いま開いているファイルがcppだった場合コンパイルして実行
-function! Run()
-  w
-  let l:ft=&filetype
-  if l:ft=="cpp"
-    let l:mes  = system("clang++ -std=c++17 ".expand("%:p")." $(pkg-config --cflags eigen3)")
-    if l:mes==""
-      !./a.out
-    else
-      echo l:mes
-    endif
-  elseif l:ft=="c"
-    let l:mes  = system("gcc ".expand("%:p"))
-    if l:mes==""
-      !./a.out
-    else
-      echo l:mes
-    endif
-  elseif l:ft=="python"
-    let l:mes = system("python3 ".expand("%:p"))
-    echo l:mes
-  elseif l:ft=="go"
-    GoRun
-  elseif l:ft=="arduino"
-    sp
-    terminal sudo platformio run --target=upload
-  elseif l:ft=="markdown"
-    MdPreview
-  else
-    QuickRun
-  endif
-endfunction
-
 " IMEを切り換える関数
 function ToggleIbusEngine(mode)
   if a:mode=='x'
@@ -192,44 +144,16 @@ function ToggleIbusEngine(mode)
     endif
   endif
 endfunction
-
-" TlistとSrcExplのコマンドをまとめた関数
-function! CT()
-  Tlist
-  SrcExpl
-endfunction
-" 縦にタブ分割をしてterminalを起動
-function! Vterminal()
-    vs
-    terminal
-endfunction
-" 横にタブ分割をしてterminalを起動
-function! Sterminal()
-    sp
-    terminal
-endfunction
-" タブを生成してterminal
-function! Terminal()
-  tabe
-  terminal
-endfunction
-
-function! Sc()
-  let g:syntaxCheck=1
-endfunction
-function! Nsc()
-  let g:syntaxCheck=0
-endfunction
 " }}}
 
 " コマンド宣言{{{
-command Run call Run()
-command CT call CT()
-command VT call Vterminal()
-command ST call Sterminal()
-command Terminal call Terminal()
-command Sc call Sc()
-command Nsc call Nsc()
+command Run call myfunction#Run()
+command CT call myfunction#CT()
+command VT call myfunction#Vterminal()
+command ST call myfunction#Sterminal()
+command Terminal call myfunction#Terminal()
+command Sc call myfunction#Sc()
+command Nsc call myfunction#Nsc()
 " }}}
 
 " autocmdとか{{{
@@ -293,11 +217,11 @@ noremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
 cnoremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
 inoremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
 
-noremap <C-l> <ESC><ESC>:call Run()<CR>
-noremap! <C-l> <ESC><ESC>:call Run()<CR>
+noremap <C-l> <ESC><ESC>:call myfunction#Run()<CR>
+noremap! <C-l> <ESC><ESC>:call myfunction#Run()<CR>
 
-noremap <C-s> <ESC><ESC>:call Format()<CR>
-noremap! <C-s> <ESC><ESC>:call Format()<CR>
+noremap <C-s> <ESC><ESC>:call myfunction#Format()<CR>
+noremap! <C-s> <ESC><ESC>:call myfunction#Format()<CR>
 
 noremap <A-o> :on<CR>
 
