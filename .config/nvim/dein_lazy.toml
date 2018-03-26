@@ -185,3 +185,11 @@ on_ft = ['css', 'html', 'jsp']
 [[plugins]]
 repo = 'pasela/unite-webcolorname'
 on_ft = ['css', 'html', 'jsp']
+
+[[plugins]]
+repo = 'KeitaNakamura/highlighter.nvim'
+hook_source = '''
+  let g:highlighter#auto_update = 1
+  let g:highlighter#project_root_signs = ['.git']
+'''
+on_path = '.*'
