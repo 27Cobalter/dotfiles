@@ -87,12 +87,6 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    endif
    set csverb
 endif
-
-if has('nvim')
-" Terminalのときは行番号とスペルチェックをなしにする
-  autocmd TermOpen * set nonumber | set nospell
-  autocmd TermClose * set number | set spell
-endif
 " }}}
 
 " プラグインマネージャ"{{{
@@ -136,54 +130,6 @@ endif
 " }}}
 
 " 自作関数宣言{{{
-set runtimepath+=~/.config/nvim/plugins
-" いま開いているファイルを指定フォーマットになおす
-function! Format()
-  w
-  let l:ft=&filetype
-  if l:ft=="cpp"||l:ft =="c"||l:ft=="java"||l:ft=="arduino"
-    call system('clang-format -i '.expand("%:p"))
-    e!
-  elseif l:ft=="go"
-    GoFmt
-  else
-    echo 'Not support filetype '.l:ft
-  endif
-
-endfunction
-" いま開いているファイルがcppだった場合コンパイルして実行
-function! Run()
-  w
-  let l:ft=&filetype
-  if l:ft=="cpp"
-    let l:mes  = system("clang++ -std=c++14 ".expand("%:p"))
-    if l:mes==""
-      !./a.out
-    else
-      echo l:mes
-    endif
-  elseif l:ft=="c"
-    let l:mes  = system("gcc ".expand("%:p"))
-    if l:mes==""
-      !./a.out
-    else
-      echo l:mes
-    endif
-  elseif l:ft=="python"
-    let l:mes = system("python3 ".expand("%:p"))
-    echo l:mes
-  elseif l:ft=="go"
-    GoRun
-  elseif l:ft=="arduino"
-    sp
-    terminal sudo platformio run --target=upload
-  elseif l:ft=="markdown"
-    MdPreview
-  else
-    QuickRun
-  endif
-endfunction
-
 " IMEを切り換える関数
 function ToggleIbusEngine(mode)
   if a:mode=='x'
@@ -198,61 +144,37 @@ function ToggleIbusEngine(mode)
     endif
   endif
 endfunction
-
-" TlistとSrcExplのコマンドをまとめた関数
-function! CT()
-  Tlist
-  SrcExpl
-endfunction
-" 縦にタブ分割をしてterminalを起動
-function! Vterminal()
-    vs
-    terminal
-endfunction
-" 横にタブ分割をしてterminalを起動
-function! Sterminal()
-    sp
-    terminal
-endfunction
-function! Sc()
-  let g:syntaxCheck=1
-endfunction
-function! Nsc()
-  let g:syntaxCheck=0
-endfunction
 " }}}
 
 " コマンド宣言{{{
-command Run call Run()
-command CT call CT()
-command VT call Vterminal()
-command ST call Sterminal()
-command Sc call Sc()
-command Nsc call Nsc()
+command Run call myfunction#Run()
+command CT call myfunction#CT()
+command VT call myfunction#Vterminal()
+command ST call myfunction#Sterminal()
+command Terminal call myfunction#Terminal()
+command Sc call myfunction#Sc()
+command Nsc call myfunction#Nsc()
+" }}}
+
+" autocmdとか{{{
+augroup IMEGroup
+  autocmd!
+  autocmd InsertLeave * :call ToggleIbusEngine('x')
+augroup END
+
+if has('nvim')
+" Terminalのときは行番号とスペルチェックをなしにする
+  autocmd TermOpen * set nonumber | set nospell
+  autocmd TermClose * set number | set spell
+endif
 " }}}
 
 " プラグインに関する設定{{{
 set t_Co=256
 syntax on
 colorscheme jellybeans
-" let g:EasyMotion_do_mapping = 0
-" VimShellのプロンプトの設定
-function! PWD()
-  if $PWD == $HOME
-    let l:cudir='~'
-  else
-    let l:cudir=split(system("basename $PWD"))[0]
-  endif
-  return l:cudir
-endfunction
-let g:vimshell_prompt_expr='"[".split(system("echo $USER"))[0]."@".split(system("hostname"))[0]." ".PWD(). "]$ "'
-let g:vimshell_prompt_pattern='\[.*\]$ '
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
-
-let token="token"
-let g:mastodon_host='yukari.cloud'
-" let g:mastodon_access_token='mastodon_token'
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
@@ -262,28 +184,22 @@ endif
 
 let twitvim_enable_python3 = 1
 
-source ~/.config/nvim/lightline.vim
-source ~/.config/nvim/syntastic.vim
 let g:syntaxCheck=0
 
-  " call denite#custom#var('mpc', 'host', 'localhost')
-  " call denite#custom#var('mpc', 'port', 6600)
-  " call denite#custom#var('mpc', 'timeout', 5.0)
-  " call denite#custom#var('mpc', 'default_view', 'artist')
 " }}}
 
 " キー設定{{{
 " 自作関数のマッピングとか
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
-noremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
-cnoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
-inoremap <silent> <C-c> <ESC><ESC>:call ToggleIbusEngine('x')<CR>
+noremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
+cnoremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
+inoremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
 
-noremap <C-l> <ESC><ESC>:call Run()<CR>
-noremap! <C-l> <ESC><ESC>:call Run()<CR>
+noremap <C-l> <ESC><ESC>:call myfunction#Run()<CR>
+noremap! <C-l> <ESC><ESC>:call myfunction#Run()<CR>
 
-noremap <C-s> <ESC><ESC>:call Format()<CR>
-noremap! <C-s> <ESC><ESC>:call Format()<CR>
+noremap <C-s> <ESC><ESC>:call myfunction#Format()<CR>
+noremap! <C-s> <ESC><ESC>:call myfunction#Format()<CR>
 
 noremap <A-o> :on<CR>
 
@@ -297,7 +213,7 @@ map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 nmap s <Plug>(easymotion-overwin-f2)
-" vmap s <Plug>(easymotion-bd-f2)
+vmap s <Plug>(easymotion-bd-f2)
 
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
@@ -308,13 +224,13 @@ noremap <A--> <C-w>-
 noremap <A-,> <C-w><
 noremap <A-.> <C-w>>
 
-if &filetype=="cpp"||&filetype =="c"||&filetype=="java"||&filetype=="arduino"
-  inoremap <expr> = smartchr#loop(' = ',' == ', '=')
-elseif &filetype=="go"
-  inoremap <expr> = smartchr#loop(' = ',' == ', '=')
-endif
+noremap <C-]> g<C-]>
+
+noremap <silent> gb :Denite buffer<CR>
+
+inoremap <expr> = smartchr#loop(' = ',' == ', '=')
 
 inoremap <expr> , smartchr#loop(', ',',')
 
-tnoremap <C-[> <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
 " }}}
