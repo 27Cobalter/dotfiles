@@ -53,12 +53,14 @@ set autoindent
 set scrolloff=1
 " マウス無効
 set mouse-=a
-
+" 文字列置換をインタラクティブに
+set inccommand=split
+" プレビューをいれない
 set completeopt=menuone
-
+" clipboard
 set clipboard&
 set clipboard^=unnamedplus
-
+"スペルチェック
 set spell
 
 " 前回の編集場所から開始できる(rootのvimrcからパクってきたからよくわからん)
