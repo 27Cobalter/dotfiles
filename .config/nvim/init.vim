@@ -63,19 +63,6 @@ set clipboard^=unnamedplus
 "スペルチェック
 set spell
 
-" 前回の編集場所から開始できる(rootのvimrcからパクってきたからよくわからん)
-if has("autocmd")
-  augroup nyan
-  autocmd!
-  autocmd BufReadPost *
-  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-  \   exe "normal! g'\"" |
-  \ endif
-  autocmd BufNewFile,BufReadPre /media/*,/run/media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-  autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
-  augroup END
-endif
-
 " cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
 if has("cscope") && filereadable("/usr/bin/cscope")
    set csprg=/usr/bin/cscope
@@ -159,6 +146,20 @@ command Nsc call myfunction#Nsc()
 " }}}
 
 " autocmdとか{{{
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" 前回の編集場所から開始
+augroup nyan
+  autocmd!
+  autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
+  autocmd BufNewFile,BufReadPre /media/*,/run/media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+  autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
+augroup END
+
+" インサートモードを離れたときにIMEをオフにする
 augroup IMEGroup
   autocmd!
   autocmd InsertLeave * :call ToggleIbusEngine('x')
@@ -178,8 +179,6 @@ colorscheme jellybeans
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
 
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-
 if filereadable(expand('~/.config/nvim/token.vim'))
   source ~/.config/nvim/token.vim
 endif
@@ -191,52 +190,4 @@ let g:syntaxCheck=0
 call gina#custom#command#alias('status', 'st')
 call gina#custom#command#option('st','-s')
 call gina#custom#command#option('st','--opener','split')
-
-" }}}
-
-" キー設定{{{
-" 自作関数のマッピングとか
-cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
-noremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
-cnoremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
-inoremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
-
-noremap <C-l> <ESC><ESC>:call myfunction#Run()<CR>
-noremap! <C-l> <ESC><ESC>:call myfunction#Run()<CR>
-
-noremap <C-s> <ESC><ESC>:call myfunction#Format()<CR>
-noremap! <C-s> <ESC><ESC>:call myfunction#Format()<CR>
-
-noremap <A-o> :on<CR>
-
-noremap <A-p> gt<CR>
-noremap <A-n> gT<CR>
-noremap <A-o> :tabonly<CR>
-noremap <A-t><CR> :tabedit<CR>:Startify<CR>
-
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-nmap s <Plug>(easymotion-overwin-f2)
-vmap s <Plug>(easymotion-bd-f2)
-
-noremap <A-h> <C-w>h
-noremap <A-j> <C-w>j
-noremap <A-k> <C-w>k
-noremap <A-l> <C-w>l
-noremap <A-+> <C-w>+
-noremap <A--> <C-w>-
-noremap <A-,> <C-w><
-noremap <A-.> <C-w>>
-
-noremap <C-]> g<C-]>
-
-noremap <silent> gb :Denite buffer<CR>
-
-inoremap <expr> = smartchr#loop(' = ',' == ', '=')
-
-inoremap <expr> , smartchr#loop(', ',',')
-
-tnoremap <ESC> <C-\><C-n>
 " }}}
