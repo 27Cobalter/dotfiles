@@ -41,7 +41,7 @@ setopt magic_equal_subst
 setopt EXTENDED_HISTORY
 setopt hist_ignore_all_dups
 
-autoload promptinit -U colors -Uz vcs_info
+autoload promptinit -U colors -Uz vcs_info compinit
 zmodload zsh/zpty
 setopt dvorak
 setopt auto_pushd
