@@ -14,7 +14,7 @@ match       響                   ヴェールヌイ
 pattern_all アイドルマスター     アイドルマスター(.*)
 
 # ボイチェビ
-pattern_all ボイチェビ           ^VOICEROID$|^CEVIO$|^VOCALOID$|^Vocaloid$|^CeVIO$|Voiceroid$|^vocaloid$|^cevio$|voiceroid$|^ボイスロイド$|^ボーカロイド$|^チェビオ$
+pattern_all ボイチェビ           ^VOICEROID$|^CEVIO$|^VOCALOID$|^Vocaloid$|^CeVIO$|Voiceroid$|^vocaloid$|^cevio$|voiceroid$|^ボイスロイド$|^ボーカロイド$|^チェビオ$|^IA$|^紲星あかり$|^結月ゆかり$
 match_all  結月ゆかり            結月ゆかり
 pattern_all  IA                  ^IA$|^IA_-ARIA_ON_THE_PLANETES-$
 pattern_all  ONE                 ^ONE$|^OИE$|^ONE_-ARIA_ON_THE_PLANETES-$
