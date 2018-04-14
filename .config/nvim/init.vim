@@ -146,8 +146,6 @@ command Nsc call myfunction#Nsc()
 " }}}
 
 " autocmdとか{{{
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-
 " 前回の編集場所から開始
 augroup nyan
   autocmd!
