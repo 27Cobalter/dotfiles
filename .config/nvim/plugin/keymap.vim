@@ -37,7 +37,7 @@ noremap <C-]> g<C-]>
 
 noremap <silent> gb :Denite buffer<CR>
 
-inoremap <expr> = smartchr#loop(' = ',' == ', '=')
+inoremap <expr> = smartchr#loop(' = ',' == ', '=', '==')
 
 inoremap <expr> , smartchr#loop(', ',',')
 
