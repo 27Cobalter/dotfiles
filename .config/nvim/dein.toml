@@ -62,3 +62,9 @@ repo = 'lilydjwg/colorizer'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+hook_source = '''
+  let g:loaded_matchparen = 1
+'''
