@@ -17,13 +17,6 @@ noremap <A-n> gT<CR>
 noremap <A-o> :tabonly<CR>
 noremap <A-t><CR> :tabedit<CR>:Startify<CR>
 
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-nmap s <Plug>(easymotion-overwin-f2)
-vmap s <Plug>(easymotion-bd-f2)
-
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
 noremap <A-k> <C-w>k
@@ -34,8 +27,6 @@ noremap <A-,> <C-w><
 noremap <A-.> <C-w>>
 
 noremap <C-]> g<C-]>
-
-noremap <silent> gb :Denite buffer<CR>
 
 inoremap <expr> = smartchr#loop(' = ',' == ', '=', '==')
 
