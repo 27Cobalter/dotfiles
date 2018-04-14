@@ -60,3 +60,5 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'lilydjwg/colorizer'
 
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
