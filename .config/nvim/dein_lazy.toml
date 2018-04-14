@@ -193,3 +193,7 @@ hook_source = '''
   let g:highlighter#project_root_signs = ['.git']
 '''
 on_path = '.*'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+on_i = 1
