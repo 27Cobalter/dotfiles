@@ -36,7 +36,7 @@ my dotfiles
     ```
     $ yaourt -G ibus-mozc
     $ cd ibus-mozc
-    $ sed -ie "s/https:\/\/github.com\/google\/mozc.git.*/https:\/\/github.com\/KondoTakumi\/mozc.git/g" PKGBUILD
+    $ sed -ie "s/https:\/\/github.com\/google\/mozc.git.*/https:\/\/github.com\/27Cobalter\/mozc.git/g" PKGBUILD
     $ makepkg -s
     $ yaourt -U mozc-*
     $ yaourt -U ibus-mozc-*
