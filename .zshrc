@@ -84,15 +84,6 @@ if which trash-put &>/dev/null; then
   alias rm=trash-put
 fi
 
-if [ ! -e ~/.autojump ]; then
-  printf 'install autojump? [y/N]: '
-  if read -q; then
-    git clone https://github.com/wting/autojump.git ~/.autojump
-    ./.autojump/install.py
-  fi
-fi
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-
 if ! which peco &>/dev/null; then
   [[ $- != *i* ]] && return
   [[ -z "$TMUX" ]] && exec tmux
