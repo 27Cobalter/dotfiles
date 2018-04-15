@@ -1,7 +1,7 @@
 let g:lightline = {
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ], 
+        \   'left': [ [ 'mode', 'paste' ], [ 'gina', 'filename' ] ], 
         \   'right': [ [ 'syntastic', 'lineinfo' ],
         \              [ 'percent' ],
         \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -9,7 +9,7 @@ let g:lightline = {
         \ 'component_function': {
         \   'modified': 'LightlineModified',
         \   'readonly': 'LightlineReadonly',
-        \   'fugitive': 'LightlineFugitive',
+        \   'gina': 'LightlineGina',
         \   'filename': 'LightlineFilename',
         \   'fileformat': 'LightlineFileformat',
         \   'filetype': 'LightlineFiletype',
@@ -43,9 +43,9 @@ function! LightlineFilename()
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && '' != fugitive#head()
-    return "\u2b60 ".fugitive#head()
+function! LightlineGina()
+  if &ft !~? 'vimfiler\|gundo' && '' != gina#component#repo#branch()
+    return "\u2b60 ".gina#component#repo#branch()
   else
     return ''
   endif

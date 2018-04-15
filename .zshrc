@@ -42,7 +42,7 @@ setopt magic_equal_subst
 setopt EXTENDED_HISTORY
 setopt hist_ignore_all_dups
 
-autoload promptinit -U colors -Uz vcs_info
+autoload promptinit -U colors -Uz vcs_info compinit
 zmodload zsh/zpty
 setopt dvorak
 setopt auto_pushd
@@ -69,8 +69,21 @@ alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
 alias cat="lolcat"
 
+if [ ! -e ~/.fzf ]; then
+  printf 'install fzf? [y/N]: '
+  if read -q; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+  fi
+fi
+
 if which trash-put &>/dev/null; then
   alias rm=trash-put
+fi
+
+if ! which percol &>/dev/null; then
+  [[ $- != *i* ]] && return
+  [[ -z "$TMUX" ]] && exec tmux
 fi
 
 # percolでhistory検索
@@ -115,8 +128,4 @@ if [[ ! -n "$TMUX" ]]; then
   elif [[ -n "$ID" ]]; then
     exec tmux attach-session -t $ID
   fi
-fi
-
-if ( which zprof > /dev/null 2>&1 ) ; then
-  zprof
 fi

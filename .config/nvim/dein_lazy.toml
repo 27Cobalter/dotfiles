@@ -32,7 +32,6 @@ on_i = 1
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
 
-
 [[plugins]]
 repo = 'zchee/deoplete-clang'
 hook_source = '''
@@ -84,6 +83,7 @@ repo = 'Shougo/denite.nvim'
 hook_source = '''
   call denite#custom#map('insert', '<C-a>', '<denite:move_caret_to_head>')
   call denite#custom#map('insert', '<C-j>', '<denite:do_action:default>')
+  noremap <silent> gb :Denite buffer<CR>
 '''
 on_path = '.*'
 
@@ -192,4 +192,23 @@ hook_source = '''
   let g:highlighter#auto_update = 1
   let g:highlighter#project_root_signs = ['.git']
 '''
+on_path = '.*'
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+hook_source = '''
+  let g:table_mode_corner = '|'
+'''
+on_path = '.*'
+
+[[plugins]]
+repo = 'simeji/winresizer'
+hook_source = '''
+  let g:winresizer_vert_resize = 1
+  let g:winresizer_horiz_resize = 1
+'''
+on_path = '.*'
+
+[[plugins]]
+repo = 'vim-scripts/ViewOutput'
 on_path = '.*'

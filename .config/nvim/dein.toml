@@ -40,9 +40,6 @@ repo = 'twitvim/twitvim'
 repo = 'lambdalisue/gina.vim'
 
 [[plugins]]
-repo = 'haya14busa/incsearch.vim'
-
-[[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_source = '''
   let g:EasyMotion_do_mapping = 0
@@ -55,11 +52,16 @@ repo = 'itchyny/lightline.vim'
 repo = 'vim-syntastic/syntastic'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'lilydjwg/colorizer'
 
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+hook_source = '''
+  let g:loaded_matchparen = 1
+'''
