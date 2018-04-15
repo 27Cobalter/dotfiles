@@ -33,3 +33,6 @@ inoremap <expr> = smartchr#loop(' = ',' == ', '=', '==')
 inoremap <expr> , smartchr#loop(', ',',')
 
 tnoremap <ESC> <C-\><C-n>
+
+nmap s <Plug>(easymotion-overwin-f2)
+vmap s <Plug>(easymotion-bd-f2)
