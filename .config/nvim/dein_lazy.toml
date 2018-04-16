@@ -217,3 +217,10 @@ on_path = '.*'
 [[plugins]]
 repo = 'vim-scripts/ViewOutput'
 on_path = '.*'
+
+[[plugins]]
+repo = 'dbgx/lldb.nvim'
+hook_source = '''
+  nmap <C-y> <Plug>LLBreakSwitch
+'''
+on_ft = ['c', 'cpp']
