@@ -137,6 +137,11 @@ repo = 'Shougo/context_filetype.vim'
 on_path = '.*'
 
 [[plugins]]
+repo = 'osyo-manga/vim-precious'
+on_source = [ 'context_filetype.vim' ]
+depends = 'context_filetype.vim'
+
+[[plugins]]
 repo = 'tpope/vim-surround'
 depends = ['vim-repeat']
 on_path = '.*'
