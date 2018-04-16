@@ -138,7 +138,6 @@ on_path = '.*'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
-on_source = [ 'context_filetype.vim' ]
 depends = 'context_filetype.vim'
 
 [[plugins]]
