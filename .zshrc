@@ -80,7 +80,7 @@ alias libreoffice="libreoffice > /dev/null 2>&1&"
 function arduino (){platformio $@ && ln -s $HOME/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyUSB0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
 alias cat="lolcat"
 
-if [ ! -e ~/.fzf ]; then
+if ! which fzf &>/dev/null; then
   printf 'install fzf? [y/N]: '
   if read -q; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
