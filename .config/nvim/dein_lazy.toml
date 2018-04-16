@@ -189,7 +189,7 @@ on_ft = ['css', 'html', 'jsp']
 
 [[plugins]]
 repo = 'pasela/unite-webcolorname'
-on_ft = ['css', 'html', 'jsp']
+on_path = '.*'
 
 [[plugins]]
 repo = 'KeitaNakamura/highlighter.nvim'
