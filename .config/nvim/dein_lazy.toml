@@ -132,14 +132,6 @@ repo = 'Townk/vim-autoclose'
 on_path = '.*'
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = 'context_filetype.vim'
-
-[[plugins]]
 repo = 'tpope/vim-surround'
 depends = ['vim-repeat']
 on_path = '.*'
