@@ -1,0 +1,10 @@
+#!/bin/sh
+echo "プラグインのアップデート"
+cd $HOME/.mikutter/plugin
+ls | xargs -P 100 -I {} bash -c 'cd "{}" && git reset --hard && git pull'
+
+echo "mikutterのアップデート"
+cd ~/.nyan/mikutter
+git checkout master && git pull
+git checkout develop && git pull
+bundle update
