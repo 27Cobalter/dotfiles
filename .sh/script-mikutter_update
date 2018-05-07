@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "プラグインのアップデート"
 cd $HOME/.mikutter/plugin
-ls | xargs -P 100 -I {} bash -c 'cd "{}" && git reset --hard && git pull'
+ls | xargs -P 100 -I {} bash -c 'cd "{}" && git pull'
 
 echo "mikutterのアップデート"
 cd ~/.nyan/mikutter
