@@ -1,6 +1,7 @@
 #!/bin/zsh
 # zplugの設定
 TERM=xterm-256color
+bindkey -e
 
 if [ ! -e ~/.zplug ]; then
   printf 'install zplug? [y/N]: '
@@ -94,7 +95,7 @@ if which trash-put &>/dev/null; then
   alias rm=trash-put
 fi
 
-if ! which peco &>/dev/null; then
+if ! which percol &>/dev/null; then
   [[ $- != *i* ]] && return
   [[ -z "$TMUX" ]] && exec tmux
 fi
@@ -105,14 +106,14 @@ if [ -f '/home/cobalt/.nyan/google-cloud-sdk/path.zsh.inc' ]; then source '/home
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/cobalt/.nyan/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/completion.zsh.inc'; fi
 
-# pecoでhistory検索
-function peco-select-history(){
-  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER")
+# percolでhistory検索
+function percol-select-history(){
+  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | percol --query "$LBUFFER")
   CURSOR=$#BUFFER
   zle clear-screen
 }
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+zle -N percol-select-history
+bindkey '^r' percol-select-history
 
 # fzfでhistory検索
 function fzf-select-history(){
@@ -124,16 +125,16 @@ zle -N fzf-select-history
 # ESC R
 bindkey '^[r' fzf-select-history
 
-# pecoでkill
-function peco-kill(){
-  ps -aux | peco | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
+# percolでkill
+function percol-kill(){
+  ps -aux | percol | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
 }
 # fzfでkill
 function fzf-kill(){
   ps -aux | fzf --reverse --height 50% | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
 }
 
-# pecoでtmuxのセッションを選択
+# percolでtmuxのセッションを選択
 if [[ ! -n "$TMUX" ]]; then
   ID="`tmux list-sessions`"
   if [[ -z "$ID" ]]; then
@@ -141,7 +142,7 @@ if [[ ! -n "$TMUX" ]]; then
   fi
   create_new_session="Create New Session"
   ID="${create_new_session}:\n${ID}"
-  ID="`echo $ID | peco | cut -d: -f1`"
+  ID="`echo $ID | percol | cut -d: -f1`"
   if [[ "$ID" = "${create_new_session}" ]]; then
     exec tmux new-session
   elif [[ -n "$ID" ]]; then
