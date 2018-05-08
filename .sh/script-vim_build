@@ -1,5 +1,5 @@
 #!/bin/zsh
-cd ~/.nyan/vim
+cd /usr/local/src/vim
 git=`git pull`
 echo $git
 if [[ "Already up to date." != $git ]]; then
@@ -11,7 +11,7 @@ else
   old_vim="vim is latest version"
 fi
 
-cd ~/.nyan/neovim
+cd /usr/local/src/neovim
 git=`git pull`
 echo $git
 if [[ "Already up to date." != $git ]]; then
