@@ -10,4 +10,4 @@ sudo nm-applet&
 xbindkeys
 ~/.sh/script-init_touchpad
 ~/.sh/script-rebind_g633 > /dev/null
-setxkbmap -option ctrl:nocaps dvorak
+setxkbmap -option ctrl:nocaps
