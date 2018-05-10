@@ -122,15 +122,7 @@ endif
 " IMEを切り換える関数
 function ToggleIbusEngine(mode)
   if a:mode=='x'
-      call system('ibus engine "xkb:jp::jpn"')
-  elseif a:mode=='k'
-      call system('ibus engine "kkc"')
-  else
-    if split(system('ibus engine'))[0]=="kkc"
-      call system('ibus engine "xkb:jp::jpn"')
-    else
-      call system('ibus engine "kkc"')
-    endif
+    call system('fcitx-remote -c')
   endif
 endfunction
 " }}}
