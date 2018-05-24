@@ -30,8 +30,8 @@ match_all  琴葉葵                琴葉葵
 match_all  ゆかいあ              結月ゆかり IA
 match_all  ゆかまき              結月ゆかり 弦巻マキ
 match_all  いあおね              IA ONE
-match_all  あかいあ              紲星あかり IA
-match_all  あかゆか              紲星あかり 結月ゆかり
+match_all  いあきず              紲星あかり IA
+match_all  ゆづきず              紲星あかり 結月ゆかり
 
 
 # アズールレーン
