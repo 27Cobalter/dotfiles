@@ -68,3 +68,6 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+
+[[plugins]]
+repo = 'skywind3000/asyncrun.vim'
