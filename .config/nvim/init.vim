@@ -120,17 +120,11 @@ endif
 
 " 自作関数宣言{{{
 " IMEを切り換える関数
-function ToggleIbusEngine(mode)
-  if a:mode=='x'
-      call system('ibus engine "xkb:jp::jpn"')
-  elseif a:mode=='k'
-      call system('ibus engine "kkc"')
+function SetIME(mode)
+  if a:mode=='off'
+    call system('fcitx-remote -c')
   else
-    if split(system('ibus engine'))[0]=="kkc"
-      call system('ibus engine "xkb:jp::jpn"')
-    else
-      call system('ibus engine "kkc"')
-    endif
+    call system('fcitx-remote -o')
   endif
 endfunction
 " }}}
@@ -158,10 +152,10 @@ augroup nyan
 augroup END
 
 " インサートモードを離れたときにIMEをオフにする
-augroup IMEGroup
-  autocmd!
-  autocmd InsertLeave * :call ToggleIbusEngine('x')
-augroup END
+" augroup IMEGroup
+"   autocmd!
+  autocmd InsertLeave * :call SetIME('off')
+" augroup END
 
 if has('nvim')
 " Terminalのときは行番号とスペルチェックをなしにする
