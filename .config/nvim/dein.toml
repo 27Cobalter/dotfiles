@@ -71,3 +71,4 @@ repo = 'osyo-manga/vim-precious'
 
 [[plugins]]
 repo = 'skywind3000/asyncrun.vim'
+
