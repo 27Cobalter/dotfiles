@@ -1,6 +1,13 @@
 #!/bin/zsh
 # zplugの設定
+# The next line updates PATH for the Google Cloud SDK.
+#if [ -f '/home/cobalt/.nyan/google-cloud-sdk/path.bash.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+#if [ -f '/home/cobalt/.nyan/google-cloud-sdk/completion.bash.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/completion.bash.inc'; fi
 TERM=xterm-256color
+
+# cgroupfs-mount
 
 if [ ! -e ~/.zplug ]; then
   printf 'install zplug? [y/N]: '
@@ -68,6 +75,7 @@ alias ll="ls --color=auto -Fl"
 alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
 alias cat="lolcat"
+# export PATH="$HOME/.rbenv/bin:$PATH"
 
 if [ ! -e ~/.fzf ]; then
   printf 'install fzf? [y/N]: '
@@ -114,18 +122,18 @@ function fzf-kill(){
   ps -aux | fzf --reverse --height 50% | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
 }
 
-# percolでtmuxのセッションを選択
-if [[ ! -n "$TMUX" ]]; then
-  ID="`tmux list-sessions`"
-  if [[ -z "$ID" ]]; then
-    exec tmux new-session
-  fi
-  create_new_session="Create New Session"
-  ID="${create_new_session}:\n${ID}"
-  ID="`echo $ID | percol | cut -d: -f1`"
-  if [[ "$ID" = "${create_new_session}" ]]; then
-    exec tmux new-session
-  elif [[ -n "$ID" ]]; then
-    exec tmux attach-session -t $ID
-  fi
-fi
+## percolでtmuxのセッションを選択
+#if [[ ! -n "$TMUX" ]]; then
+#  ID="`tmux list-sessions`"
+#  if [[ -z "$ID" ]]; then
+#    exec tmux new-session
+#  fi
+#  create_new_session="Create New Session"
+#  ID="${create_new_session}:\n${ID}"
+#  ID="`echo $ID | percol | cut -d: -f1`"
+#  if [[ "$ID" = "${create_new_session}" ]]; then
+#    exec tmux new-session
+#  elif [[ -n "$ID" ]]; then
+#    exec tmux attach-session -t $ID
+#  fi
+#fi

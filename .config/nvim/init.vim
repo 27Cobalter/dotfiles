@@ -173,7 +173,7 @@ endif
 " プラグインに関する設定{{{
 set t_Co=256
 syntax on
-colorscheme jellybeans
+" colorscheme jellybeans
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
 
