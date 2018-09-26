@@ -57,7 +57,7 @@ zstyle ':vcs_info:*' formats '%F{black}[%s][* %F{green}%b%F{black}]%f'
 zstyle ':vcs_info:*' actionformats '%F{black}[%s][* %F{green}%b%F{black}(%F{red}%a%F{black})%F{black}]%f'
 precmd(){ vcs_info }
 prompt="%(?.%K{green}.%K{red})%F{black}${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)%k%(?.%F{green}.%F{red})$ALLOW
-%F{white}%K{blue}$USER%F{red}@%F{magenta}$HOST%F{blue}%K{cyan}$ALLOW%F{black}%K{cyan}%~%F{cyan}%K{yellow}$ALLOW\$vcs_info_msg_0_%F{yellow}%k$ALLOW
+%F{white}%K{yellow}$USER%F{red}@%F{magenta}$HOST%F{yellow}%K{cyan}$ALLOW%F{black}%K{cyan}%~%F{cyan}%K{yellow}$ALLOW\$vcs_info_msg_0_%F{yellow}%k$ALLOW
 %F{red}${ALLOW2}%F{yellow}${ALLOW2}%F{green}${ALLOW2}%f "
 
 bindkey "^[[Z" reverse-menu-complete
@@ -98,12 +98,6 @@ if ! which peco &>/dev/null; then
   [[ $- != *i* ]] && return
   [[ -z "$TMUX" ]] && exec tmux
 fi
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/cobalt/.nyan/google-cloud-sdk/path.zsh.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/cobalt/.nyan/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/completion.zsh.inc'; fi
 
 # pecoでhistory検索
 function peco-select-history(){
