@@ -21,8 +21,12 @@ if ! zplug check --verbose; then
 fi
 zplug load --verbose > /dev/null 2>&1
 
+# viモード関連のbindkey設定
 # zsh-autosuggestionsをいい感じにする
 bindkey -M viins '^F' forward-char
+# set bs start
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
 
 # zsh-syntax-highlightingの色設定
 ZSH_HIGHLIGHT_STYLES[alias]=fg=none,bold
