@@ -1,8 +1,8 @@
 " キーマップ
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
-noremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
-cnoremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
-inoremap <silent> <C-c> <C-c>:call ToggleIbusEngine('x')<CR>
+noremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
+cnoremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
+inoremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
 
 noremap <C-l> <ESC><ESC>:call myfunction#Run()<CR>
 noremap! <C-l> <ESC><ESC>:call myfunction#Run()<CR>
