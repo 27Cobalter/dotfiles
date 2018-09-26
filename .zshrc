@@ -1,7 +1,7 @@
 #!/bin/zsh
 # zplugの設定
 TERM=xterm-256color
-bindkey -e
+bindkey -v
 
 if [ ! -e ~/.zplug ]; then
   printf 'install zplug? [y/N]: '
@@ -20,6 +20,9 @@ if ! zplug check --verbose; then
   fi
 fi
 zplug load --verbose > /dev/null 2>&1
+
+# zsh-autosuggestionsをいい感じにする
+bindkey -M viins '^F' forward-char
 
 # zsh-syntax-highlightingの色設定
 ZSH_HIGHLIGHT_STYLES[alias]=fg=none,bold
