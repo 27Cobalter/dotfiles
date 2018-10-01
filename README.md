@@ -3,16 +3,22 @@ my dotfiles
 
 # 環境つくるときのメモ
 - Githubから
+  - yay
+    ```
+    $ git clone https://aur.archlinux.org/yay.git
+    $ cd yay
+    $ makepkg -si
+    ```
   - i3blocks
     ```
-    $ git clone https://github.com/vivien/i3blocks
+    $ git clone https://github.com/vivien/i3blocks.git
     $ cd i3blocks
     $ make clean debug
     # make install
     ```
   - base16-xfce4-terminal
     ```
-    $ git clone https://github.com/chriskempson/base16-xfce4-terminal
+    $ git clone https://github.com/chriskempson/base16-xfce4-terminal.git
     $ cd base16-xfce4-terminal
     $ ./convert2themes
     $ rm themes/*.16.theme
@@ -20,38 +26,32 @@ my dotfiles
     ```
   - PixivAutoTag.user.js
     ```
-    $ git clone https://github.com/syusui-s/PixivAutoTag.user.js
+    $ git clone https://github.com/syusui-s/PixivAutoTag.user.js.git
     $ vivaldi-stable&
     ```
   - dvorakJP
     ```
-    $ git clone https://github.com/hfm/ime-for-dvorakJp
-    $ ibus-setup&
+    $ git clone https://github.com/27Cobalter/keyboard-layouts.git
     ```
   - mikutter
     ```
-    $ git clone git://toshia.dip.jp/mikutter
-    ```
-  - mozc
-    ```
-    $ yaourt -G ibus-mozc
-    $ cd ibus-mozc
-    $ sed -ie "s/https:\/\/github.com\/google\/mozc.git.*/https:\/\/github.com\/27Cobalter\/mozc.git/g" PKGBUILD
-    $ makepkg -s
-    $ yaourt -U mozc-*
-    $ yaourt -U ibus-mozc-*
+    $ git clone git://toshia.dip.jp/mikutter.git
     ```
 
 - 必要なパッケージ
   - acpi
-  - peco
+  - clang
   - ctags
   - dmenu
+  - fcitx
+  - fcitx-config-tool
+  - fcitx-mozc
   - feh
   - fzf
+  - go
   - i3-wm
-  - ibus
-  - nvidia
+  - ninja
+  - nvidia (PCに合ったグラフィックドライバ)
   - nvidia-lts
   - nvidia-settings
   - nvidia-utils
@@ -65,12 +65,11 @@ my dotfiles
   - ttf-symbola
   - urlview
   - vivaldi
+  - xbacklight
   - xbindkeys
-  - nvidia (PCに合ったグラフィックドライバ)
   - xfce4-terminal
   - xkb-switch
   - xorg-server, xorg-xdpyinfo, xorg-init, xorg-xinput, xorg-xrandr
-  - xbacklight
   - xsel
   - xterm
   - zsh
@@ -80,7 +79,9 @@ my dotfiles
   - alsa-utils
   - compton
   - lightdm, lightdm-gtk-greeter, lightdm-gkt-greeter-settings
+  - mplayer
   - networkmanager, network-manager-applet, wpa_supplicant
+  - nmtui
   - thunar
   - ttf-dejavu
 

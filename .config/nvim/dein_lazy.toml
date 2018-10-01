@@ -112,6 +112,12 @@ repo = 'fatih/vim-go'
 on_ft = ['go']
 
 [[plugins]]
+repo = 'zchee/deoplete-go'
+hook_post_update = '''
+  let g:dein#plugin.build = 'make'
+'''
+
+[[plugins]]
 repo = 'sudar/vim-arduino-syntax'
 on_ft = ['arduino']
 
@@ -129,10 +135,6 @@ on_i = 1
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
-on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
 on_path = '.*'
 
 [[plugins]]
@@ -183,7 +185,7 @@ on_ft = ['css', 'html', 'jsp']
 
 [[plugins]]
 repo = 'pasela/unite-webcolorname'
-on_ft = ['css', 'html', 'jsp']
+on_path = '.*'
 
 [[plugins]]
 repo = 'KeitaNakamura/highlighter.nvim'
@@ -210,4 +212,28 @@ on_path = '.*'
 
 [[plugins]]
 repo = 'vim-scripts/ViewOutput'
+on_path = '.*'
+
+[[plugins]]
+repo = 'dbgx/lldb.nvim'
+hook_source = '''
+  nmap <C-y> <Plug>LLBreakSwitch
+'''
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'himanoa/ttene.nvim'
+hook_post_source = '''
+  let g:ttene_play_command = 'mplayer -ao alsa'
+'''
+hook_post_update = '''
+  let g:dein#plugin.build = 'magicalstick | grep "てねっ[0-9]" | xargs -P4 -In1 wget n1 -P voices/'
+'''
+on_i = 1
+
+[[plugins]]
+repo = 'luochen1990/rainbow'
+hook_source = '''
+let g:rainbow_active = 1
+'''
 on_path = '.*'

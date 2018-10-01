@@ -6,6 +6,7 @@
 # The next line enables shell command completion for gcloud.
 #if [ -f '/home/cobalt/.nyan/google-cloud-sdk/completion.bash.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/completion.bash.inc'; fi
 TERM=xterm-256color
+bindkey -v
 
 # cgroupfs-mount
 
@@ -28,6 +29,13 @@ if ! zplug check --verbose; then
   fi
 fi
 zplug load --verbose > /dev/null 2>&1
+
+# viモード関連のbindkey設定
+# zsh-autosuggestionsをいい感じにする
+bindkey -M viins '^F' forward-char
+# set bs start
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
 
 # zsh-syntax-highlightingの色設定
 ZSH_HIGHLIGHT_STYLES[alias]=fg=none,bold
@@ -58,6 +66,15 @@ setopt correct
 setopt list_packed
 setopt no_beep
 setopt prompt_subst
+ALLOW=$'\u2b80'
+ALLOW2=$'\u2b81'
+UPPERALLOW=$'\u2b11'
+zstyle ':vcs_info:*' formats '%F{black}[%s][* %F{green}%b%F{black}]%f'
+zstyle ':vcs_info:*' actionformats '%F{black}[%s][* %F{green}%b%F{black}(%F{red}%a%F{black})%F{black}]%f'
+precmd(){ vcs_info }
+prompt="%(?.%K{green}.%K{red})%F{black}${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)%k%(?.%F{green}.%F{red})$ALLOW
+%F{white}%K{blue}$USER%F{red}@%F{magenta}$HOST%F{blue}%K{cyan}$ALLOW%F{black}%K{cyan}%~%F{cyan}%K{yellow}$ALLOW\$vcs_info_msg_0_%F{yellow}%k$ALLOW
+%F{red}${ALLOW2}%F{yellow}${ALLOW2}%F{green}${ALLOW2}%f "
 
 bindkey "^[[Z" reverse-menu-complete
 bindkey "^P" history-beginning-search-backward
@@ -77,7 +94,9 @@ alias grep="grep --color"
 alias cat="lolcat"
 # export PATH="$HOME/.rbenv/bin:$PATH"
 
-if [ ! -e ~/.fzf ]; then
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if ! which fzf &>/dev/null; then
   printf 'install fzf? [y/N]: '
   if read -q; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
