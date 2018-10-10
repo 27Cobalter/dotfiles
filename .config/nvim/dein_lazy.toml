@@ -83,6 +83,7 @@ hook_source = '''
   call denite#custom#map('insert', '<C-a>', '<denite:move_caret_to_head>')
   call denite#custom#map('insert', '<C-j>', '<denite:do_action:default>')
   noremap <silent> gb :Denite buffer<CR>
+  noremap <silent> gs :Denite grep<CR>
 '''
 on_path = '.*'
 
