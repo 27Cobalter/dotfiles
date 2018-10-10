@@ -37,4 +37,8 @@ fi
 
 xbacklight -set 50
 
+xrandr --output DVI-0 --off
+feh --bg-center ~/Pictures/conoha_aki.jpg
+xrandr --output --mode 1920x1080 --right-of HDMI-0
+
 exec i3
