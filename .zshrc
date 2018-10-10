@@ -1,5 +1,6 @@
 #!/bin/zsh
 # zplugの設定
+eval "$(pyenv init -)"
 TERM=xterm-256color
 bindkey -v
 
