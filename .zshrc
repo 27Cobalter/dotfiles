@@ -1,4 +1,8 @@
 #!/bin/zsh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # zplugの設定
 TERM=xterm-256color
 bindkey -v
