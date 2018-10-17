@@ -76,6 +76,10 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    endif
    set csverb
 endif
+
+" pyenvのpythonを使用
+let g:python3_host_prog = expand('~/.pyenv/versions/3.6.6/bin/python3.6')
+let g:python_host_prog = expand('~/.pyenv/versions/2.7.15/bin/python2.7')
 " }}}
 
 " プラグインマネージャ"{{{
@@ -183,3 +187,4 @@ call gina#custom#command#alias('status', 'st')
 call gina#custom#command#option('st','-s')
 call gina#custom#command#option('st','--opener','split')
 " }}}
+
