@@ -147,8 +147,6 @@ function zle-line-init zle-keymap-select {
   if [ -n "$TMUX" ]; then
     # tmux set -g status-left "#[bg=colour92, fg=colour176]$vimode#[bg=colour176, fg=colour92][#S]" > /dev/null
     tmux set -g status-left "[#S] #[bg=colour92, fg=colour176]$vimode#[bg=colour176, fg=colour92] " > /dev/null
-  else
-    showmode $vimode
   fi
 }
 zle -N zle-line-init
