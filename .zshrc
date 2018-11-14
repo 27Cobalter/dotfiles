@@ -136,6 +136,19 @@ function fzf-kill(){
   ps -aux | fzf --reverse --height 50% | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
 }
 
+# tmuxのプロンプト
+function zle-line-init zle-keymap-select {
+  vimode="${${KEYMAP/vicmd/NORMAL}/(main|viins)/INSERT}"
+  if [ -n "$TMUX" ]; then
+    # tmux set -g status-left "#[bg=colour92, fg=colour176]$vimode#[bg=colour176, fg=colour92][#S]" > /dev/null
+    tmux set -g status-left "[#S] #[bg=colour92, fg=colour176]$vimode#[bg=colour176, fg=colour92] " > /dev/null
+  else
+    showmode $vimode
+  fi
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # pecoでtmuxのセッションを選択
 if [[ ! -n "$TMUX" ]]; then
   ID="`tmux list-sessions`"
