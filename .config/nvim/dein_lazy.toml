@@ -238,3 +238,9 @@ hook_source = '''
 let g:rainbow_active = 1
 '''
 on_path = '.*'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_source = '''
+'''
+on_path = '.*'
