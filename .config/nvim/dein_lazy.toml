@@ -96,11 +96,6 @@ hook_source = '''
 on_path = '.*'
 
 [[plugins]]
-repo = 'rafi/vim-denite-mpc'
-on_source = ['denite.nvim']
-depends = ['denite.nvim']
-
-[[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_post_update = '''
   let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
@@ -229,16 +224,6 @@ hook_source = '''
   nmap <C-y> <Plug>LLBreakSwitch
 '''
 on_ft = ['c', 'cpp']
-
-[[plugins]]
-repo = 'himanoa/ttene.nvim'
-hook_post_source = '''
-  let g:ttene_play_command = 'mplayer -ao alsa'
-'''
-hook_post_update = '''
-  let g:dein#plugin.build = 'magicalstick | grep "てねっ[0-9]" | xargs -P4 -In1 wget n1 -P voices/'
-'''
-on_i = 1
 
 [[plugins]]
 repo = 'luochen1990/rainbow'
