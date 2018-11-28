@@ -150,8 +150,6 @@ function zle-line-init zle-keymap-select {
   vimode="${${KEYMAP/vicmd/NORMAL}/(main|viins)/INSERT}"
   if [ -n "$TMUX" ]; then
     tmux set -g status-left "[#S] #[bg=colour208, fg=colour131]$vimode#[bg=colour131, fg=colour208] " > /dev/null
-  else
-    showmode $vimode
   fi
 }
 zle -N zle-line-init
