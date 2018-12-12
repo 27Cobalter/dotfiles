@@ -7,6 +7,9 @@ function! myfunction#Format()
     e!
   elseif l:ft=="go"
     GoFmt
+  elseif l:ft=="python"
+    call system('black '.expand("%:p"))
+    e!
   else
     echo 'Not support filetype '.l:ft
   endif
