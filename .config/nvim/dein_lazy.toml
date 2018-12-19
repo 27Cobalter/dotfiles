@@ -138,8 +138,11 @@ repo = 'vim-scripts/smartchr'
 on_i = 1
 
 [[plugins]]
-repo = 'Townk/vim-autoclose'
-on_path = '.*'
+repo ='cohama/lexima.vim'
+hook_source = '''
+  call lexima#add_rule({'at': '\%#\n\s*}', 'char': '}', 'input': '}', 'delete': '}'})
+'''
+on_i = 1
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -234,6 +237,4 @@ on_path = '.*'
 
 [[plugins]]
 repo = 'w0rp/ale'
-hook_source = '''
-'''
 on_path = '.*'
