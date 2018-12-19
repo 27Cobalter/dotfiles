@@ -61,7 +61,7 @@ set completeopt=menuone
 set clipboard&
 set clipboard^=unnamedplus
 "スペルチェック
-set spell
+" set spell
 
 " cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
 if has("cscope") && filereadable("/usr/bin/cscope")
@@ -157,11 +157,11 @@ augroup END
   autocmd InsertLeave * :call SetIME('off')
 " augroup END
 
-if has('nvim')
-" Terminalのときは行番号とスペルチェックをなしにする
-  autocmd TermOpen * set nonumber | set nospell
-  autocmd TermClose * set number | set spell
-endif
+" if has('nvim')
+" " Terminalのときは行番号とスペルチェックをなしにする
+"   autocmd TermOpen * set nonumber | set nospell
+"   autocmd TermClose * set number | set spell
+" endif
 " }}}
 
 " プラグインに関する設定{{{
