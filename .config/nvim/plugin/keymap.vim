@@ -1,16 +1,11 @@
 " キーマップ
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 noremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
-cnoremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
 inoremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
 
-noremap <C-l> <ESC><ESC>:call myfunction#Run()<CR>
-noremap! <C-l> <ESC><ESC>:call myfunction#Run()<CR>
+noremap <Space>ar <ESC><ESC>:call aload#Run()<CR>
 
-noremap <C-s> <ESC><ESC>:call myfunction#Format()<CR>
-noremap! <C-s> <ESC><ESC>:call myfunction#Format()<CR>
-
-noremap <A-o> :on<CR>
+noremap <Space>af <ESC><ESC>:call aload#Format()<CR>
 
 noremap <A-p> gt<CR>
 noremap <A-n> gT<CR>

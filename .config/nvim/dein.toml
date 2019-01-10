@@ -72,3 +72,17 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo = 'skywind3000/asyncrun.vim'
 
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+  set hidden
+  let g:LanguageClient_serverCommands = {
+        \ 'cpp' : ['clangd']
+        \}
+
+  nnoremap <Space>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <Space>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <Space>lr :call LanguageClient#textDocument_rename()<CR>
+'''

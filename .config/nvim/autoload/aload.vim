@@ -1,5 +1,5 @@
 " いま開いているファイルを指定フォーマットになおす
-function! myfunction#Format()
+function! aload#Format()
   w
   let l:ft=&filetype
   if l:ft=="cpp"||l:ft =="c"||l:ft=="java"||l:ft=="arduino"
@@ -15,7 +15,7 @@ function! myfunction#Format()
   endif
 endfunction
 " いま開いているファイルがcppだった場合コンパイルして実行
-function! myfunction#Run()
+function! aload#Run()
   w
   let l:ft=&filetype
   if l:ft=="cpp"
@@ -47,29 +47,29 @@ function! myfunction#Run()
   endif
 endfunction
 " TlistとSrcExplのコマンドをまとめた関数
-function! myfunction#CT()
+function! aload#CT()
   Tlist
   SrcExpl
 endfunction
 " 縦にタブ分割をしてterminalを起動
-function! myfunction#Vterminal()
+function! aload#Vterminal()
     vs
     terminal
 endfunction
 " 横にタブ分割をしてterminalを起動
-function! myfunction#Sterminal()
+function! aload#Sterminal()
     sp
     terminal
 endfunction
 " タブを生成してterminal
-function! myfunction#Terminal()
+function! aload#Terminal()
   tabe
   terminal
 endfunction
 
-function! myfunction#Sc()
+function! aload#Sc()
   let g:syntaxCheck=1
 endfunction
-function! myfunction#Nsc()
+function! aload#Nsc()
   let g:syntaxCheck=0
 endfunction
