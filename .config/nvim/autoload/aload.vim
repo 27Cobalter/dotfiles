@@ -5,11 +5,14 @@ function! aload#Format()
   if l:ft=="cpp"||l:ft =="c"||l:ft=="java"||l:ft=="arduino"
     call system('clang-format -i '.expand("%:p"))
     e!
+    echo "Format succes"
   elseif l:ft=="go"
     GoFmt
+    echo "Format succes"
   elseif l:ft=="python"
     call system('black '.expand("%:p"))
     e!
+    echo "Format succes"
   else
     echo 'Not support filetype '.l:ft
   endif
