@@ -7,6 +7,9 @@ noremap <Space>ar <ESC><ESC>:call aload#Run()<CR>
 
 noremap <Space>af <ESC><ESC>:call aload#Format()<CR>
 
+nnoremap <Space>sn :next<CR>
+nnoremap <Space>sp :prev<CR>
+
 noremap <A-p> gt<CR>
 noremap <A-n> gT<CR>
 noremap <A-o> :tabonly<CR>
