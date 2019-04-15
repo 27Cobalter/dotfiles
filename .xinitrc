@@ -35,6 +35,5 @@ fi
 [ -f /etc/xprofile ] && source /etc/xprofile
 [ -f ~/.xprofile ] && source ~/.xprofile
 
-xbacklight -set 50
 
 exec i3

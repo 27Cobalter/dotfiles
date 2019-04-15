@@ -1,13 +1,15 @@
 #!/bin/sh
-export TERMINAL=xfce4-terminal
+xrandr --output DP-2 --primary&
+
+export TERMINAL=alacritty
+
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 fcitx&
-sh ~/.fehbg &
-compton -b
-sudo nm-applet&
-xbindkeys
-~/.sh/script-init_touchpad
-~/.sh/script-rebind_g633 > /dev/null
-setxkbmap -option ctrl:nocaps
+
+compton -b&
+dunst&
+parcellite&
+sh ~/.fehbg&
+volumeicon&
