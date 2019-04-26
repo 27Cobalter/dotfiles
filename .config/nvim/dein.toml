@@ -86,3 +86,10 @@ hook_add = '''
   nnoremap <Space>ld :call LanguageClient#textDocument_definition()<CR>
   nnoremap <Space>lr :call LanguageClient#textDocument_rename()<CR>
 '''
+
+[[plugins]]
+repo = 'vim-scripts/smartchr'
+hook_add = '''
+  inoremap <expr> = smartchr#loop(' = ',' == ', '=', '==')
+  inoremap <expr> , smartchr#loop(', ',',')
+'''

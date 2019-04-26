@@ -123,10 +123,6 @@ repo = 'tyru/open-browser.vim'
 on_map = ['<Plug>(openbrowser-smart-search)']
 
 [[plugins]]
-repo = 'vim-scripts/smartchr'
-on_i = 1
-
-[[plugins]]
 repo ='cohama/lexima.vim'
 hook_source = '''
   call lexima#add_rule({'at': '\%#\n\s*}', 'char': '}', 'input': '}', 'delete': '}'})
