@@ -60,6 +60,8 @@ set completeopt=menuone
 " clipboard
 set clipboard&
 set clipboard^=unnamedplus
+
+set ambiwidth=double
 "スペルチェック
 " set spell
 
@@ -81,6 +83,7 @@ endif
 " プラグインマネージャ"{{{
 " プラグインがインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
+let g:other_package_path = expand('~/.cache/dein/package')
 " dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 " dein.vim がなければ github から落としてくる

@@ -1,5 +1,6 @@
 #!/bin/zsh
 # zplugの設定
+export VTE_CJK_WIDTH=1
 TERM=xterm-256color
 bindkey -v
 
