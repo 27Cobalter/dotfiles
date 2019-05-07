@@ -53,21 +53,24 @@
   "xbacklight -dec 20"
     XF86MonBrightnessDown
 
-  "amixer sset PCM 5%+"
+  "amixer sset Master 5%+"
     XF86AudioRaiseVolume
 
-  "amixer sset PCM 5%-"
+  "amixer sset Master 5%-"
     XF86AudioLowerVolume
 
-  "~/.sh/script-toggle_touchpad"
-    Hiragana_Katakana
+  "amixer sset Master 0%"
+    XF86AudioMute
+
+#  "~/.sh/script-toggle_touchpad"
+#    Hiragana_Katakana
     # alt + shift + space
 
   "scrot -e 'mv $f ~/Pictures'"
     Print
 
-  "~/.sh/script-toggle_key_layout"
-    alt + space
+#  "~/.sh/script-toggle_key_layout"
+#   alt + space
 
 # specify a mouse button
 # "xterm"

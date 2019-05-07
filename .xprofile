@@ -12,4 +12,4 @@ sh ~/.fehbg &
 sudo nm-applet&
 volumeicon&
 xbindkeys
-# ~/.sh/script-init_touchpad
+~/.sh/script-init_touchpad
