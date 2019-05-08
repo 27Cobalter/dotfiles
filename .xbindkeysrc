@@ -47,10 +47,10 @@
 #   c:41 + m:0x4
 
 # backlight
-  "xbacklight -inc 20"
+  "xbacklight -inc 5"
     XF86MonBrightnessUp
 
-  "xbacklight -dec 20"
+  "xbacklight -dec 5"
     XF86MonBrightnessDown
 
   "amixer sset Master 5%+"
