@@ -15,6 +15,10 @@ noremap <A-n> gT<CR>
 noremap <A-o> :tabonly<CR>
 noremap <A-t><CR> :tabedit<CR>:Startify<CR>
 
+tnoremap <C-w> <C-\><C-n><C-w>
+
+noremap <Space>st :new<CR>:terminal<CR>:startinsert<CR>
+
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
 noremap <A-k> <C-w>k

@@ -133,13 +133,13 @@ endfunction
 " }}}
 
 " コマンド宣言{{{
-command Run call myfunction#Run()
-command CT call myfunction#CT()
-command VT call myfunction#Vterminal()
-command ST call myfunction#Sterminal()
-command Terminal call myfunction#Terminal()
-command Sc call myfunction#Sc()
-command Nsc call myfunction#Nsc()
+command Run call aload#Run()
+command CT call aload#CT()
+command VT call aload#Vterminal()
+command ST call aload#Sterminal()
+command Terminal call aload#Terminal()
+command Sc call aload#Sc()
+command Nsc call aload#Nsc()
 " }}}
 
 " autocmdとか{{{
@@ -160,11 +160,12 @@ augroup END
   autocmd InsertLeave * :call SetIME('off')
 " augroup END
 
-" if has('nvim')
-" " Terminalのときは行番号とスペルチェックをなしにする
-"   autocmd TermOpen * set nonumber | set nospell
-"   autocmd TermClose * set number | set spell
-" endif
+if has('nvim')
+" Terminalのときは行番号とスペルチェックをなしにする
+  autocmd TermOpen * set nonumber | set nospell
+  autocmd TermClose * set number | set spell
+  autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+endif
 " }}}
 
 " プラグインに関する設定{{{
