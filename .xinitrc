@@ -36,5 +36,6 @@ fi
 [ -f ~/.xprofile ] && source ~/.xprofile
 
 xbacklight -set 50
+amixer sset Master 0%
 
 exec i3
