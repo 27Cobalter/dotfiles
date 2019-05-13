@@ -3,13 +3,5 @@ export TERMINAL=xfce4-terminal
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
-fcitx&
 
-compton -b&
-dunst&
-parcellite&
-sh ~/.fehbg &
-sudo nm-applet&
-volumeicon&
-xbindkeys
 ~/.sh/script-init_touchpad
