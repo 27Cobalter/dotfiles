@@ -7,4 +7,5 @@ xinput set-prop $devnum $tapping 1
 NaturalScrolle=$(xinput list-props $devnum | grep "Natural Scrolling Enabled (" | sed "s/.*(\([0-9]*\)).*/\1/")
 xinput set-prop $devnum $NaturalScrolle 1
 
-middle=$(xinput list-props $devnum | grep "Middle Emulation Enabled (" | sed "s/.*(\([0-9]*\)).*/\1/")xinput set-prop $devnum $middle 1
+middle=$(xinput list-props $devnum | grep "Middle Emulation Enabled (" | sed "s/.*(\([0-9]*\)).*/\1/")
+xinput set-prop $devnum $middle 1

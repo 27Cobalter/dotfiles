@@ -62,9 +62,8 @@
   "amixer sset Master 0%"
     XF86AudioMute
 
-#  "~/.sh/script-toggle_touchpad"
-#    Hiragana_Katakana
-    # alt + shift + space
+  "~/.sh/script-toggle_touchpad"
+    XF86Launch1
 
   "scrot -e 'mv $f ~/Pictures'"
     Print

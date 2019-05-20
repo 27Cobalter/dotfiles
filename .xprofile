@@ -5,3 +5,4 @@ export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 
 ~/.sh/script-init_touchpad
+~/.sh/script-toggle_touchpad
