@@ -21,10 +21,10 @@ while [[ $# -gt 1 ]]; do
     key="$1"
     case "$key" in 
         -i|--inlabel)
-            INLABEL="$2"
+            INLABEL="$2 "
             shift;;
         -o|--outlabel)
-            OUTLABEL="$2"
+            OUTLABEL="$2 "
             shift;;
     esac
     shift
