@@ -2,6 +2,7 @@
 # zplugの設定
 export VTE_CJK_WIDTH=1
 TERM=xterm-256color
+export EDITOR=nvim
 bindkey -v
 
 if [ ! -e ~/.zplug ]; then

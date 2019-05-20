@@ -116,11 +116,11 @@ on_ft = ['arduino']
 
 [[plugins]]
 repo = 'suan/vim-instant-markdown'
-on_ft = ['markdown']
 hook_source ='''
   let g:instant_markdown_autostart = 0
   nnoremap <Space>im :InstantMarkdownPreview<CR>
 '''
+on_ft = ['markdown']
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
