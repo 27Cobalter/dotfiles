@@ -62,6 +62,12 @@ set clipboard&
 set clipboard^=unnamedplus
 
 set ambiwidth=double
+
+let mapleader="\<Space>"
+
+" jsonの""やtexの$E$, mc^2をそのまま表示する
+" プレビューしたい場合は2に設定する
+set conceallevel=0
 "スペルチェック
 " set spell
 

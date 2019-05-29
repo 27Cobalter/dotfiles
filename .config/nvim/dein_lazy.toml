@@ -27,6 +27,9 @@ hook_source = '''
     set conceallevel=2 concealcursor=niv
   endif
 '''
+hook_post_source = '''
+  set conceallevel=0
+'''
 on_i = 1
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
@@ -196,7 +199,7 @@ repo = 'dhruvasagar/vim-table-mode'
 hook_source = '''
   let g:table_mode_corner = '|'
 '''
-on_path = '.*'
+on_ft = ['markdown']
 
 [[plugins]]
 repo = 'simeji/winresizer'
@@ -233,3 +236,25 @@ hook_source = '''
 let g:rainbow_active = 1
 '''
 on_path = '.*'
+
+[[plugins]]
+repo = 'vim-latex/vim-latex'
+hook_source = '''
+set shellslash
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Imap_UsePlaceHolders = 1
+let g:Imap_DeleteEmptyPlaceHolders = 1
+let g:Imap_StickyPlaceHolders = 0
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_MultipleCompileFormats='dvi,pdf'
+let g:Tex_FormatDependency_pdf = 'dvi,pdf'
+let g:Tex_CompileRule_pdf = 'ptex2pdf -u -l -ot "-synctex=1 -interaction=nonstopmode -file-line-error-style" $*'
+let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
+let g:Tex_BibtexFlavor = 'upbibtex'
+let g:Tex_MakeIndexFlavor = 'upmendex $*.idx'
+let g:Tex_UseEditorSettingInDVIViewer = 1
+let g:Tex_ViewRule_pdf = 'evince'
+set conceallevel = 0
+'''
+on_ft = ['tex']
