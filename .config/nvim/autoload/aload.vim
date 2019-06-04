@@ -45,6 +45,9 @@ function! aload#Run()
     terminal sudo platformio run --target=upload
   elseif l:ft=="markdown"
     MdPreview
+  elseif l:ft=="plantuml"
+    let l:mes = system('plantuml '.expand("%:p"))
+    echo "execute plantuml ".l:mes
   else
     QuickRun
   endif
