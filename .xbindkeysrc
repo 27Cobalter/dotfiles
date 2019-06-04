@@ -65,7 +65,7 @@
   "~/.sh/script-toggle_touchpad"
     XF86Launch1
 
-  "scrot -e 'mv $f ~/Pictures'"
+  "scrot -e 'mv $f ~/Pictures/scrot'"
     Print
 
 #  "~/.sh/script-toggle_key_layout"
