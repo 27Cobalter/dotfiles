@@ -28,15 +28,6 @@ repo = 'nanotech/jellybeans.vim'
 repo = 'mhinz/vim-startify'
 
 [[plugins]]
-repo = 'mattn/webapi-vim'
-
-[[plugins]]
-repo = 'mattn/vim-mastodon'
-
-[[plugins]]
-repo = 'twitvim/twitvim'
-
-[[plugins]]
 repo = 'lambdalisue/gina.vim'
 
 [[plugins]]
