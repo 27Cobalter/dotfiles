@@ -68,9 +68,6 @@
   "scrot -e 'mv $f ~/Pictures/scrot'"
     Print
 
-#  "~/.sh/script-toggle_key_layout"
-#   alt + space
-
 # specify a mouse button
 # "xterm"
 #   control + b:2
