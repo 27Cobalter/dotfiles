@@ -44,10 +44,12 @@ function! aload#Run()
     sp
     terminal sudo platformio run --target=upload
   elseif l:ft=="markdown"
-    MdPreview
+    InstantMarkdownPreview
   elseif l:ft=="plantuml"
     let l:mes = system('plantuml '.expand("%:p"))
     echo "execute plantuml ".l:mes
+  elseif l:ft=="tex"
+    call Tex_RunLaTeX()
   else
     QuickRun
   endif

@@ -50,15 +50,6 @@ on_ft = ['ruby']
 depends = ['deoplete.nvim']
 
 [[plugins]]
-repo = 'poppyschmo/deoplete-latex'
-hook_source = '''
-  let g:deoplete#sources#latex#include_web_math = 1
-  let g:deoplete#sources#latex#include_misc = 1
-'''
-on_ft = ['plaintex']
-depends = ['deoplete.nvim']
-
-[[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh']
 depends = ['deoplete.nvim']
@@ -223,6 +214,7 @@ hook_post_source = '''
 hook_post_update = '''
   let g:dein#plugin.build = 'magicalstick | grep "てねっ[0-9]" | xargs -P4 -In1 wget n1 -P voices/'
 '''
+# on_ft = ['markdown']
 on_i = 1
 
 [[plugins]]
