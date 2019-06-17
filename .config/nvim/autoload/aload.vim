@@ -50,6 +50,10 @@ function! aload#Run()
     echo "execute plantuml ".l:mes
   elseif l:ft=="tex"
     call Tex_RunLaTeX()
+  elseif l:ft=="yaml"
+    let l:mes = system('~/.sh/script-swagger.zsh '.expand("%"))
+    echo l:mes
+    AsyncRun xdg-open http://localhost:8017
   else
     QuickRun
   endif

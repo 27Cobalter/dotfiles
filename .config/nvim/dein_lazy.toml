@@ -245,3 +245,7 @@ let g:Tex_ViewRule_pdf = 'evince'
 set conceallevel = 0
 '''
 on_ft = ['tex']
+
+[[plugins]]
+repo = 'xavierchow/vim-swagger-preview'
+on_ft = ['yaml']
