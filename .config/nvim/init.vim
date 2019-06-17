@@ -171,8 +171,8 @@ augroup END
 
 if has('nvim')
 " Terminalのときは行番号とスペルチェックをなしにする
-  autocmd TermOpen * set nonumber | set nospell
-  autocmd TermClose * set number | set spell
+  autocmd TermOpen * set nonumber
+  autocmd TermClose * set number
   autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 endif
 " }}}
