@@ -214,7 +214,6 @@ hook_post_source = '''
 hook_post_update = '''
   let g:dein#plugin.build = 'magicalstick | grep "てねっ[0-9]" | xargs -P4 -In1 wget n1 -P voices/'
 '''
-# on_ft = ['markdown']
 on_i = 1
 
 [[plugins]]
