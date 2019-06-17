@@ -5,7 +5,7 @@ echo $git
 if [[ "Already up to date." != $git ]]; then
   old_vim=`vim --version | head -n 2`
   make clean
-  ./configure --prefix=/usr/local --with-luajit --enable-channel --enable-cscope --enable-fontset --enable-gpm --enable-icon-cache-update --enable-largefile --enable-multibyte --enable-netbeans --enable-nls --enable-option-checking --enable-terminal --enable-xim --enable-python3interp=yes --enable-pythoninterp=yes --enable-rubyinterp=yes --enable-luainterp=yes && make -j8 && sudo make install
+  ./configure --prefix=/usr/local --with-luajit --enable-channel --enable-cscope --enable-fontset --enable-gpm --enable-icon-cache-update --enable-largefile --enable-multibyte --enable-netbeans --enable-nls --enable-option-checking --enable-terminal --enable-xim --enable-python3interp=yes --enable-pythoninterp=yes --enable-rubyinterp=yes --enable-luainterp=yes && make -j5 && sudo make install
   new_vim=`vim --version | head -n 2`
 else
   old_vim="vim is latest version"
@@ -17,7 +17,7 @@ echo $git
 if [[ "Already up to date." != $git ]]; then
   old_nvim=`nvim --version | head -n 2`
   sudo rm -rf build && make clean
-  make CMAKE_BUILD_TYPE=RelWithDebInfo -j8 && sudo make install
+  make CMAKE_BUILD_TYPE=RelWithDebInfo -j5 && sudo make install
   new_nvim=`nvim --version | head -n 2`
 else
   old_nvim="neovim is latest version."
