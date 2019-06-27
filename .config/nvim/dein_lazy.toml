@@ -62,16 +62,6 @@ on_path = '.*'
 repo = 'Shougo/neomru.vim'
 on_source = ['denite.nvim']
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_source = '''
-  call denite#custom#map('insert', '<C-a>', '<denite:move_caret_to_head>')
-  call denite#custom#map('insert', '<C-j>', '<denite:do_action:default>')
-  nnoremap <Space>db :Denite buffer<CR>
-  nnoremap <Space>dc :Denite colorscheme<CR>
-  nnoremap <Space>dg :Denite grep<CR>
-'''
-on_path = '.*'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
