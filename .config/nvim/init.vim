@@ -184,8 +184,4 @@ endif
 let twitvim_enable_python3 = 1
 
 let g:syntaxCheck=0
-
-call gina#custom#command#alias('status', 'st')
-call gina#custom#command#option('st','-s')
-call gina#custom#command#option('st','--opener','split')
 " }}}

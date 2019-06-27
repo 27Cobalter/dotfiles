@@ -56,6 +56,11 @@ repo = 'mhinz/vim-startify'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+hook_add = '''
+  call gina#custom#command#alias('status', 'st')
+  call gina#custom#command#option('st','-s')
+  call gina#custom#command#option('st','--opener','split')
+'''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
