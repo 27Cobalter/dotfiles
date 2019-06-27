@@ -113,14 +113,7 @@ if dein#load_state(s:dein_dir)
   " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  call dein#add("wesleyche/SrcExpl",{
-              \"autoload":{"commands":["SrcExplToggle"]}})
-  call dein#add('Shougo/deoppet.nvim')
   " 設定終了
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
   call dein#end()
   call dein#save_state()
 endif
