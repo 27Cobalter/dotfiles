@@ -41,16 +41,16 @@
 
     # 通知全体の高さを設定します。この値がフォントの高さとパディングを足した値より小さい
     # 場合、フォントとパディングの合計値が優先されます
-    notification_height = 120
+    notification_height = 0
 
     # 通知と通知の間に線を引きます。無効化する場合は0を設定してください
     separator_height = 5
 
     # テキストとセパレータの間のパディング
-    padding = 30
+    padding = 12
 
     # 水平パディング
-    horizontal_padding = 30
+    horizontal_padding = 12
 
     # 通知ウィンドウの外周の幅をピクセル範囲で定義します
     # 0を設定すると無効化します
@@ -76,7 +76,7 @@
 
     ### Text ###
     #フォント指定
-    font = DejaVu Sans
+    font = DejaVu Sans 12
 
     # 行間の指定。この値がフォントの高さより低い場合、
     # フォントの高さが優先されます
@@ -147,7 +147,7 @@
     # right,left,もしくはoff?
     icon_position = left
 
-    # 大きいサイズのアイコンをこのサイズに縮小します。向こうにする場合は0
+    # 大きいサイズのアイコンをこのサイズに縮小します。無効にする場合は0
     max_icon_size = 64
 
     # デフォルトアイコンへのパス
@@ -222,7 +222,7 @@
     history = ctrl+grave
 
     # コンテキストメニュー
-    context = ctrl+shift+grave
+    context = ctrl+shift+period
 
 #緊急度低し
 [urgency_low]
