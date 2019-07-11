@@ -72,7 +72,7 @@
 
     # ユーザーがパソコンに触れていない時(アイドル時)、idle_threshold秒の間
     # メッセージを削除しないでください。0で無効化できます
-    idle_threshold = 120
+    idle_threshold = 60
 
     ### Text ###
     #フォント指定
