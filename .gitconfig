@@ -3,6 +3,7 @@
 	email = kontyanzhihg@gmail.com
 [core]
 	editor = nvim
+  excludesfile = /home/cobalt/.dotfiles/.gitignore_global
 [alias]
 	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   st = status -s
