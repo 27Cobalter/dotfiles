@@ -245,7 +245,7 @@
     background = "#900000"
     foreground = "#ffffff"
     frame_color = "#ff0000"
-    timeout = 0
+    timeout = 10
     # 緊急度の高い通知のアイコンを設定します
     #icon = /path/to/icon
 
