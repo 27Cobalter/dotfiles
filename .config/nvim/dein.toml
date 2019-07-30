@@ -50,6 +50,11 @@ repo = 'kana/vim-operator-user'
 
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
+hook_add = '''
+  set t_Co=256
+  syntax on
+  colorscheme jellybeans
+'''
 
 [[plugins]]
 repo = 'mhinz/vim-startify'

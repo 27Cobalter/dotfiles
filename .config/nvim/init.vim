@@ -171,10 +171,6 @@ endif
 " }}}
 
 " プラグインに関する設定{{{
-set t_Co=256
-syntax on
-colorscheme jellybeans
-
 let tlist_php_settings='php;c:class;d:constant;f:function'
 
 if filereadable(expand('~/.config/nvim/token.vim'))
