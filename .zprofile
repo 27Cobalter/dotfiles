@@ -12,6 +12,9 @@ export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
 eval "$(pyenv init -)"
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 export PATH=$PATH:~/.sh
 export BROWSER=/usr/bin/vivaldi-stable
+
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
