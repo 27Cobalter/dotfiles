@@ -3,9 +3,9 @@ cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 noremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
 inoremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
 
-noremap <Leader>ar <ESC><ESC>:call aload#Run()<CR>
+noremap <Leader>ll <ESC><ESC>:call aload#Run()<CR>
 
-noremap <Leader>af <ESC><ESC>:call aload#Format()<CR>
+noremap <Leader>lf <ESC><ESC>:call aload#Format()<CR>
 
 nnoremap <Leader>sn :next<CR>
 nnoremap <Leader>sp :prev<CR>
