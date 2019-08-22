@@ -13,6 +13,9 @@ function! aload#Format()
     call system('black '.expand("%:p"))
     e!
     echo "Format succes"
+  elseif l:ft=="rust"
+    RustFmt
+    echo "Format succes"
   else
     echo 'Not support filetype '.l:ft
   endif
@@ -54,6 +57,8 @@ function! aload#Run()
     let l:mes = system('~/.sh/script-swagger.zsh '.expand("%"))
     echo l:mes
     AsyncRun xdg-open http://localhost:8017
+  elseif l:ft=="rust"
+    RustRun
   else
     QuickRun
   endif

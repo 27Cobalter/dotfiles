@@ -238,3 +238,10 @@ on_ft = ['tex']
 [[plugins]]
 repo = 'xavierchow/vim-swagger-preview'
 on_ft = ['yaml']
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+hook_add = '''
+  " let g:rustfmt_autosave = 1
+'''
+on_ft = ['rust']
