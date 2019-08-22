@@ -26,6 +26,8 @@ hook_add = '''
       \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
       \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
       \ })
+  noremap <Leader>db :Denite buffer<CR>
+  noremap <Leader>dg :Denite grep<CR>
 '''
 
 [[plugins]]
