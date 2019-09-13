@@ -51,7 +51,6 @@ Composition	Shift Left	MoveCursorLeft
 Composition	Shift Muhenkan	ConvertToFullAlphanumeric
 Composition	Shift Right	MoveCursorRight
 Composition	Shift Space	Convert
-Composition	Space	Convert
 Composition	Tab	PredictAndConvert
 Conversion	Backspace	Cancel
 Conversion	Ctrl a	SegmentFocusFirst
@@ -105,8 +104,6 @@ Conversion	Shift Right	SegmentWidthExpand
 Conversion	Shift Space	ConvertPrev
 Conversion	Shift Tab	ConvertPrev
 Conversion	Shift Up	ConvertPrevPage
-Conversion	Space	ConvertNext
-Conversion	Tab	PredictAndConvert
 Conversion	Up	ConvertPrev
 DirectInput	Eisu	IMEOn
 DirectInput	F13	IMEOn
@@ -138,6 +135,9 @@ Conversion	Ctrl n	ConvertNext
 Conversion	Ctrl u	ConvertPrevPage
 Conversion	Ctrl d	ConvertNextPage
 Composition	Ctrl n	PredictAndConvert
+Conversion	Tab	CommitOnlyFirstSegment
+Composition	Space	Convert
+Conversion	Space	InsertHalfSpace
 Composition	ASCII	InsertCharacter
 Composition	Kanji	IMEOff
 Composition	OFF	IMEOff
