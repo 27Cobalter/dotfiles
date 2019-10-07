@@ -1,4 +1,5 @@
 # PATHの設定
+export PATH=$PATH:~/.local/bin
 export GOPATH=~/go
 export PATH=$PATH:~/.sh
 export PATH=$PATH:$GOPATH/bin
