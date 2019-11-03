@@ -65,6 +65,10 @@ set ambiwidth=double
 
 let mapleader="\<Space>"
 
+" Terminal true color
+set termguicolors
+set pumblend=30
+
 " jsonの""やtexの$E$, mc^2をそのまま表示する
 " プレビューしたい場合は2に設定する
 set conceallevel=0

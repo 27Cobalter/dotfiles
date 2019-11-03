@@ -28,6 +28,11 @@ hook_add = '''
         \ 'prompt': '$ ',
         \ 'start_filter': v:false,
         \ })
+  augroup transparent-windows
+    autocmd!
+    autocmd FileType denite set winblend=30
+    autocmd FileType denite-filter set winblend=30
+  augroup END
   noremap <Leader>db :Denite buffer<CR>
   noremap <Leader>dg :Denite grep<CR>
 '''
