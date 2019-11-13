@@ -1,0 +1,53 @@
+# 非公開設定
+private R-18 R-18G R-17.9 R-15 CM3D2
+
+# 一般
+pattern オリジナル               オリジナル
+
+# 艦これ系
+pattern     艦隊これくしょん     艦これ
+pattern     ~1                   ^(.+)(\(艦隊これくしょん\)|\(艦これ\))$
+pattern_all ~1                   ^艦これ$|^艦隊これくしょん$ ^(.+)(改|改二)$
+match       響                   ヴェールヌイ
+
+# アイドルマスター
+pattern_all アイドルマスター     アイドルマスター(.*)
+
+# ボイチェビ
+pattern_all ボイチェビ           ^VOICEROID$|^CEVIO$|^VOCALOID$|^Vocaloid$|^CeVIO$|Voiceroid$|^vocaloid$|^cevio$|voiceroid$|^ボイスロイド$|^ボーカロイド$|^チェビオ$|^IA$|^紲星あかり$|^結月ゆかり$
+match_all  結月ゆかり            結月ゆかり
+pattern_all  IA                  ^IA$|^IA_-ARIA_ON_THE_PLANETES-$
+pattern_all  ONE                 ^ONE$|^OИE$|^ONE_-ARIA_ON_THE_PLANETES-$
+match_all  紲星あかり            紲星あかり
+match_all  さとうささら          さとうささら
+match_all  すずきつづみ          すずきつづみ
+match_all  弦巻マキ              弦巻マキ
+match_all  東北ずん子            東北ずん子
+match_all  東北きりたん          東北きりたん
+match_all  東北イタコ            東北イタコ
+match_all  琴葉茜                琴葉茜
+match_all  琴葉葵                琴葉葵
+match_all  ゆかいあ              結月ゆかり IA
+match_all  ゆかまき              結月ゆかり 弦巻マキ
+match_all  いあおね              IA ONE
+match_all  いあきず              紲星あかり IA
+match_all  ゆづきず              紲星あかり 結月ゆかり
+
+
+# アズールレーン
+pattern     アズールレーン       アズールレーン
+pattern     アズールレーン       アズレン
+pattern     ~1                   ^(.+)(\(アズールレーン\)|\(アズレン\)|\(碧蓝航线\))$
+pattern_all ~1                   ^アズレン$|^アズールレーン$
+
+# ねぷ
+pattern 超次元ゲイムネプテューヌ 超次元ゲイムネプテューヌ
+pattern     ~1                   ^(.+)(\(超次元ゲイムネプテューヌ\))$
+pattern     ~1                   ^(.+)(\(ネプテューヌ\))$
+
+# Fate
+pattern_all Fate                 ^Fate(.*)$|^FGO$
+pattern     ~1                   ^(.+)(\(Fate\))$
+
+## 百合かどうか
+match 百合                       百合

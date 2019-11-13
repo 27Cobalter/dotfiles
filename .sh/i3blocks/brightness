@@ -1,0 +1,2 @@
+#!/bin/sh
+echo `xbacklight | cut -f 1 -d '.'`"%"

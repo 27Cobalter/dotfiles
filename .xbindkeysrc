@@ -47,27 +47,26 @@
 #   c:41 + m:0x4
 
 # backlight
-  "xbacklight -inc 20"
+  "xbacklight -inc 5"
     XF86MonBrightnessUp
 
-  "xbacklight -dec 20"
+  "xbacklight -dec 5"
     XF86MonBrightnessDown
 
-  "amixer sset PCM 5%+"
+  "amixer sset Master 5%+"
     XF86AudioRaiseVolume
 
-  "amixer sset PCM 5%-"
+  "amixer sset Master 5%-"
     XF86AudioLowerVolume
 
-  "~/.nyan/sh/toggle_touchpad.sh"
-    Hiragana_Katakana
-    # alt + shift + space
+  "amixer sset Master 0%"
+    XF86AudioMute
 
-  "scrot -e 'mv $f ~/Picture'"
+  "~/.sh/script-toggle_touchpad"
+    XF86Launch1
+
+  "scrot -e 'mv $f ~/Pictures/scrot && notify-send SaveScreenShot $f'"
     Print
-
-  "~/.nyan/sh/toggle_key_layout.sh"
-    alt + space
 
 # specify a mouse button
 # "xterm"

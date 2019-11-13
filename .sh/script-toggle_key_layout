@@ -10,5 +10,10 @@ case `xkb-switch` in
         sudo sed -i -e "s/<layout>dvorak<\/layout>/<layout>us<\/layout>/g" /usr/share/ibus/component/mozc.xml &&
         sudo sed -i -e "s/<layout>dvorak<\/layout>/<layout>us<\/layout>/g" /usr/share/ibus/component/simple.xml &&
         setxkbmap us && echo "toggle dvorak -> us";;
+    "jp" )
+        sudo sed -i -e "s/<layout>jp<\/layout>/<layout>us<\/layout>/g" /usr/share/ibus/component/kkc.xml &&
+        sudo sed -i -e "s/<layout>jp<\/layout>/<layout>us<\/layout>/g" /usr/share/ibus/component/mozc.xml &&
+        sudo sed -i -e "s/<layout>jp<\/layout>/<layout>us<\/layout>/g" /usr/share/ibus/component/simple.xml &&
+        setxkbmap us && echo "toggle jp -> us";;
 esac
 ibus-daemon -drx

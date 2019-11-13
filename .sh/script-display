@@ -1,0 +1,11 @@
+#!/bin/bash
+
+IN="eDP1"
+OUT=$(xrandr | grep "\<connected\>" |  grep -v eDP1 | head -n 1 | awk '{print $1}')
+
+if [[ $OUT != '' ]]; then
+  echo "$OUT connected"
+  xrandr --output $IN --auto --primary --output $OUT --auto --right-of $IN
+else
+  echo "no display connected"
+fi

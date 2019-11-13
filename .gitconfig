@@ -1,12 +1,16 @@
 [user]
-	name = KondoTakumi
-	email = 31419@toyota.kosen-ac.jp
-	# email = kontyanzhihg@gmail.com
+	name = 27Cobalter
+	email = kontyanzhihg@gmail.com
 [core]
-	editor = vim
+	editor = nvim
+	excludesfile = /home/cobalt/.dotfiles/.gitignore_global
 [alias]
 	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   st = status -s
 [url "git@github.com:"]
     insteadOf = git://github.com/
     insteadOf = https://github.com/
+[merge]
+	ff = false
+[pull]
+	ff = only

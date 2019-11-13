@@ -2,6 +2,42 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+  autocmd FileType denite call s:denite_my_settings()
+  function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+          \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d
+          \ denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p
+          \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q
+          \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+          \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+          \ denite#do_map('toggle_select').'j'
+  endfunction
+
+  let s:denite_win_width_percent = 0.85
+  call denite#custom#option('default', {
+        \ 'split': 'floating',
+        \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+        \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+        \ 'prompt': '$ ',
+        \ 'start_filter': v:false,
+        \ })
+  augroup transparent-windows
+    autocmd!
+    autocmd FileType denite set winblend=30
+    autocmd FileType denite-filter set winblend=30
+  augroup END
+  noremap <Leader>db :Denite buffer<CR>
+  noremap <Leader>dg :Denite grep<CR>
+'''
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 hook_post_update = '''
   if executable('gmake')
@@ -23,28 +59,26 @@ repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
+hook_add = '''
+  set t_Co=256
+  syntax on
+  colorscheme jellybeans
+'''
 
 [[plugins]]
 repo = 'mhinz/vim-startify'
 
 [[plugins]]
-repo = 'mattn/webapi-vim'
-
-[[plugins]]
-repo = 'mattn/vim-mastodon'
-
-[[plugins]]
-repo = 'twitvim/twitvim'
-
-[[plugins]]
 repo = 'lambdalisue/gina.vim'
-
-[[plugins]]
-repo = 'haya14busa/incsearch.vim'
+hook_add = '''
+  call gina#custom#command#alias('status', 'st')
+  call gina#custom#command#option('st','-s')
+  call gina#custom#command#option('st','--opener','split')
+'''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
-hook_source = '''
+hook_add = '''
   let g:EasyMotion_do_mapping = 0
 '''
 
@@ -55,4 +89,63 @@ repo = 'itchyny/lightline.vim'
 repo = 'vim-syntastic/syntastic'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'lilydjwg/colorizer'
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+hook_add = '''
+  let g:loaded_matchparen = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+
+[[plugins]]
+repo = 'skywind3000/asyncrun.vim'
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+  set hidden
+  let g:LanguageClient_serverCommands = {
+        \ 'cpp' : ['clangd'],
+        \ 'rust' : ['rustup', 'run', 'stable', 'rls'],
+        \ 'go': ['gopls']
+        \}
+
+  let g:LanguageClient_diagnosticsEnable = 0
+  " augroup LanguageClient_config
+  "   autocmd!
+  "   autocmd User LanguageClientStarted setlocal signcolumn=yes
+  "   autocmd User LanguageClientStopped setlocal signcolumn=auto
+  " augroup END
+
+  let g:LanguageCliet_autoStart = 1
+  nnoremap <Space>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <Space>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <Space>lr :call LanguageClient#textDocument_rename()<CR>
+'''
+
+[[plugins]]
+repo = 'vim-scripts/smartchr'
+hook_add = '''
+  inoremap <expr> = smartchr#loop(' = ',' == ', '=', '==')
+  inoremap <expr> , smartchr#loop(', ',',')
+'''
+
+[[plugins]]
+repo = 'rhysd/git-messenger.vim'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+  setlocal signcolumn=yes
+'''
