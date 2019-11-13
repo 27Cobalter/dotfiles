@@ -67,7 +67,7 @@ zstyle ':vcs_info:*' formats '%F{black}[%s][* %F{green}%b%F{black}]%f'
 zstyle ':vcs_info:*' actionformats '%F{black}[%s][* %F{green}%b%F{black}(%F{red}%a%F{black})%F{black}]%f'
 precmd(){ vcs_info }
 prompt="%(?.%K{green}.%K{red})%F{black}${UPPERALLOW} [\$history[\$((\$HISTCMD-1))]]->(%?)%k%(?.%F{green}.%F{red})$ALLOW
-%F{white}%K{blue}$USER%F{red}@%F{magenta}$HOST%F{blue}%K{cyan}$ALLOW%F{black}%K{cyan}%~%F{cyan}%K{yellow}$ALLOW\$vcs_info_msg_0_%F{yellow}%k$ALLOW
+%F{white}%K{yellow}$USER%F{red}@%F{magenta}$HOST%F{yellow}%K{cyan}$ALLOW%F{black}%K{cyan}%~%F{cyan}%K{yellow}$ALLOW\$vcs_info_msg_0_%F{yellow}%k$ALLOW
 %F{red}${ALLOW2}%F{yellow}${ALLOW2}%F{green}${ALLOW2}%f "
 
 bindkey "^[[Z" reverse-menu-complete
@@ -146,7 +146,7 @@ function fzf-kill(){
 function zle-line-init zle-keymap-select {
   vimode="${${KEYMAP/vicmd/NORMAL}/(main|viins)/INSERT}"
   if [ -n "$TMUX" ]; then
-    tmux set -g status-left "[#S] #[bg=colour205, fg=colour99]$vimode#[bg=colour99, fg=colour205] " > /dev/null
+    tmux set -g status-left "[#S] #[bg=colour124, fg=colour253]$vimode#[bg=colour253, fg=colour124] " > /dev/null
   fi
 }
 zle -N zle-line-init
