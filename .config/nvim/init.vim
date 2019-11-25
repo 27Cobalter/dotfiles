@@ -75,8 +75,8 @@ set conceallevel=0
 "スペルチェック
 " set spell
 "
-let g:python3_host_prog = '~/.pyenv/shims/python3'
-let g:python_host_prog = '~/.pyenv/shims/python2'
+let g:python3_host_prog = '/bin/python'
+let g:python_host_prog = '/bin/python2'
 
 " cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
 if has("cscope") && filereadable("/usr/bin/cscope")

@@ -68,7 +68,13 @@ old=(${old//;/ })
 time_diff=$(( $time - ${old[0]} ))
 
 # sanity check: has a positive amount of time passed
-[[ "${time_diff}" -gt 0 ]] || exit
+if [[ "${time_diff}" -le 0 ]]; then
+  echo -n "$INLABEL"
+  echo -n "$OUTLABEL"
+  echo "0K"
+  echo "0K"
+  exit
+fi
 
 # shift by 10 bytes to get KiB/s. If the value is larger than
 # 1024^2 = 1048576, then display MiB/s instead
@@ -82,7 +88,8 @@ if [[ -z $OUTLABEL ]]; then
   if hash bc 2>/dev/null && [[ "$rx_rate" -gt 1048576 ]]; then
     printf '%sM' "`echo "scale=1; $rx_kib / 1024" | bc`"
   else
-    echo -n "${rx_kib}K"
+    echo "${rx_kib}K"
+    echo "${rx_kib}K"
   fi
 else
   tx_diff=$(( $tx - ${old[2]} ))
@@ -93,6 +100,7 @@ else
   if hash bc 2>/dev/null && [[ "$tx_rate" -gt 1048576 ]]; then
     printf '%sM' "`echo "scale=1; $tx_kib / 1024" | bc`"
   else
-    echo -n "${tx_kib}K"
+    echo "${tx_kib}K"
+    echo "${tx_kib}K"
   fi
 fi
