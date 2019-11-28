@@ -1,369 +1,272 @@
 [global]
     ### Display ###
 
-    # Which monitor should the notifications be displayed on.
+    # 通知を表示するディスプレイを設定する
     monitor = 0
 
-    # Display notification on focused monitor.  Possible modes are:
-    #   mouse: follow mouse pointer
-    #   keyboard: follow window with keyboard focus
-    #   none: don't follow anything
+    # フォーカスしたディスプレイに通知を表示する。以下の3つのモードがある
+    #   mouse: マウスポインタの場所
+    #   keyboard: キーボードフォーカスのある場所
+    #   none: 何もしない
     #
-    # "keyboard" needs a window manager that exports the
+    # キーボードモードにはウィンドウマネージャが必要です
     # _NET_ACTIVE_WINDOW property.
-    # This should be the case for almost all modern window managers.
+    # これはほとんどどのウィンドウマネージャの場合も当てはまるでしょう?(わからn)
     #
-    # If this option is set to mouse or keyboard, the monitor option
-    # will be ignored.
-    follow = mouse
+    # mouseかkeyboardを設定していたらディスプレイの設定は無視されます
+    follow = keyboard
 
-    # The geometry of the window:
+    # ウィンドウの配置
     #   [{width}]x{height}[+/-{x}+/-{y}]
-    # The geometry of the message window.
-    # The height is measured in number of notifications everything else
-    # in pixels.  If the width is omitted but the height is given
-    # ("-geometry x2"), the message window expands over the whole screen
-    # (dmenu-like).  If width is 0, the window expands to the longest
-    # message displayed.  A positive x is measured from the left, a
-    # negative from the right side of the screen.  Y is measured from
-    # the top and down respectively.
-    # The width can be negative.  In this case the actual width is the
-    # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-30+20"
-
-    # Show how many messages are currently hidden (because of geometry).
+    # メッセージウィンドウの配置
+    # heightはすべての通知に設定されます
+    # 数値はピクセル単位です。幅だけを指定している場合
+    # ("-geometry x2"), メッセージウィンドウが画面全体に表示されます
+    # (dmenuのような) widthが0の場合、ウィンドウは縦にながーく表示されます
+    # メッセージが表示されます。xは左から正の値で測定されて、画面の右側から先を負の値とします。?
+    # yの数値は上下それぞれ???(翻訳放棄)
+    # 幅は負の値にすることができます。この場合、幅は
+    # 画面幅から配置オプション内で定義された幅を引いた値になる
+ geometry = "400x10-10+10"
+    # 配置的に現在隠れているメッセージの数を表示します
     indicate_hidden = yes
 
-    # Shrink window if it's smaller than the width.  Will be ignored if
-    # width is 0.
+    # ウィンドウの幅が0よりも小再場合、縮小する。
     shrink = no
 
-    # The transparency of the window.  Range: [0; 100].
-    # This option will only work if a compositing window manager is
-    # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 0
+    # ウィンドウの透明度。値は [0; 100]まで。
+    # このオプションはコンポジット?(透過できるやつ)が入ってないとできないよ。
+    # たとえばxcompgr、compizなどなど
+    transparency = 10
 
-    # The height of the entire notification.  If the height is smaller
-    # than the font height and padding combined, it will be raised
-    # to the font height and padding.
+    # 通知全体の高さを設定します。この値がフォントの高さとパディングを足した値より小さい
+    # 場合、フォントとパディングの合計値が優先されます
     notification_height = 0
 
-    # Draw a line of "separator_height" pixel height between two
-    # notifications.
-    # Set to 0 to disable.
-    separator_height = 2
+    # 通知と通知の間に線を引きます。無効化する場合は0を設定してください
+    separator_height = 5
 
-    # Padding between text and separator.
-    padding = 8
+    # テキストとセパレータの間のパディング
+    padding = 12
 
-    # Horizontal padding.
-    horizontal_padding = 8
+    # 水平パディング
+    horizontal_padding = 12
 
-    # Defines width in pixels of frame around the notification window.
-    # Set to 0 to disable.
+    # 通知ウィンドウの外周の幅をピクセル範囲で定義します
+    # 0を設定すると無効化します
     frame_width = 3
 
-    # Defines color of the frame around the notification window.
-    frame_color = "#aaaaaa"
+    # 通知ウィンドウの外周の色を定義します
+    frame_color = "#66d9ef"
 
-    # Define a color for the separator.
-    # possible values are:
-    #  * auto: dunst tries to find a color fitting to the background;
-    #  * foreground: use the same color as the foreground;
-    #  * frame: use the same color as the frame;
-    #  * anything else will be interpreted as a X color.
-    separator_color = frame
+    # セパレータの色を定義します
+    # 可能な値は
+    #  * auto: 背景にあった色を探します
+    #  * foreground: 全面に表示されたものと同じ色を使います
+    #  * frame: フレームと同じ色を使います
+    #  * 色を直接指定することもできます
+    separator_color = auto
 
-    # Sort messages by urgency.
+    # 緊急度順にメッセージを並べ替えます
     sort = yes
 
-    # Don't remove messages, if the user is idle (no mouse or keyboard input)
-    # for longer than idle_threshold seconds.
-    # Set to 0 to disable.
-    # A client can set the 'transient' hint to bypass this. See the rules
-    # section for how to disable this if necessary
-    idle_threshold = 120
+    # ユーザーがパソコンに触れていない時(アイドル時)、idle_threshold秒の間
+    # メッセージを削除しないでください。0で無効化できます
+    idle_threshold = 60
 
     ### Text ###
+    #フォント指定
+    font = DejaVu Sans 12
 
-    font = Monospace 8
-
-    # The spacing between lines.  If the height is smaller than the
-    # font height, it will get raised to the font height.
+    # 行間の指定。この値がフォントの高さより低い場合、
+    # フォントの高さが優先されます
     line_height = 0
 
-    # Possible values are:
-    # full: Allow a small subset of html markup in notifications:
-    #        <b>bold</b>
-    #        <i>italic</i>
-    #        <s>strikethrough</s>
-    #        <u>underline</u>
+    # 入力できる値は
+    # full: 通知のhtmlマークアップの小さなサブセットを許可する(原文ママ)
+    #        <b>bold</b>太字
+    #        <i>italic</i>斜体
+    #        <s>strikethrough</s>取り消し線
+    #        <u>underline</u>下線
     #
-    #        For a complete reference see
+    #        詳しくは
     #        <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     #
-    # strip: This setting is provided for compatibility with some broken
-    #        clients that send markup even though it's not enabled on the
-    #        server. Dunst will try to strip the markup but the parsing is
-    #        simplistic so using this option outside of matching rules for
-    #        specific applications *IS GREATLY DISCOURAGED*.
+    # strip: この設定では壊れたマークアップを表示できます?
+    #        構文解析自体は簡単だし、dunstはすげーアプリケーションなのでこれを取り除くことができます?
     #
-    # no:    Disable markup parsing, incoming notifications will be treated as
-    #        plain text. Dunst will not advertise that it has the body-markup
-    #        capability if this is set as a global setting.
+    # no:    マークアップの解析を無効化します。通知は
+    #        テキストのママです。dunstはbody-markupを持っていることを広告しません
+    #        この設定の場合の機能は・・・(違うかも... 超訳です)
     #
-    # It's important to note that markup inside the format option will be parsed
-    # regardless of what this is set to.
+    # どの設定にするかは関係なく、format内のマークアップは解析される可能性があることに注意です!
     markup = full
 
-    # The format of the message.  Possible variables are:
-    #   %a  appname
-    #   %s  summary
+    # メッセージの形式。変数は次の通り
+    #   %a  アプリ名
+    #   %s  summary 概略
     #   %b  body
-    #   %i  iconname (including its path)
-    #   %I  iconname (without its path)
-    #   %p  progress value if set ([  0%] to [100%]) or nothing
-    #   %n  progress value if set without any extra characters
-    #   %%  Literal %
-    # Markup is allowed
+    #   %i  アイコンネーム (パスを含む)
+    #   %I  アイコンネーム (パスを含まない)
+    #   %p  進行中の値(0〜100%まで)設定しなくてもよし?
+    #   %n  進捗の値(余分な文字無しで設定されている場合?)
+    #   %%  リテラル
+    # マークアップは許可されています
     format = "<b>%s</b>\n%b"
 
-    # Alignment of message text.
-    # Possible values are "left", "center" and "right".
+    # メッセージの並べ方
+    # 可能な値は"left", "center" それと"right"です
     alignment = left
 
-    # Show age of message if message is older than show_age_threshold
-    # seconds.
-    # Set to -1 to disable.
-    show_age_threshold = 60
+    # メッセージがshow_age_threshold秒より長い間表示されていた場合、
+    # 経過時間を表示する
+    # -1を設定すれば無効化できます
+    show_age_threshold = 10
 
-    # Split notifications into multiple lines if they don't fit into
-    # geometry.
+    # メッセージを複数行に分けて配置します
     word_wrap = yes
 
-    # When word_wrap is set to no, specify where to make an ellipsis in long lines.
-    # Possible values are "start", "middle" and "end".
+    # word_wrapがnoに設定されている場合、長い行に省略記号をつける場所を指定します
+    # 可能な値は"start", "middle" それと"end"です
     ellipsize = middle
 
-    # Ignore newlines '\n' in notifications.
+    # 通知で改行"\n"を無視する
     ignore_newline = no
 
-    # Stack together notifications with the same content
+    # 同じ内容の通知を重ねる
     stack_duplicates = true
 
-    # Hide the count of stacked notifications with the same content
+    # 重ねられた通知の数を隠す
     hide_duplicate_count = false
 
-    # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+    # URL(U)とアクション(A)の進捗具合?を表示します
+    show_indicators = no
 
     ### Icons ###
 
-    # Align icons left/right/off
-    icon_position = off
+    # right,left,もしくはoff?
+    icon_position = left
 
-    # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 32
+    # 大きいサイズのアイコンをこのサイズに縮小します。無効にする場合は0
+    max_icon_size = 64
 
-    # Paths to default icons.
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    # デフォルトアイコンへのパス
+    icon_path = /usr/share/icons/Flat-Remix-Red-Dark/status/scalable:/usr/share/icons/Flat-Remix-Red-Dark/devices/scalable
+
 
     ### History ###
 
-    # Should a notification popped up from history be sticky or timeout
-    # as if it would normally do.
+    # 履歴からポップアップされた通知は、スティッキーまたはタイムアウトにする必要があります
     sticky_history = yes
 
-    # Maximum amount of notifications kept in history
-    history_length = 20
+    # 履歴に保持される通知の最大値
+    history_length = 1000
 
-    ### Misc/Advanced ###
+    ### 高度な設定 ###
 
-    # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    # dmenuのパス
+ dmenu = /usr/bin/dmenu -p dunst:
 
-    # Browser for opening urls in context menu.
-    browser = /usr/bin/firefox -new-tab
-
-    # Always run rule-defined scripts, even if the notification is suppressed
+    # コンテキストメニューで開くブラウザ
+    #browser = /usr/bin/firefox -new-tab
+    browser = /opt/vivaldi/vivaldi
+    # 通知が表示されなくても、常にルール定義のスクリプトを実行する
     always_run_script = true
 
-    # Define the title of the windows spawned by dunst
+    # dunstによって生成されたウィンドウの名前
     title = Dunst
 
-    # Define the class of the windows spawned by dunst
+    # dunstによって生成されたウィンドウのクラス
     class = Dunst
 
-    # Print a notification on startup.
-    # This is mainly for error detection, since dbus (re-)starts dunst
-    # automatically after a crash.
+    # 起動時に通知を出力します
+    # これはエラー検出のためのものでクラッシュ後に自動的に有効化されます?
     startup_notification = false
 
-    # Manage dunst's desire for talking
-    # Can be one of the following values:
-    #  crit: Critical features. Dunst aborts
-    #  warn: Only non-fatal warnings
-    #  mesg: Important Messages
-    #  info: all unimportant stuff
-    # debug: all less than unimportant stuff
-    verbosity = mesg
+    ### 古い設定
 
-    # Define the corner radius of the notification window
-    # in pixel size. If the radius is 0, you have no rounded
-    # corners.
-    # The radius will be automatically lowered if it exceeds half of the
-    # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
-
-    ### Legacy
-
-    # Use the Xinerama extension instead of RandR for multi-monitor support.
-    # This setting is provided for compatibility with older nVidia drivers that
-    # do not support RandR and using it on systems that support RandR is highly
-    # discouraged.
+    # マルチモニタのサポートにはRandRの代わりにXineramaの拡張機能を使用しています
+    # この設定は古いnvidiaドライバとの互換性を維持するため提供しています
+    # RandRをサポートしてないので、RandRを使ったシステムで使用するとうまく行かないでしょう?
     #
-    # By enabling this setting dunst will not be able to detect when a monitor
-    # is connected or disconnected which might break follow mode if the screen
-    # layout changes.
+    # この設定を有効にすると、dunstはモニタが接続されているか、レイアウトが
+    # 変わったかどうか検出できなくなります。
     force_xinerama = false
 
-    ### mouse
-
-    # Defines action of mouse event
-    # Possible values are:
-    # * none: Don't do anything.
-    # * do_action: If the notification has exactly one action, or one is marked as default,
-    #              invoke it. If there are multiple and no default, open the context menu.
-    # * close_current: Close current notification.
-    # * close_all: Close all notifications.
-    mouse_left_click = close_current
-    mouse_middle_click = do_action
-    mouse_right_click = close_all
-
-# Experimental features that may or may not work correctly. Do not expect them
-# to have a consistent behaviour across releases.
+# うまく動かないこともある実験的な機能
 [experimental]
-    # Calculate the dpi to use on a per-monitor basis.
-    # If this setting is enabled the Xft.dpi value will be ignored and instead
-    # dunst will attempt to calculate an appropriate dpi value for each monitor
-    # using the resolution and physical size. This might be useful in setups
-    # where there are multiple screens with very different dpi values.
+    # モニタごとに使用するdpiを計算します
+    # この設定を有効化するとXft.dpiの値が無視され、代わりに
+    # dunstは各ディスプレイの適切なdpi値を計算しようとします
+    # 異なるdpi値を持つ複数の画面がある場合、解像度と物理的なサイズを使用するので
+    # 設定に役立つのかもしれません???
     per_monitor_dpi = false
 
 [shortcuts]
 
-    # Shortcuts are specified as [modifier+][modifier+]...key
-    # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
-    # "mod3" and "mod4" (windows-key).
-    # Xev might be helpful to find names for keys.
+    # ショートカットは[modifier+][modifier+]...
+    # 使用できるキーは "ctrl", "mod1" (the alt-key), "mod2",
+    # "mod3" and "mod4" (windows-key)です
+    # Xevとか使うとキーの名前を調べるのに便利かもです
 
-    # Close notification.
+    # 通知を閉じます
     close = ctrl+space
 
-    # Close all notifications.
+    # すべての通知を閉じます
     close_all = ctrl+shift+space
 
-    # Redisplay last message(s).
-    # On the US keyboard layout "grave" is normally above TAB and left
-    # of "1". Make sure this key actually exists on your keyboard layout,
-    # e.g. check output of 'xmodmap -pke'
+    # 最後のメッセージを再表示します
+    # USキーレイアウトだとgraveは通常tabより上で1の左。
+    # このキーがキーボードにあることを確認してください(日本レイアウトだとない)
+    # 例えば xmodmap -pke | grep "*grave*"とか?(適当に書きました)
     history = ctrl+grave
 
-    # Context menu.
+    # コンテキストメニュー
     context = ctrl+shift+period
 
+#緊急度低し
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 10
-    # Icon for notifications with low urgency, uncomment to enable
-    #icon = /path/to/icon
-
-[urgency_normal]
-    background = "#285577"
+    # ※色は引用符で囲まないといけません
+    # じゃないと#以降がコメントになっちゃいます
+    background = "#272822"
     foreground = "#ffffff"
     timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
+    # 緊急度の低い通知のアイコンを設定します
     #icon = /path/to/icon
-
+#緊急度普通
+[urgency_normal]
+    background = "#272822"
+    foreground = "#ffffff"
+    timeout = 10
+    # 緊急度の普通な通知のアイコンを設定します
+    #icon = /path/to/icon
+#緊急!!!
 [urgency_critical]
     background = "#900000"
     foreground = "#ffffff"
     frame_color = "#ff0000"
-    timeout = 0
-    # Icon for notifications with critical urgency, uncomment to enable
+    timeout = 10
+    # 緊急度の高い通知のアイコンを設定します
     #icon = /path/to/icon
 
-# Every section that isn't one of the above is interpreted as a rules to
-# override settings for certain messages.
-#
-# Messages can be matched by
-#    appname (discouraged, see desktop_entry)
-#    body
-#    category
-#    desktop_entry
-#    icon
-#    match_transient
-#    msg_urgency
-#    stack_tag
-#    summary
-#
-# and you can override the
-#    background
-#    foreground
-#    format
-#    frame_color
-#    fullscreen
-#    new_icon
-#    set_stack_tag
-#    set_transient
-#    timeout
-#    urgency
-#
-# Shell-like globbing will get expanded.
-#
-# Instead of the appname filter, it's recommended to use the desktop_entry filter.
-# GLib based applications export their desktop-entry name. In comparison to the appname,
-# the desktop-entry won't get localized.
+# この行より下は次のルールで処理されます
+# 特定のメッセージを上書きする
+# メッセージは"appname", "summary", "body", "icon", "category",
+# "msg_urgency","timeout", "urgency", "foreground",
+# "background", "new_icon","format".
+# シェルのようにアナグラムが展開されます?
 #
 # SCRIPTING
-# You can specify a script that gets run when the rule matches by
-# setting the "script" option.
-# The script will be called as follows:
+# ルールが一致したときに実行されるスクリプトを指定できます。
+# "script" オプションを設定します
+# スクリプトは次のように呼び出されます
 #   script appname summary body icon urgency
-# where urgency can be "LOW", "NORMAL" or "CRITICAL".
+# urgencyのところは"LOW", "NORMAL" もしくは "CRITICAL"を使えます
 #
-# NOTE: if you don't want a notification to be displayed, set the format
-# to "".
-# NOTE: It might be helpful to run dunst -print in a terminal in order
-# to find fitting options for rules.
-
-# Disable the transient hint so that idle_threshold cannot be bypassed from the
-# client
-#[transient_disable]
-#    match_transient = yes
-#    set_transient = no
+# 注意:通知を表示したくない場合はフォーマットに""を設定してください
+# 注意2:ルールに適合するオプションを探すならターミナルでdunst printを実行すると便利です
+# 
 #
-# Make the handling of transient notifications more strict by making them not
-# be placed in history.
-#[transient_history_ignore]
-#    match_transient = yes
-#    history_ignore = yes
-
-# fullscreen values
-# show: show the notifications, regardless if there is a fullscreen window opened
-# delay: displays the new notification, if there is no fullscreen window active
-#        If the notification is already drawn, it won't get undrawn.
-# pushback: same as delay, but when switching into fullscreen, the notification will get
-#           withdrawn from screen again and will get delayed like a new notification
-#[fullscreen_delay_everything]
-#    fullscreen = delay
-#[fullscreen_show_critical]
-#    msg_urgency = critical
-#    fullscreen = show
-
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
@@ -381,11 +284,6 @@
 #    # This notification will not be saved in history
 #    summary = "foobar"
 #    history_ignore = yes
-
-#[skip-display]
-#    # This notification will not be displayed, but will be included in the history
-#    summary = "foobar"
-#    skip_display = yes
 
 #[signed_on]
 #    appname = Pidgin
@@ -406,9 +304,5 @@
 #    appname = Pidgin
 #    summary = *twitter.com*
 #    urgency = normal
-#
-#[stack-volumes]
-#    appname = "some_volume_notifiers"
-#    set_stack_tag = "volume"
 #
 # vim: ft=cfg

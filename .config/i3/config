@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 4
+font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -150,11 +150,22 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# exec
+exec --no-startup-id fcitx
+exec --no-startup-id compton -b
+exec --no-startup-id dunst
+exec --no-startup-id parcellite
+exec --no-startup-id sh ~/.fehbg
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
+exec --no-startup-id xbindkeys
+
+exec --no-startup-id amixer sset Master 0%
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        tray_output primary
         status_command i3blocks
         # status_command i3status
-        font pango:Ricty Nerd Font for Powerline 12
+        font pango:Ricty Nerd Font Bold 12
 }

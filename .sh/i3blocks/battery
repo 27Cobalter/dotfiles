@@ -65,6 +65,17 @@ if ($acpi =~ /(\d\d:\d\d):/) {
 }
 
 # print text
+if ($percent < 20) {
+  print " ";
+} elsif ($percent < 40) {
+  print " ";
+} elsif ($percent < 60) {
+  print " ";
+} elsif ($percent < 85) {
+  print " ";
+} else{
+  print " ";
+}
 print "$full_text\n";
 print "$short_text\n";
 

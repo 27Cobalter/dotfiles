@@ -1,15 +1,8 @@
 #!/bin/sh
-xrandr --output DP-2 --primary&
-
-export TERMINAL=alacritty
-
+export TERMINAL=xfce4-terminal
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
-fcitx&
 
-compton -b&
-dunst&
-parcellite&
-sh ~/.fehbg&
-volumeicon&
+~/.sh/script-init_touchpad
+~/.sh/script-toggle_touchpad

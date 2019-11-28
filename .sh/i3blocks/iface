@@ -33,6 +33,8 @@ fi
 #------------------------------------------------------------------------
 
 if [[ "$(cat /sys/class/net/$IF/operstate)" = 'down' ]]; then
+  echo "down"
+  echo "down"
   exit
 fi
 

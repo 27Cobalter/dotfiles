@@ -13,6 +13,9 @@ function! aload#Format()
     call system('black '.expand("%:p"))
     e!
     echo "Format succes"
+  elseif l:ft=="rust"
+    RustFmt
+    echo "Format succes"
   else
     echo 'Not support filetype '.l:ft
   endif
@@ -44,7 +47,18 @@ function! aload#Run()
     sp
     terminal sudo platformio run --target=upload
   elseif l:ft=="markdown"
-    MdPreview
+    InstantMarkdownPreview
+  elseif l:ft=="plantuml"
+    let l:mes = system('plantuml '.expand("%:p"))
+    echo "execute plantuml ".l:mes
+  elseif l:ft=="tex"
+    call Tex_RunLaTeX()
+  elseif l:ft=="yaml"
+    let l:mes = system('~/.sh/script-swagger.zsh '.expand("%"))
+    echo l:mes
+    AsyncRun xdg-open http://localhost:8017
+  elseif l:ft=="rust"
+    RustRun
   else
     QuickRun
   endif

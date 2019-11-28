@@ -7,13 +7,13 @@ hook_source = '''
   let g:deoplete#augo_complete_start_length = 1
   let g:deoplete#enable_camel_case = 0
   let g:deoplete#enable_ignore_case = 0
-  let g:deoplete#enable_refresh_always = 0
+  let g:deoplete#enable_refresh_always = 1
   let g:deoplete#smart_case = 1
   let g:deoplete#file#enable_buffer_path = 1
   let g:deoplete#max_list = 10000
   let g:deoplete#max_list=1000
   imap <expr><tab> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+         \ "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
 '''
 on_i = 1
 
@@ -26,6 +26,9 @@ hook_source = '''
   if has('conceal')
     set conceallevel=2 concealcursor=niv
   endif
+'''
+hook_post_source = '''
+  set conceallevel=0
 '''
 on_i = 1
 on_ft = ['snippet']
@@ -47,15 +50,6 @@ on_ft = ['ruby']
 depends = ['deoplete.nvim']
 
 [[plugins]]
-repo = 'poppyschmo/deoplete-latex'
-hook_source = '''
-  let g:deoplete#sources#latex#include_web_math = 1
-  let g:deoplete#sources#latex#include_misc = 1
-'''
-on_ft = ['plaintex']
-depends = ['deoplete.nvim']
-
-[[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh']
 depends = ['deoplete.nvim']
@@ -68,21 +62,6 @@ on_path = '.*'
 repo = 'Shougo/neomru.vim'
 on_source = ['denite.nvim']
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_source = '''
-  call denite#custom#map('insert', '<C-a>', '<denite:move_caret_to_head>')
-  call denite#custom#map('insert', '<C-j>', '<denite:do_action:default>')
-  nnoremap <Space>db :Denite buffer<CR>
-  nnoremap <Space>dc :Denite colorscheme<CR>
-  nnoremap <Space>dg :Denite grep<CR>
-'''
-on_path = '.*'
-
-[[plugins]]
-repo = 'rafi/vim-denite-mpc'
-on_source = ['denite.nvim']
-depends = ['denite.nvim']
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -102,6 +81,11 @@ on_ft = ['toml']
 
 [[plugins]]
 repo = 'fatih/vim-go'
+hook_add = '''
+  let g:go_fmt_command = "goimports"
+  let g:go_def_mapping_enabled = 0
+  let g:go_doc_keywordprg_enabled = 0
+'''
 on_ft = ['go']
 
 [[plugins]]
@@ -116,6 +100,10 @@ on_ft = ['arduino']
 
 [[plugins]]
 repo = 'suan/vim-instant-markdown'
+hook_source ='''
+  let g:instant_markdown_autostart = 0
+  nnoremap <Space>im :InstantMarkdownPreview<CR>
+'''
 on_ft = ['markdown']
 
 [[plugins]]
@@ -192,7 +180,7 @@ repo = 'dhruvasagar/vim-table-mode'
 hook_source = '''
   let g:table_mode_corner = '|'
 '''
-on_path = '.*'
+on_ft = ['markdown']
 
 [[plugins]]
 repo = 'simeji/winresizer'
@@ -229,3 +217,36 @@ hook_source = '''
 let g:rainbow_active = 1
 '''
 on_path = '.*'
+
+[[plugins]]
+repo = 'vim-latex/vim-latex'
+hook_source = '''
+set shellslash
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Imap_UsePlaceHolders = 1
+let g:Imap_DeleteEmptyPlaceHolders = 1
+let g:Imap_StickyPlaceHolders = 0
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_MultipleCompileFormats='dvi,pdf'
+let g:Tex_FormatDependency_pdf = 'dvi,pdf'
+let g:Tex_CompileRule_pdf = 'ptex2pdf -u -l -ot "-synctex=1 -interaction=nonstopmode -file-line-error-style" $*'
+let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
+let g:Tex_BibtexFlavor = 'upbibtex'
+let g:Tex_MakeIndexFlavor = 'upmendex $*.idx'
+let g:Tex_UseEditorSettingInDVIViewer = 1
+let g:Tex_ViewRule_pdf = 'evince'
+set conceallevel = 0
+'''
+on_ft = ['tex']
+
+[[plugins]]
+repo = 'xavierchow/vim-swagger-preview'
+on_ft = ['yaml']
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+hook_add = '''
+  " let g:rustfmt_autosave = 1
+'''
+on_ft = ['rust']

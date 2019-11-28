@@ -60,8 +60,23 @@ set completeopt=menuone
 " clipboard
 set clipboard&
 set clipboard^=unnamedplus
+
+set ambiwidth=double
+
+let mapleader="\<Space>"
+
+" Terminal true color
+set termguicolors
+set pumblend=30
+
+" jsonの""やtexの$E$, mc^2をそのまま表示する
+" プレビューしたい場合は2に設定する
+set conceallevel=0
 "スペルチェック
 " set spell
+"
+let g:python3_host_prog = '/bin/python3'
+let g:python_host_prog = '/bin/python2'
 
 " cscopeっていう凄いものの設定(/etc/vimrcからのパクり)
 if has("cscope") && filereadable("/usr/bin/cscope")
@@ -81,6 +96,7 @@ endif
 " プラグインマネージャ"{{{
 " プラグインがインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
+let g:other_package_path = expand('~/.cache/dein/package')
 " dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 " dein.vim がなければ github から落としてくる
@@ -101,14 +117,7 @@ if dein#load_state(s:dein_dir)
   " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  call dein#add("wesleyche/SrcExpl",{
-              \"autoload":{"commands":["SrcExplToggle"]}})
-  call dein#add('Shougo/deoppet.nvim')
   " 設定終了
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
   call dein#end()
   call dein#save_state()
 endif
@@ -130,13 +139,13 @@ endfunction
 " }}}
 
 " コマンド宣言{{{
-command Run call myfunction#Run()
-command CT call myfunction#CT()
-command VT call myfunction#Vterminal()
-command ST call myfunction#Sterminal()
-command Terminal call myfunction#Terminal()
-command Sc call myfunction#Sc()
-command Nsc call myfunction#Nsc()
+command Run call aload#Run()
+command CT call aload#CT()
+command VT call aload#Vterminal()
+command ST call aload#Sterminal()
+command Terminal call aload#Terminal()
+command Sc call aload#Sc()
+command Nsc call aload#Nsc()
 " }}}
 
 " autocmdとか{{{
@@ -157,18 +166,15 @@ augroup END
   autocmd InsertLeave * :call SetIME('off')
 " augroup END
 
-" if has('nvim')
-" " Terminalのときは行番号とスペルチェックをなしにする
-"   autocmd TermOpen * set nonumber | set nospell
-"   autocmd TermClose * set number | set spell
-" endif
+if has('nvim')
+" Terminalのときは行番号とスペルチェックをなしにする
+  autocmd TermOpen * set nonumber
+  autocmd TermClose * set number
+  autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+endif
 " }}}
 
 " プラグインに関する設定{{{
-set t_Co=256
-syntax on
-colorscheme jellybeans
-
 let tlist_php_settings='php;c:class;d:constant;f:function'
 
 if filereadable(expand('~/.config/nvim/token.vim'))
@@ -178,8 +184,4 @@ endif
 let twitvim_enable_python3 = 1
 
 let g:syntaxCheck=0
-
-call gina#custom#command#alias('status', 'st')
-call gina#custom#command#option('st','-s')
-call gina#custom#command#option('st','--opener','split')
 " }}}

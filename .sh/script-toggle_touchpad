@@ -1,5 +1,5 @@
 #!/bin/sh
-devnum=`xinput list | grep SynPS/2 | sed "s/.*id=\([0-9]*\).*/\1/"`
+devnum=`xinput list | grep Synaptics | sed "s/.*id=\([0-9]*\).*/\1/"`
 touchpad_enable=`xinput list-props $devnum | grep "Device Enabled (" | sed "s/.*):\t\(.*\).*/\1/"`
 touchpad_enable_id=`xinput list-props $devnum | grep "Device Enabled (" | sed "s/.*(\([0-9]*\)).*/\1/"`
 if [ $touchpad_enable = "1" ] ; then

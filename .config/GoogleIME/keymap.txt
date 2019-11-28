@@ -14,7 +14,6 @@ Composition	Ctrl k	MoveCursorLeft
 Composition	Ctrl l	MoveCursorRight
 Composition	Ctrl Left	MoveCursorToBeginning
 Composition	Ctrl m	Commit
-Composition	Ctrl n	MoveCursorToEnd
 Composition	Ctrl o	ConvertToHalfWidth
 Composition	Ctrl p	ConvertToFullAlphanumeric
 Composition	Ctrl Right	MoveCursorToEnd
@@ -52,32 +51,25 @@ Composition	Shift Left	MoveCursorLeft
 Composition	Shift Muhenkan	ConvertToFullAlphanumeric
 Composition	Shift Right	MoveCursorRight
 Composition	Shift Space	Convert
-Composition	Space	Convert
 Composition	Tab	PredictAndConvert
 Conversion	Backspace	Cancel
 Conversion	Ctrl a	SegmentFocusFirst
 Conversion	Ctrl Backspace	Cancel
-Conversion	Ctrl d	SegmentFocusRight
 Conversion	Ctrl Down	CommitOnlyFirstSegment
 Conversion	Ctrl e	ConvertPrev
 Conversion	Ctrl Enter	Commit
 Conversion	Ctrl f	SegmentFocusLast
-Conversion	Ctrl g	Cancel
 Conversion	Ctrl h	Cancel
 Conversion	Ctrl i	ConvertToFullKatakana
 Conversion	Ctrl k	SegmentWidthShrink
 Conversion	Ctrl l	SegmentWidthExpand
 Conversion	Ctrl Left	SegmentFocusFirst
 Conversion	Ctrl m	Commit
-Conversion	Ctrl n	CommitOnlyFirstSegment
 Conversion	Ctrl o	ConvertToHalfWidth
-Conversion	Ctrl p	ConvertToFullAlphanumeric
 Conversion	Ctrl Right	SegmentFocusLast
 Conversion	Ctrl s	SegmentFocusLeft
 Conversion	Ctrl Shift Space	InsertFullSpace
 Conversion	Ctrl Space	InsertHalfSpace
-Conversion	Ctrl t	ConvertToHalfAlphanumeric
-Conversion	Ctrl u	ConvertToHiragana
 Conversion	Ctrl Up	ConvertPrev
 Conversion	Ctrl x	ConvertNext
 Conversion	Ctrl z	Cancel
@@ -112,8 +104,6 @@ Conversion	Shift Right	SegmentWidthExpand
 Conversion	Shift Space	ConvertPrev
 Conversion	Shift Tab	ConvertPrev
 Conversion	Shift Up	ConvertPrevPage
-Conversion	Space	ConvertNext
-Conversion	Tab	PredictAndConvert
 Conversion	Up	ConvertPrev
 DirectInput	Eisu	IMEOn
 DirectInput	F13	IMEOn
@@ -136,12 +126,18 @@ Precomposition	Space	InsertSpace
 Prediction	Ctrl Delete	DeleteSelectedCandidate
 Suggestion	Down	PredictAndConvert
 Suggestion	Shift Enter	CommitFirstSuggestion
+Conversion	Ctrl c	Commit
+Composition	Ctrl c	Cancel
 Composition	Ctrl j	Commit
 Conversion	Ctrl j	Commit
-Composition	Ctrl c	Commit
-Conversion	Ctrl c	Commit
-Composition	Ctrl [	Commit
-Conversion	Ctrl [	Commit
+Conversion	Ctrl p	ConvertPrev
+Conversion	Ctrl n	ConvertNext
+Conversion	Ctrl u	ConvertPrevPage
+Conversion	Ctrl d	ConvertNextPage
+Composition	Ctrl n	PredictAndConvert
+Conversion	Tab	CommitOnlyFirstSegment
+Composition	Space	Convert
+Conversion	Space	InsertHalfSpace
 Composition	ASCII	InsertCharacter
 Composition	Kanji	IMEOff
 Composition	OFF	IMEOff

@@ -3,17 +3,21 @@ cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 noremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
 inoremap <silent> <C-c> <C-c>:call SetIME('off')<CR>
 
-noremap <Space>ar <ESC><ESC>:call aload#Run()<CR>
+noremap <Leader>ll <ESC><ESC>:call aload#Run()<CR>
 
-noremap <Space>af <ESC><ESC>:call aload#Format()<CR>
+noremap <Leader>lf <ESC><ESC>:call aload#Format()<CR>
 
-nnoremap <Space>sn :next<CR>
-nnoremap <Space>sp :prev<CR>
+nnoremap <Leader>sn :next<CR>
+nnoremap <Leader>sp :prev<CR>
 
 noremap <A-p> gt<CR>
 noremap <A-n> gT<CR>
 noremap <A-o> :tabonly<CR>
 noremap <A-t><CR> :tabedit<CR>:Startify<CR>
+
+tnoremap <C-w> <C-\><C-n><C-w>
+
+noremap <Leader>st :new<CR>:terminal<CR>:startinsert<CR>
 
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
