@@ -1,5 +1,5 @@
 #!/bin/sh
-export TERMINAL=xfce4-terminal
+export TERMINAL=alacritty
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
