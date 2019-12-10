@@ -189,10 +189,8 @@ repo = 'vim-scripts/ViewOutput'
 on_path = '.*'
 
 [[plugins]]
-repo = 'dbgx/lldb.nvim'
-hook_source = '''
-  nmap <C-y> <Plug>LLBreakSwitch
-'''
+repo = 'sakhnik/nvim-gdb'
+build = 'bash install.sh'
 on_ft = ['c', 'cpp']
 
 [[plugins]]
