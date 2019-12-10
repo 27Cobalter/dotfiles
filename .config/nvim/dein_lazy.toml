@@ -89,12 +89,6 @@ hook_add = '''
 on_ft = ['go']
 
 [[plugins]]
-repo = 'zchee/deoplete-go'
-hook_post_update = '''
-  let g:dein#plugin.build = 'make'
-'''
-
-[[plugins]]
 repo = 'sudar/vim-arduino-syntax'
 on_ft = ['arduino']
 
