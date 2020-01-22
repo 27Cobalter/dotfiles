@@ -1,6 +1,6 @@
 [user]
 	name = 27Cobalter
-	email = kontyanzhihg@gmail.com
+	email = kontyanzhihg+github@gmail.com
 [core]
 	editor = nvim
   excludesfile = /home/cobalt/.dotfiles/.gitignore_global
