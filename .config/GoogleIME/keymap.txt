@@ -137,7 +137,9 @@ Conversion	Ctrl d	ConvertNextPage
 Composition	Ctrl n	PredictAndConvert
 Conversion	Tab	CommitOnlyFirstSegment
 Composition	Space	Convert
-Conversion	Space	InsertHalfSpace
+Conversion	Space	ConvertNext
+Composition	Shift Space	InsertSpace
+Conversion	Shift Space	InsertSpace
 Composition	ASCII	InsertCharacter
 Composition	Kanji	IMEOff
 Composition	OFF	IMEOff
