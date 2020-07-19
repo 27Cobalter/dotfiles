@@ -1,16 +1,16 @@
 [user]
-	name = 27Cobalter
-	email = kontyanzhihg+github@gmail.com
+  name = 27Cobalter
+  email = kontyanzhihg+github@gmail.com
 [core]
-	editor = nvim
+  editor = nvim
   excludesfile = /home/cobalt/.dotfiles/.gitignore_global
 [alias]
-	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   st = status -s
 [url "git@github.com:"]
-    insteadOf = git://github.com/
-    insteadOf = https://github.com/
+  insteadOf = git://github.com/
+  insteadOf = https://github.com/
 [merge]
-	ff = false
+  ff = false
 [pull]
-	ff = only
+  ff = only
