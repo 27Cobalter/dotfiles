@@ -87,7 +87,7 @@ alias lla="ls --color=auto -Fla"
 alias clang++="clang++ -lwiringPi -std=c++14"
 alias g++="g++ -std=c++14 -lpthread -lwiringPi"
 alias grep="grep --color"
-alias cat="lolcat"
+# alias cat="lolcat"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
