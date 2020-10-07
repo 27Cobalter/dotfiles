@@ -191,6 +191,12 @@ on_path = '.*'
 [[plugins]]
 repo = 'sakhnik/nvim-gdb'
 build = 'bash install.sh'
+hook_add = '''
+  let g:nvimgdb_disable_start_keymaps = 1
+'''
+hook_source = '''
+  nnoremap <leader>dl :GdbStartLLDB lldb a.out
+'''
 on_ft = ['c', 'cpp']
 
 [[plugins]]
