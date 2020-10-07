@@ -55,7 +55,7 @@ repo = 'Shougo/deol.nvim'
 repo = 'kana/vim-repeat'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
+repo = 'kana/vim-operator-user'
 
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
@@ -109,30 +109,30 @@ repo = 'osyo-manga/vim-precious'
 [[plugins]]
 repo = 'skywind3000/asyncrun.vim'
 
-# [[plugins]]
-# repo = 'autozimu/LanguageClient-neovim'
-# rev = 'next'
-# build = 'bash install.sh'
-# hook_add = '''
-#   set hidden
-#   let g:LanguageClient_serverCommands = {
-#         \ 'cpp' : ['clangd'],
-#         \ 'rust' : ['rustup', 'run', 'stable', 'rls'],
-#         \ 'go': ['gopls']
-#         \}
-# 
-#   let g:LanguageClient_diagnosticsEnable = 0
-#   " augroup LanguageClient_config
-#   "   autocmd!
-#   "   autocmd User LanguageClientStarted setlocal signcolumn=yes
-#   "   autocmd User LanguageClientStopped setlocal signcolumn=auto
-#   " augroup END
-# 
-#   let g:LanguageCliet_autoStart = 1
-#   nnoremap <Space>lh :call LanguageClient#textDocument_hover()<CR>
-#   nnoremap <Space>ld :call LanguageClient#textDocument_definition()<CR>
-#   nnoremap <Space>lr :call LanguageClient#textDocument_rename()<CR>
-# '''
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+  set hidden
+  let g:LanguageClient_serverCommands = {
+        \ 'cpp': ['clangd'],
+        \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+        \ 'go': ['gopls']
+        \}
+
+  let g:LanguageClient_diagnosticsEnable = 0
+  " augroup LanguageClient_config
+  "   autocmd!
+  "   autocmd User LanguageClientStarted setlocal signcolumn=yes
+  "   autocmd User LanguageClientStopped setlocal signcolumn=auto
+  " augroup END
+
+  let g:LanguageCliet_autoStart = 1
+  nnoremap <Space>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <Space>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <Space>lr :call LanguageClient#textDocument_rename()<CR>
+'''
 
 [[plugins]]
 repo = 'vim-scripts/smartchr'

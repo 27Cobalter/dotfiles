@@ -22,7 +22,7 @@ set showcmd
 " 行を表示
 set number
 " カーソルラインを表示
-" set cursorline
+set cursorline
 " 括弧をハイライト
 set showmatch
 " 折り畳み

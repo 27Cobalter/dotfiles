@@ -89,12 +89,6 @@ hook_add = '''
 on_ft = ['go']
 
 [[plugins]]
-repo = 'zchee/deoplete-go'
-hook_post_update = '''
-  let g:dein#plugin.build = 'make'
-'''
-
-[[plugins]]
 repo = 'sudar/vim-arduino-syntax'
 on_ft = ['arduino']
 
@@ -195,10 +189,8 @@ repo = 'vim-scripts/ViewOutput'
 on_path = '.*'
 
 [[plugins]]
-repo = 'dbgx/lldb.nvim'
-hook_source = '''
-  nmap <C-y> <Plug>LLBreakSwitch
-'''
+repo = 'sakhnik/nvim-gdb'
+build = 'bash install.sh'
 on_ft = ['c', 'cpp']
 
 [[plugins]]
@@ -221,22 +213,22 @@ on_path = '.*'
 [[plugins]]
 repo = 'vim-latex/vim-latex'
 hook_source = '''
-set shellslash
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Imap_UsePlaceHolders = 1
-let g:Imap_DeleteEmptyPlaceHolders = 1
-let g:Imap_StickyPlaceHolders = 0
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats='dvi,pdf'
-let g:Tex_FormatDependency_pdf = 'dvi,pdf'
-let g:Tex_CompileRule_pdf = 'ptex2pdf -u -l -ot "-synctex=1 -interaction=nonstopmode -file-line-error-style" $*'
-let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
-let g:Tex_BibtexFlavor = 'upbibtex'
-let g:Tex_MakeIndexFlavor = 'upmendex $*.idx'
-let g:Tex_UseEditorSettingInDVIViewer = 1
-let g:Tex_ViewRule_pdf = 'evince'
-set conceallevel = 0
+  set shellslash
+  set grepprg=grep\ -nH\ $*
+  let g:tex_flavor='latex'
+  let g:Imap_UsePlaceHolders = 1
+  let g:Imap_DeleteEmptyPlaceHolders = 1
+  let g:Imap_StickyPlaceHolders = 0
+  let g:Tex_DefaultTargetFormat = 'pdf'
+  let g:Tex_MultipleCompileFormats='dvi,pdf'
+  let g:Tex_FormatDependency_pdf = 'dvi,pdf'
+  let g:Tex_CompileRule_pdf = 'ptex2pdf -u -l -ot "-synctex=1 -interaction=nonstopmode -file-line-error-style" $*'
+  let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
+  let g:Tex_BibtexFlavor = 'upbibtex'
+  let g:Tex_MakeIndexFlavor = 'upmendex $*.idx'
+  let g:Tex_UseEditorSettingInDVIViewer = 1
+  let g:Tex_ViewRule_pdf = 'evince'
+  set conceallevel = 0
 '''
 on_ft = ['tex']
 
