@@ -203,6 +203,7 @@ on_ft = ['c', 'cpp']
 repo = 'himanoa/ttene.nvim'
 hook_post_source = '''
   let g:ttene_play_command = 'mplayer -ao alsa'
+  let g:ttene_play_command = 'echo'
 '''
 hook_post_update = '''
   let g:dein#plugin.build = 'magicalstick | grep "てねっ[0-9]" | xargs -P4 -In1 wget n1 -P voices/'
