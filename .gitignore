@@ -1,5 +1,7 @@
+*.ia
 *.tmp
 script*.sh
-*.ia
+.config/Code/User/globalStorage
+.config/Code/User/workspaceStorage
 .config/gcloud
 .config/gtk-2.0
