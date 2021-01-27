@@ -1,6 +1,7 @@
 {
     // ---------- General ----------
     "diffEditor.wordWrap": "on",
+    "editor.wordWrap": "bounded",
 
     // ---------- Language ----------
 
