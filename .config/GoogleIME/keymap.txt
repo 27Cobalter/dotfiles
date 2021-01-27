@@ -140,6 +140,17 @@ Composition	Space	Convert
 Conversion	Space	ConvertNext
 Composition	Shift Space	InsertSpace
 Conversion	Shift Space	InsertSpace
+DirectInput	Ctrl Space	IMEOn
+Precomposition	Ctrl Space	IMEOff
+Composition	Ctrl Space	IMEOff
+Conversion	Ctrl Space	IMEOff
+Suggestion	Ctrl Space	IMEOff
+Prediction	Ctrl Space	IMEOff
+Precomposition	Ctrl c	IMEOff
+Composition	Ctrl c	IMEOff
+Conversion	Ctrl c	IMEOff
+Suggestion	Ctrl c	IMEOff
+Prediction	Ctrl c	IMEOff
 Composition	ASCII	InsertCharacter
 Composition	Kanji	IMEOff
 Composition	OFF	IMEOff
