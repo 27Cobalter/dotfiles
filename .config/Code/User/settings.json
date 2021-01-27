@@ -1,4 +1,7 @@
 {
+    // ---------- General ----------
+    "diffEditor.wordWrap": "on",
+
     // ---------- Language ----------
 
     "[tex]": {
@@ -54,9 +57,6 @@
         "*.synctex.gz"
     ],
 
-    // // 生成ファイルを "out" ディレクトリに吐き出す
-    // "latex-workshop.latex.outDir": "out",
-
     // ビルドのレシピ
     "latex-workshop.latex.recipes": [
         {
@@ -80,5 +80,7 @@
             ],
         },
     ],
+
+    // 内部ビューワでプレビュー
     "latex-workshop.view.pdf.viewer": "tab",
 }
