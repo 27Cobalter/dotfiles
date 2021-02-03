@@ -66,6 +66,9 @@
         {
             "name": "ptex2pdf",
             "tools": [
+                "ptex2pdf",
+                "pbibtex",
+                "ptex2pdf",
                 "ptex2pdf"
             ]
         },
@@ -83,6 +86,14 @@
                 "%DOC%"
             ],
         },
+        {
+            "name": "pbibtex",
+            "command": "pbibtex",
+            "args": [
+                "-kanji=utf8",
+                "%DOCFILE%"
+            ]
+        }
     ],
 
     // 内部ビューワでプレビュー
