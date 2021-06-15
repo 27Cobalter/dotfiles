@@ -66,10 +66,11 @@
         {
             "name": "ptex2pdf",
             "tools": [
-                "ptex2pdf",
-                "pbibtex",
-                "ptex2pdf",
-                "ptex2pdf"
+                "ptex2pdf_u",
+                // "pbibtex",
+                "ptex2pdf_u",
+                "ptex2pdf_u",
+                "ptex2pdf_u",
             ]
         },
     ],
@@ -93,6 +94,17 @@
                 "-kanji=utf8",
                 "%DOCFILE%"
             ]
+        },
+        {
+            "name": "ptex2pdf_u",
+            "command": "ptex2pdf",
+            "args": [
+                "-l",
+                "-u",
+                "-ot",
+                "-kanji=utf8 -synctex=1",
+                "%DOC%"
+            ],
         }
     ],
 
