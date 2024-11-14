@@ -1,0 +1,4 @@
+" %userprofile%/.vsvimrc
+set number
+let mapleader="\<Space>"
+noremap <Leader>lf :vsc Edit.FormatDocument<CR>
