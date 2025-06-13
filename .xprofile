@@ -4,5 +4,7 @@ export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 
+xrandr --output eDPI --scale 1.5
+
 ~/.sh/script-init_touchpad
 ~/.sh/script-toggle_touchpad

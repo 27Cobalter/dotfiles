@@ -85,20 +85,7 @@ alias la="ls --color=auto -Fa"
 alias ll="ls --color=auto -Fl"
 alias lla="ls --color=auto -Fla"
 alias grep="grep --color"
-alias chromium="chromium > /dev/null 2>&1&"
-alias libreoffice="libreoffice > /dev/null 2>&1&"
 function arduino (){platformio $@ && ln -s $HOME/arduino/.piolibdeps .piolibdeps && echo "upload_port = /dev/ttyUSB0" >> platformio.ini && echo "#include<ArduinoSTL.h>\n\nvoid setup(){\n  // put your setup code here, to run once:\n}\nvoid loop(){\n  // put your main code here, to run repeatedly:\n}" > src/main.ino}
-alias cat="lolcat"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-if ! which fzf &>/dev/null; then
-  printf 'install fzf? [y/N]: '
-  if read -q; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
-  fi
-fi
 
 if which trash-put &>/dev/null; then
   alias rm=trash-put
@@ -109,12 +96,6 @@ if ! which peco &>/dev/null; then
   [[ -z "$TMUX" ]] && exec tmux
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/cobalt/.nyan/google-cloud-sdk/path.zsh.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/cobalt/.nyan/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/cobalt/.nyan/google-cloud-sdk/completion.zsh.inc'; fi
-
 # pecoでhistory検索
 function peco-select-history(){
   BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | peco --query "$LBUFFER")
@@ -124,23 +105,9 @@ function peco-select-history(){
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-# fzfでhistory検索
-function fzf-select-history(){
-  BUFFER=$(\history -n 1 | tac | awk '!a[$0]++' | fzf --reverse --height 50% --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle clear-screen
-}
-zle -N fzf-select-history
-# ESC R
-bindkey '^[r' fzf-select-history
-
 # pecoでkill
 function peco-kill(){
   ps -aux | peco | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
-}
-# fzfでkill
-function fzf-kill(){
-  ps -aux | fzf --reverse --height 50% | awk '{ print "kill ", $2 }' | sh | cat /dev/stdin
 }
 
 # tmuxのプロンプト
