@@ -1,0 +1,96 @@
+# enable_experimental_conpty_backend = false
+live_config_reload = true
+# "window.dynamic_title" = true
+# window_opacity = 0.5
+working_directory = "None"
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x777777"
+blue = "0x0074d9"
+cyan = "0x7fdbff"
+green = "0x2ecc40"
+magenta = "0xb10dc9"
+red = "0xff4136"
+white = "0xffffff"
+yellow = "0xffdc00"
+
+[colors.cursor]
+cursor = "0xbbbbbb"
+text = "0x111111"
+
+[colors.normal]
+black = "0x111111"
+blue = "0x0074d9"
+cyan = "0x7fdbff"
+green = "0x2ecc40"
+magenta = "0xb10dc9"
+red = "0xff4136"
+white = "0xbbbbbb"
+yellow = "0xffdc00"
+
+[colors.primary]
+background = "0x000000"
+foreground = "0xbbbbbb"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "Warn"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[font]
+size = 7.0
+
+[font.bold]
+family = "Ricty Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Ricty Nerd Font"
+style = "Oblique"
+
+[font.normal]
+family = "Ricty Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+startup_mode = "Windowed"
+opacity=0.75
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 2
+y = 2
