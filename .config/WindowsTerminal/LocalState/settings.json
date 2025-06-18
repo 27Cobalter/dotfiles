@@ -1,0 +1,46 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
+    [
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        },
+        {
+            "command": "find",
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        }
+    ],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{XXXXXXXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX}",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "backgroundImageStretchMode": "uniformToFill",
+            "cursorShape": "filledBox"
+        },
+        "list": 
+        [
+        ]
+    },
+    "schemes": [],
+    "theme": "dark",
+    "themes": [],
+    "useAcrylicInTabRow": false
+}

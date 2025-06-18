@@ -1,9 +1,8 @@
 {
-    // ---------- General ----------
     "diffEditor.wordWrap": "on",
-    "editor.tabSize": 6,
+    "editor.tabSize": 2,
     "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 120,
+    "editor.wordWrapColumn": 140,
     "window.zoomLevel": 0,
 
     // ---------- Language ----------
@@ -61,18 +60,26 @@
         "*.synctex.gz"
     ],
 
-    // ビルドのレシピ
     "latex-workshop.latex.recipes": [
         {
             "name": "ptex2pdf",
             "tools": [
                 "ptex2pdf_u",
-                // "pbibtex",
                 "ptex2pdf_u",
                 "ptex2pdf_u",
-                "ptex2pdf_u",
+                "ptex2pdf_u"
             ]
         },
+        {
+            "name": "ptex2pdfbib",
+            "tools": [
+                "ptex2pdf_u",
+                "pbibtex",
+                "ptex2pdf_u",
+                "ptex2pdf_u",
+                "ptex2pdf_u"
+            ]
+        }
     ],
 
     // ビルドのレシピに使われるパーツ
@@ -85,7 +92,7 @@
                 "-ot",
                 "-kanji=utf8 -synctex=1",
                 "%DOC%"
-            ],
+            ]
         },
         {
             "name": "pbibtex",
@@ -104,10 +111,20 @@
                 "-ot",
                 "-kanji=utf8 -synctex=1",
                 "%DOC%"
-            ],
+            ]
         }
     ],
 
     // 内部ビューワでプレビュー
     "latex-workshop.view.pdf.viewer": "tab",
+    "markdown.marp.enableHtml": true,
+    "markdown.marp.exportType": "html",
+    "markdown.marp.mathTypesetting": "katex",
+    "markdown-preview-enhanced.enableExtendedTableSyntax": true,
+    "editor.renderWhitespace": "all",
+    "files.insertFinalNewline": true,
+    "editor.inlayHints.enabled": "off",
+    "diffEditor.maxComputationTime": 0,
+    "html.format.wrapLineLength": 140,
+    "vim.textwidth": 140
 }
