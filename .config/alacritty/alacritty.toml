@@ -1,5 +1,4 @@
 # enable_experimental_conpty_backend = false
-live_config_reload = true
 # "window.dynamic_title" = true
 # window_opacity = 0.5
 working_directory = "None"
@@ -72,6 +71,9 @@ style = "Regular"
 [font.offset]
 x = 0
 y = 0
+
+[general]
+live_config_reload = true
 
 [scrolling]
 history = 10000

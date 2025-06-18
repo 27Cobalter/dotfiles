@@ -10,6 +10,4 @@ export BROWSER=/usr/bin/vivaldi-stable
 
 export QT_QPA_PLATFORMTHEME=qt6ct
 
-source ~/.env
-
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
