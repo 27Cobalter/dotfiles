@@ -1,6 +1,5 @@
 #!/bin/bash
 mkdir $HOME/.config
-ln -sf $HOME/.dotfiles/.percol.d $HOME/.percol.d
 ln -sf $HOME/.dotfiles/.config/nvim $HOME/.config/
 ln -sf $HOME/.dotfiles/.config/i3 $HOME/.config/
 ln -sf $HOME/.dotfiles/.config/i3status $HOME/.config/
