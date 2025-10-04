@@ -60,8 +60,8 @@ setopt correct
 setopt list_packed
 setopt no_beep
 setopt prompt_subst
-ALLOW=$'\u2b80'
-ALLOW2=$'\u2b81'
+ALLOW=$'\ue0b0'
+ALLOW2=$'\ue0b1'
 UPPERALLOW=$'\u2b11'
 zstyle ':vcs_info:*' formats '%F{black}[%s][* %F{green}%b%F{black}]%f'
 zstyle ':vcs_info:*' actionformats '%F{black}[%s][* %F{green}%b%F{black}(%F{red}%a%F{black})%F{black}]%f'
