@@ -1,25 +1,28 @@
 [user]
-  name = 27Cobalter
-  email = kontyanzhihg+github@gmail.com
+	name = 27Cobalter
+	email = kontyanzhihg+github@gmail.com
 [core]
-  editor = nvim
-  excludesfile = /home/cobalt/.dotfiles/.gitignore_global
+	editor = nvim
+	excludesfile = ~/.dotfiles/.gitignore_global
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
 [alias]
-  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  st = status -s
-[url "git@github.com:"]
-  insteadOf = git://github.com/
-  insteadOf = https://github.com/
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	st = status -s
 [merge]
-  ff = false
+	ff = false
 [pull]
-  ff = only
+	ff = only
 [tag]
-  sort = version:refname
+	sort = version:refname
 [diff]
-  tool = vimdiff
+	tool = vimdiff
 [filter "lfs"]
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
