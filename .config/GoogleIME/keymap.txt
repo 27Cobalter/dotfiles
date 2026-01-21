@@ -85,9 +85,9 @@ Conversion	Ctrl j	Commit
 Conversion	Ctrl k	SegmentWidthShrink
 Conversion	Ctrl l	SegmentWidthExpand
 Conversion	Ctrl m	Commit
-Conversion	Ctrl n	ConvertNext
+Conversion	Ctrl n	ConvertNextPage
 Conversion	Ctrl o	ConvertToHalfWidth
-Conversion	Ctrl p	ConvertPrev
+Conversion	Ctrl p	ConvertPrevPage
 Conversion	Ctrl s	SegmentFocusLeft
 Conversion	Ctrl u	ConvertPrevPage
 Conversion	Ctrl x	ConvertNext
