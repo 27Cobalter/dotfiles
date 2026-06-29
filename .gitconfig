@@ -1,8 +1,13 @@
 [user]
 	name = 27Cobalter
 	email = kontyanzhihg+github@gmail.com
+	signingkey = ~/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.dotfiles/.gitignore_global
 [credential "https://github.com"]
 	helper =
@@ -10,6 +15,7 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !gh auth git-credential
+	longpaths = true
 [alias]
 	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	st = status -s
@@ -21,8 +27,3 @@
 	sort = version:refname
 [diff]
 	tool = vimdiff
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
